@@ -1,0 +1,86 @@
+<div class="modelContent">
+  <div class="header">
+    <div class="header_left"><span class="addUser">Add User</span></div>
+    <div class="header_right"><span class="pointer" (click)="close()">X</span></div>
+  </div>
+  <div class="content">
+    <span class="content__subtitule">Picture Profile</span>
+    <div class="content__picture col_row">
+      <div class="content__picture--areapic">
+        <img height="30" src="../../../assets/images/profile_2x.png" alt="">
+      </div>
+      <div class="content__picture--right">
+        <span class="content__picture--text">
+          JPG, PNG | Minimum size of 300px × 300px
+        </span>
+        <div class="content__picture--uppic">
+          upload picture
+        </div>
+      </div>
+    </div>
+    <div class="content__frm">
+      <span>Información básica</span>
+      <Form formGroup="addUserFrm">
+        <div class="col_row ">
+          <div class="fieldsInput--left">
+            <input class="input" type="text" name="name" formControlName="name" placeholder="name" ngModel="usr.name">
+            <span *ngIf="errorHandling('name', 'required')">
+              name required
+            </span>
+            <span *ngIf="errorHandling('name', 'minLength')">
+              name minimun length is 2 characters
+            </span>
+          </div>
+          <div class="fieldsInput--right">
+            <input class="input" type="text" name="fathersLastName" formControlName="fathersLastName"
+              placeholder="fathers Lastname" ngModel="usr.fathersLastName">
+            <span *ngIf="errorHandling('name', 'required')">
+              lastname required
+            </span>
+            <span *ngIf="errorHandling('fathersLastName', 'minLength')">
+              name minimun length is 2 characters
+            </span>
+          </div>
+        </div>
+        <div class="col_row">
+          <div class="fieldsInput--left">
+            <input class="input" type="text" name="mothersLastName" formControlName="mothersLastName"
+              placeholder="mothers Lastname" ngModel="usr.mothersLastName">
+          </div>
+          <div class="fieldsInput--right">
+            <input class="input" type="text" name="email" formControlName="email" placeholder="email"
+             ngModel="usr.email">
+            <span *ngIf="errorHandling('email', 'email')">
+              email format
+            </span>
+            <span *ngIf="errorHandling('email', 'required')">
+              email required
+            </span>
+          </div>
+        </div>
+        <div class="col_row">
+          <div class="fieldsInput--left">
+            <input class="input" type="text" name="roleId" formControlName="roleId" placeholder="roleId"
+             ngModel="usr.roleId">
+            <span *ngIf="errorHandling('roleId', 'pattern')">
+              role is a number 1-3
+            </span>
+            <span *ngIf="errorHandling('roleId', 'required')">
+              role required
+            </span>
+          </div>
+          <div class="fieldsInput--right">
+            <input class="input" type="text" name="roleId" formControlName="roleId" placeholder="roleId"
+             ngModel="usr.roleId">
+          </div>
+        </div>
+      </Form>
+    </div>
+
+
+    <div class="footer col_row">
+      <div class="btn btn--cancel">Save</div>
+      <div class="btn btn--aceptar">Cancel</div>
+    </div>
+  </div>
+</div>

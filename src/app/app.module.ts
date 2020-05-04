@@ -2,7 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './modules/root/app.component';
+
+//svg lib
+import { HttpClientModule } from '@angular/common/http';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { StorageServiceModule } from 'ngx-webstorage-service';
+import { LocalStorageService  } from './services/storage/storage.service';
+import { CRUDService } from './services/crud/crud.service';
+
+import { SharedModule } from '../app/modules/shared/shared.module';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -10,9 +23,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AngularSvgIconModule.forRoot(),
+    StorageServiceModule,
+    SharedModule,
   ],
-  providers: [],
+  providers: [LocalStorageService,CRUDService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

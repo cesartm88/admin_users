@@ -1,0 +1,32 @@
+<div class="adminTemplate">
+  <div class="adminTemplate__container">
+    <header class="adminTemplate__container--header">
+      <div class="adminTemplate__container--header--left">
+        <img src="../../../assets/images/logo.png" class="adminTemplate__container--header--left--logo">
+        <div class="btn btn_user pointer">
+          <svg-icon src="../../assets/images/user.svg" [svgStyle]="{ 'height.px':50,'fill':'rgb(141, 141, 141)','margin-right':'10px' }">
+          </svg-icon>
+          <span class="btn_user--username">
+            Pedro Paramo
+          </span>
+          <svg-icon class="btn_user--icon_row"
+            src="../../assets/images/arrow.svg"
+            [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)','margin-left':'10px' }"></svg-icon>
+        </div>
+      </div>
+    </header>
+    <div class="adminTemplate__container--Row">
+      <div class="adminTemplate__container--Row--left">
+
+      </div>
+      <div class="adminTemplate__container--Row--right">
+        <div class="adminTemplate__container--Row--right--header">
+          <ng-content select="[header]"></ng-content>
+        </div>
+        <div class="adminTemplate__container--Row--right--container">
+          <ng-content select="[body]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

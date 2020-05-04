@@ -1,0 +1,10 @@
+<table>
+    <tr >
+        <th *ngFor="let item of showToFields | keys ">{{item}}</th>
+    </tr>
+    <tr *ngFor="let item of List | async">
+        <td *ngFor="let val of item | keys"> 
+            {{item[val]}}
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,177 @@
+/**
+ * Bootstrap 4 all media queries #wMQ
+ * up       >     sm, md, lg
+ * down     <     sm, md, lg
+ * only     =     xs, sm, lg, xl
+ * between  <>    sm-lg, sm-xl, md-xl
+ */
+
+/******************************************************************************
+/**
+*up queries
+*/
+/* .sm > | Small devices and up (landscape, phones) 576px and up */
+@media (min-width: 576px) {
+}
+/* .md > | Medium devices and up (tablets) 768px and up */
+@media (min-width: 768px) {
+}
+/* .lg > | Large devices and up (desktops) 992px and up */
+@media (min-width: 992px) {
+  .lg_row {
+    display: flex;
+    flex-direction: row;
+  }
+  .col_row {
+    display: flex;
+    flex-direction: row;
+   
+  }
+  .col_row > div{
+     margin-left:10px;
+  }
+  .col_row .fieldsInput--right {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    padding-left: 33px;
+    margin-top: 35px;
+  }
+  .col_row .fieldsInput--left {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-top: 35px;
+  }
+}
+
+/******************************************************************************
+/**
+*down queries
+*/
+/* .sm < | Small devices and down (landscape, phones) less than 768px */
+@media (max-width: 767.98px) {
+  .adminTemplate__container--Row--left {
+    display: none !important;
+  }
+}
+/* .md < | Medium devices and down (tablets) less than 992px */
+@media (max-width: 991.98px) {
+  .lg_row {
+    display: none;
+  }
+}
+/* .lg < | Large devices and down (desktops) less than 1200px */
+@media (min-width: 1199.98px) {
+}
+
+/******************************************************************************
+* only queries
+*/
+/* .xs = | Extra Small devices only (portrait phones) less than 576px */
+@media (max-width: 575.98px) {
+  .col_row {
+    display: flex;
+    flex-direction: column;
+  }
+  .col_row div {
+    margin-top: 10px;
+  }
+  .col_row .fieldsInput--left {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-top: 35px;
+  }
+  .col_row .fieldsInput--right {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-top: 35px;
+  }
+  .align_items_btns {
+    align-items: flex-end;
+  }
+}
+/* .sm = | Small devices only (landscape, phones) upper 576px and less than 768px */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .col_row {
+    display: flex;
+    flex-direction: column;
+  }
+  .col_row div {
+    margin-top: 10px;
+  }
+  .col_row .fieldsInput--left {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-top: 35px;
+  }
+  .col_row .fieldsInput--right {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-top: 35px;
+  }
+  .align_items_btns {
+    align-items: flex-end;
+  }
+}
+/* .md = | Medium devices only (tablets) upper 768px and less than 992px */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .col_row {
+    display: flex;
+    flex-direction: column;
+  }
+  .col_row div {
+    margin-top: 10px;
+  }
+  .col_row .fieldsInput--left {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-top: 35px;
+  }
+  .col_row .fieldsInput--right {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    margin-top: 35px;
+  }
+  .align_items_btns {
+    align-items: center;
+    margin-right: 15px;
+  }
+}
+/* .lg = | Large devices only (desktops) upper 992px and less than 1200px */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  
+  .align_items_btns {
+    align-items: center;
+    margin-right: 15px;
+  }
+}
+/* .xl = | Large devices only (desktops, TV) 1200px and up */
+@media (min-width: 1200px) {
+  .col_row {
+    display: flex;
+    flex-direction: row;
+  }
+  .align_items_btns {
+    align-items: center;
+    margin-right: 15px;
+  }
+}
+
+/******************************************************************************
+/* Between <> .sm-lg, .sm-xl, .md-xl */
+/* .sm <> .lg | From Small to Large devices only (landscape, phones, tablet, desktops) upper 576px and less than 1200px */
+@media (min-width: 576px) and (max-width: 991.98px) {
+}
+/* .sm <> .xl | From Small to Extra Large devices only (landscape, phones, tablet, desktops, TV) upper 576px and less than 1200px */
+@media (min-width: 576px) and (max-width: 1199.98px) {
+}
+/* .md <> .xl | From Medium to Extra Large devices only (tablet, desktops, TV) upper 768px and less than 1200px */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+}
