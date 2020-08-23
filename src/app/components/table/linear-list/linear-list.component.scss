@@ -22,3 +22,40 @@ th {
 td {
   color: $secondary-text-color;
 }
+.paginate{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   height: 80px;
+}
+.paginate__before{
+    margin-right: 10px;
+}
+.paginate__btns--before--after{
+   color : $primary-color-dark;
+}
+.paginate__btns--numbers:hover{
+  color: $primary-color;
+  background-color: $primary-color-dark;
+  border-radius: 15px;
+}
+
+.paginate__btns--numbers--active{
+  color: $primary-color !important;
+  background-color: $primary-color-dark  !important;
+  border-radius: 15px;
+}
+.paginate__btns--numbers{
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:$primary-color;
+  background: $blue-components;
+  border-radius: 20px;
+}
+.paginate__number{
+    margin-right: 10px;
+}

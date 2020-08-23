@@ -16,6 +16,7 @@ import { AdDirective } from '../../directives/add/add.directive';
 
 //pipes
 import { KeysPipe } from '../../pipes/key.pipe';
+import { SearchPipe } from '../../pipes/search/search.pipe';
 
 //service
 
@@ -32,7 +33,8 @@ import { KeysPipe } from '../../pipes/key.pipe';
     AdDirective,
 
     //pipes
-    KeysPipe
+    KeysPipe,
+    SearchPipe
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import { KeysPipe } from '../../pipes/key.pipe';
     AdDirective,
 
     //pipes
-    KeysPipe
+    KeysPipe,
+    SearchPipe
   ],
   providers: []
 })

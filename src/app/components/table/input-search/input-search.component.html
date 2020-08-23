@@ -1,1 +1,12 @@
-<p>input-search works!</p>
+<div class="btnLeftAlign btn-search white-gray">
+    <div class="btn-search--right">
+        <svg-icon src="../../../../../assets/images/search.svg"
+            [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)','margin-left':'15px' }">
+        </svg-icon>
+        <div class="btn-search--text">Search</div>
+    </div>
+
+    <div class="btn-search--inputarea">
+        <input class="btn-search--input" type="text" (input)="onSearchChange($event.target.value)" >
+    </div>
+</div>

@@ -1,0 +1,38 @@
+@import '../../../../palette.scss';
+
+.btn-search{
+    flex: 3;
+    margin-left: 10px;
+}
+.btn-search--text{
+    color: $secondary-text-color;
+    margin-left:20px;
+    border-right: $primary-color-dark solid 1px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+.btn-search--inputarea{
+    color: $secondary-text-color;
+    display: flex;
+    flex:2;
+    align-items: stretch;
+    
+}
+.btn-search--input{
+    color: $secondary-text-color;
+    display: flex;
+    flex:1;
+    border: none;
+    font-size: 14px;
+}
+.btn-search--input:focus {
+    outline-width: 0;
+}
+.btn-search--right{
+    margin:10px;  
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
