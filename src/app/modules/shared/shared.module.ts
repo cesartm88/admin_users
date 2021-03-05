@@ -6,10 +6,17 @@ import {
   InputSearchComponent,
   CardListComponent,
   CardComponent,
+  SelectComponent,
+  SelectCustomComponent
 } from '../../components/index';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DialogModule } from '../dialog/dialog.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
+
+//material angular
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 //directives
 import { AdDirective } from '../../directives/add/add.directive';
@@ -17,6 +24,7 @@ import { AdDirective } from '../../directives/add/add.directive';
 //pipes
 import { KeysPipe } from '../../pipes/key.pipe';
 import { SearchPipe } from '../../pipes/search/search.pipe';
+import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
 
 //service
 
@@ -28,19 +36,25 @@ import { SearchPipe } from '../../pipes/search/search.pipe';
     InputSearchComponent,
     CardListComponent,
     CardComponent,
+    SelectComponent,
+    SelectCustomComponent,
+    
 
     //directive
     AdDirective,
 
     //pipes
     KeysPipe,
-    SearchPipe
+    SearchPipe,
+    IsurlPipe
   ],
   imports: [
     CommonModule,
     AngularSvgIconModule,
     DialogModule,
     ReactiveFormsModule,
+    MatSelectModule,
+    MatButtonModule,
     FormsModule
   ],
   exports: [
@@ -49,6 +63,8 @@ import { SearchPipe } from '../../pipes/search/search.pipe';
     DialogModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSelectModule,
+    MatButtonModule,
 
     //components
     TableComponent,
@@ -56,13 +72,15 @@ import { SearchPipe } from '../../pipes/search/search.pipe';
     InputSearchComponent,
     CardListComponent,
     CardComponent,
+    SelectCustomComponent,
 
     //directives
     AdDirective,
 
     //pipes
     KeysPipe,
-    SearchPipe
+    SearchPipe,
+    IsurlPipe
   ],
   providers: []
 })

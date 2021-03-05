@@ -12,6 +12,7 @@ import { LocalStorageService  } from './services/storage/storage.service';
 import { CRUDService } from './services/crud/crud.service';
 
 import { SharedModule } from '../app/modules/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -19,8 +20,7 @@ import { SharedModule } from '../app/modules/shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +29,7 @@ import { SharedModule } from '../app/modules/shared/shared.module';
     AngularSvgIconModule.forRoot(),
     StorageServiceModule,
     SharedModule,
+    BrowserAnimationsModule,
   ],
   providers: [LocalStorageService,CRUDService],
   bootstrap: [AppComponent]

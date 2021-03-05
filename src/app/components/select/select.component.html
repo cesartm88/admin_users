@@ -1,1 +1,6 @@
-<p>select works!</p>
+<mat-form-field appearance="fill" onCha>
+    <mat-label>{{placeholder}}</mat-label>
+    <mat-select (selectionChange)="changeValue($event)">
+        <mat-option *ngFor="let option of options" value="{{option.option}}">{{option.text}}</mat-option>
+    </mat-select>
+</mat-form-field>

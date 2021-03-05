@@ -7,12 +7,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchPipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    let coincidences = Object.keys(args[0]).filter((item) => {
-       return similar(args[1],args[0][item]) >= 50;
-    });
-    return (coincidences.length > 0)?value:null;
+    if(args[1] != ""){
+      let coincidences = Object.keys(args[0]).filter((item) => {
+          return similar(args[1],args[0][item]) >= 50;
+      });
+      return (coincidences.length > 0)?value:null;
+    }else{
+      return value;
+    }
   }
-
 }
 
 function similar(a,b) {

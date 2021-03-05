@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService     } from '../../../dialog/dialog.service';
+import { DialogService } from '../../../dialog/dialog.service';
 import { DialogFrmComponent } from '../../../../dialog/dialog-frm/dialog-frm.component';
+import { users_config } from '../../../../constants/titles_tables';
 
 @Component({
   selector: 'app-list-users',
@@ -8,15 +9,14 @@ import { DialogFrmComponent } from '../../../../dialog/dialog-frm/dialog-frm.com
   styleUrls: ['./list-users.component.scss']
 })
 export class ListUsersComponent implements OnInit {
-  
-  titles = {  "picture":"1","name":"1","fathersLastName":"1","mothersLastName":"1","email":"1","roleId":"1","active":"1" };
 
-  constructor(private dialog:DialogService) { }
+  titles = users_config;
+  constructor(private dialog: DialogService) { }
 
   ngOnInit(): void {
   }
 
-  openDialog(){
+  openDialog() {
     console.log("add!!!");
     this.dialog.open(DialogFrmComponent);
   }

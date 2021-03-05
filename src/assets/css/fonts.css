@@ -1,4 +1,24 @@
 @font-face {
-  font-family: Circular;
-  src: url("../fonts/CircularStd-Book.ttf") format("opentype");
+    font-family: Circular;
+    src: url("/assets/fonts/CircularStd-Book.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: 'WorksSansThin';
+    src: URL('/assets/fonts/WorkSans-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'WorksSansRegular';
+    src: URL('/assets/fonts/WorkSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'WorksSansBold';
+    src: URL('/assets/fonts/WorkSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'WorksSansMedium';
+    src: URL('/assets/fonts/WorkSans-Medium.ttf') format('truetype');
 }

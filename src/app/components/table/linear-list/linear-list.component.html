@@ -1,21 +1,33 @@
 <table>
-    <tr >
-        <th *ngFor="let title of showToFields | keys ">{{title}}</th>
+    <tr>
+        <th *ngFor="let title of showToFields | keys ">
+            <ng-container *ngIf="showToFields[title]?.show == 1">
+                <a class="title_table" (click)="orderElement(title)">{{showToFields[title]["alias"]}}</a>
+            </ng-container>
+        </th>
     </tr>
     <tr *ngFor="let item of List | async">
-        <td *ngFor="let val of item | keys | search: item:'Vega'"> 
-            {{item[val]}}
+
+        <td *ngFor="let val of item | keys | search: item:search">
+            <ng-container *ngIf="showToFields[val]?.show == 1">
+                <ng-container *ngIf="(item[val]|isurl) == false">
+                    <span class="field_table">
+                        {{item[val]}}
+                    </span>
+
+                </ng-container>
+                <ng-container *ngIf="(item[val]|isurl) == true">
+                    <img src="{{item[val]}}" />
+                </ng-container>
+
+            </ng-container>
         </td>
     </tr>
 </table>
 <div class="paginate">
     <div class="paginate__before paginate__btns--before--after pointer" (click)="beforePage()">Anterior</div>
-    <div class="paginate__number paginate__btns--numbers pointer" 
-        *ngFor="let page of Pages" 
-        [ngClass]="{'paginate__btns--numbers--active': FocusPage == page}"
-        (click)="setPage(page)"    
-    >
-        <div > {{page}}</div>
+    <div class="paginate__number paginate__btns--numbers pointer" *ngFor="let page of Pages | async" [ngClass]="{'paginate__btns--numbers--active': FocusPage == page}" (click)="setPage(page)">
+        <div> {{page}}</div>
     </div>
     <div class="paginate__btns--before--after pointer" (click)="nextPage()">Siguiente</div>
 </div>

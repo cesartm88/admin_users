@@ -22,12 +22,11 @@
     display: flex;
     flex-direction: row;
   }
-  .col_row {
+  .col_row, app-select {
     display: flex;
     flex-direction: row;
-   
   }
-  .col_row > div{
+  .col_row > div,app-select{
      margin-left:10px;
   }
   .col_row .fieldsInput--right {

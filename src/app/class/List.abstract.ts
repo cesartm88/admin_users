@@ -27,7 +27,7 @@ export abstract class List {
      * Values: ASC | DESC
      * default: ASC
      */
-    orderType:string = "ASC";
+    orderType:number = 0;
 
     /**
      * 
@@ -50,6 +50,6 @@ export abstract class List {
 
     abstract paginateItems(itemsPerPage?:number):Array<Object>;
 
-    abstract orderItems(orderType?:string):Array<Object>;
+    abstract orderItems(orderType?:number,field?:string):Array<Object>;
 
 }

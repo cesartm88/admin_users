@@ -1,0 +1,31 @@
+@import "../../../palette.scss";
+.btn_user {
+    padding: 0px 8px;
+    background-color: $gray-1;
+    border: 1px solid $primary-color-light;
+    font-family: 'WorksSansThin';
+}
+
+.optionsArea {
+    width: 100%;
+    flex: 1;
+    flex-direction: column;
+    -webkit-box-shadow: -2px 11px 30px -4px #000000;
+    box-shadow: -2px 11px 30px -4px #000000;
+    opacity: var(--opacity);
+}
+
+.optionSelect {
+    display: flex;
+    font-family: 'WorksSansThin';
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $divider-color;
+    background: white;
+    cursor: pointer;
+}
+
+.optionSelect:hover {
+    background: $divider-color;
+}

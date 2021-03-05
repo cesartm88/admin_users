@@ -1,34 +1,21 @@
-
 <div class="col_row  container_list_header">
-    <input-search></input-search>
-    <div class="btn btn_nmPages white-gray pointer">
-        <span class="btn_nmPages--text">8 per page</span>
-        <svg-icon src="../../../../../assets/images/arrow.svg"
-            [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
-        </svg-icon>
+    <input-search (searchListener)="searchListener($event)"></input-search>
+
+    <div style="margin-left: 10px;">
+        <app-select-custom [title]="'Registros por página'" (onSelect)="changeDataPerPage($event)" [Options]="options_per_page"></app-select-custom>
     </div>
 
-
-    <div class="btn btn_nmPages white-gray">
-        <span class="btn_nmPages--text">Order A - Z</span>
-        <svg-icon src="../../../../../assets/images/arrow.svg"
-            [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
-        </svg-icon>
-    </div>
-
-
-    <div class="btnOption pointer white-gray" (click)="changeView('list')">
+    <!-- <div class="btnOption pointer white-gray" (click)="changeView('list')">
         <svg-icon src="../../../../../assets/images/list.svg" [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
         </svg-icon>
     </div>
 
     <div class="btnOption pointer white-gray" (click)="changeView('card')">
-        <svg-icon src="../../../../../assets/images/square.svg"
-            [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
+        <svg-icon src="../../../../../assets/images/square.svg" [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
         </svg-icon>
-    </div>
+    </div> -->
 </div>
 <div class="container_list_table">
-    <linear-list *ngIf="view == 'list'"  [showToFields]="showToFields"></linear-list>
-    <card-list   *ngIf="view == 'card'"></card-list>
+    <linear-list *ngIf="view == 'list'" [showToFields]="showToFields" [perPage]="perPage" [search]="searchWord"></linear-list>
+    <card-list *ngIf="view == 'card'"></card-list>
 </div>
