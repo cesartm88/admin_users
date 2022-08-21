@@ -1,4 +1,6 @@
 import { Component, OnInit,EventEmitter, Output,ViewChild,ElementRef, Input } from '@angular/core';
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-select-custom',
@@ -7,7 +9,7 @@ import { Component, OnInit,EventEmitter, Output,ViewChild,ElementRef, Input } fr
 })
 export class SelectCustomComponent implements OnInit {
 
-  @Input() Options:Array<any> = []
+  @Input() Options:Array<any> = [];
 
   showOptions:boolean = false;
 
@@ -21,9 +23,22 @@ export class SelectCustomComponent implements OnInit {
 
   focusItem:String = "";
 
-  constructor() { }
+  constructor(
+      private matIconRegistry: MatIconRegistry,
+      private domSanitizer: DomSanitizer
+  ) {
+  }
 
   ngOnInit(): void {
+    console.log(this.icon);
+    this.matIconRegistry.addSvgIcon(
+      "cross",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/images/cross.svg`)
+    );
+    this.matIconRegistry.addSvgIcon(
+      "user",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.icon}`)
+    );
   }
 
   ngAfterViewInit(){

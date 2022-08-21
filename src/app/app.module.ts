@@ -10,7 +10,6 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { LocalStorageService  } from './services/storage/storage.service';
 import { CRUDService } from './services/crud/crud.service';
-
 import { SharedModule } from '../app/modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,7 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularSvgIconModule.forRoot(),
     StorageServiceModule,
     SharedModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [LocalStorageService,CRUDService],
   bootstrap: [AppComponent]

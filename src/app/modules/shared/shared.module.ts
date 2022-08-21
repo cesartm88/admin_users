@@ -17,6 +17,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 //material angular
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from "@angular/material/icon";
 
 //directives
 import { AdDirective } from '../../directives/add/add.directive';
@@ -38,7 +39,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     CardComponent,
     SelectComponent,
     SelectCustomComponent,
-    
+
 
     //directive
     AdDirective,
@@ -55,7 +56,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     ReactiveFormsModule,
     MatSelectModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   exports: [
     //modules
@@ -65,6 +67,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     FormsModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
 
     //components
     TableComponent,

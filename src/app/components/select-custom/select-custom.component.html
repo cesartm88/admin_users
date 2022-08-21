@@ -1,15 +1,11 @@
 <div class="btn btn_user pointer" (click)="onClick($event)">
-    <svg-icon src="{{icon}}" [svgStyle]="{ 'height.px':50,'fill':'rgb(141, 141, 141)','margin-right':'10px' }">
-    </svg-icon>
+  <mat-icon class="icon-display" svgIcon="user"></mat-icon>
 
-
-    <svg-icon *ngIf="validate_focus()" (click)="unfocus()" src="../../assets/images/cross.svg" [svgStyle]="{ 'height.px':25,'fill':'rgb(141, 141, 141)','margin-right':'10px','margin-top':'15px' }">
-    </svg-icon>
-
+  <mat-icon  class="icon-cross" svgIcon="cross" *ngIf="validate_focus()" (click)="unfocus()"></mat-icon>
     <span class="btn_user--username">
     {{(focusItem)?focusItem:title}}
   </span>
-    <svg-icon class="btn_user--icon_row" src="../../assets/images/arrow.svg" [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)','margin-left':'10px' }"></svg-icon>
+    <svg-icon class="btn_user--icon_row" src="../../assets/images/arrow.svg" [svgStyle]="{ 'height.px':50,'fill':'','margin-left':'10px' }"></svg-icon>
 </div>
 <div class="optionsArea" #Select>
     <ng-container *ngFor="let item of Options">

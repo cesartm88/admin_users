@@ -26,15 +26,17 @@ export class LinearListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.List = of(this.listUsers.setDataPerPage(this.perPage,this.FocusPage));
 
     this.LastPage = this.listUsers.getTotalPages();
     for (let index = 1; index <= this.LastPage; index++) {
-      this.Pages.pipe(map(usersList => {
-        this.list.push(index);
-        return usersList;
-      }));
+      if (this.Pages){
+        this.Pages.pipe(map(usersList => {
+          this.list.push(index);
+          return usersList;
+        }));
+      }
     }
   }
 

@@ -29,3 +29,12 @@
 .optionSelect:hover {
     background: $divider-color;
 }
+
+.icon-display {
+  transform: scale(1);
+  color: rgb(141, 141, 141)
+}
+.icon-cross {
+  transform: scale(0.5);
+  color: rgb(141, 141, 141)
+}
