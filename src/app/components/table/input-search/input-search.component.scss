@@ -3,6 +3,14 @@
 .btn-search{
     flex: 3;
     margin-left: 10px;
+    height: 51px;
+    //background: #8D8D96;
+}
+.mat-form-field-wrapper{
+  border-bottom-color: white !important;
+}
+.example-form-field{
+
 }
 .btn-search--text{
     color: $secondary-text-color;
@@ -16,7 +24,7 @@
     display: flex;
     flex:2;
     align-items: stretch;
-    
+
 }
 .btn-search--input{
     color: $secondary-text-color;
@@ -29,10 +37,30 @@
     outline-width: 0;
 }
 .btn-search--right{
-    margin:10px;  
+    margin:10px;
     flex:1;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+}
+
+
+::ng-deep .mat-form-field {
+  .mat-input-element {
+    color: slategray;
+    margin-top: 1px;
+  }
+  .mat-form-field-label {
+    color: slategray;
+  }
+  .mat-form-field-underline {
+    background-color: white;
+  }
+  .mat-form-field-ripple {
+    background-color: slategray;
+  }
+  .mat-form-field-required-marker {
+    color: slategray;
+  }
 }

@@ -1,11 +1,26 @@
 @import "../../../palette.scss";
-.adminTemplate {}
+:host {
+  display: flex;
+  flex:1;
+}
+.adminTemplate {
+  display: flex;
+  flex:1;
+}
+/*.adminTemplate__container_menu_left{
+  position: relative;
+  right: 0px;
+  top:0px;
+  left: 0px;
+  height: 50px;
+  background: red;
+}*/
 
 .adminTemplate__container {
     display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
+    flex:1;
+    flex-direction: column;
+    //flex-wrap: wrap;
 }
 
 .select-component {
@@ -57,23 +72,43 @@
 
 .adminTemplate__container--Row {
     display: flex;
-    flex: 13;
+    flex: 3;
     flex-direction: row;
+    margin-top: 40px;
 }
 
 .adminTemplate__container--Row--left {
-    display: flex;
-    flex: 1.5;
-    background: $primary-color;
-    border-right: 1px solid $primary-color-light;
+  display: flex;
+  flex: 0.4;
+  border-right: 1px solid $primary-color-light;
+  flex-direction: column;
+  background: white;
+}
+
+.adminTemplate__container--Row--left--menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 59px;
+  color: #8D8D8D;
+  border-bottom: 2px solid #F1F1F1;
+  border-left: 5px solid #8D8D8D;
+  cursor: pointer;
+}
+
+.adminTemplate__container--Row--left--menu:hover{
+  border-left: 5px solid #FA6A00;
+  color: #FA6A00;
 }
 
 .adminTemplate__container--Row--right {
     display: flex;
     flex-direction: column;
-    flex: 4.5;
+    flex: 2.6;
     align-items: stretch;
-    margin: 40px 0 0 0px;
+    margin: 0 0 0 25px;
 }
 
 .adminTemplate__container--Row--right--header {

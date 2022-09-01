@@ -5,7 +5,7 @@
     <span class="btn_user--username">
     {{(focusItem)?focusItem:title}}
   </span>
-    <svg-icon class="btn_user--icon_row" src="../../assets/images/arrow.svg" [svgStyle]="{ 'height.px':50,'fill':'','margin-left':'10px' }"></svg-icon>
+  <mat-icon class="btn_user--icon_row"  svgIcon="arrow" ></mat-icon>
 </div>
 <div class="optionsArea" #Select>
     <ng-container *ngFor="let item of Options">

@@ -3,23 +3,9 @@
 @import './palette.scss';
 @import './assets/css/media-querys-breakpoints.css';
 body {
-    // height: 100%;
-    // margin:0;
-    // padding: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    background-color: $divider-color;
     display: flex;
     flex: 1;
-}
-
-.container-flex {
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
+      background-color: $divider-color;
 }
 
 .pointer {

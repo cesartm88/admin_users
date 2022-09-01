@@ -18,6 +18,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from "@angular/material/icon";
+import {MatInputModule} from '@angular/material/input';
 
 //directives
 import { AdDirective } from '../../directives/add/add.directive';
@@ -57,7 +58,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     MatSelectModule,
     MatButtonModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule
   ],
   exports: [
     //modules
@@ -68,6 +70,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
+    MatInputModule,
 
     //components
     TableComponent,

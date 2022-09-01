@@ -7,6 +7,8 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 })
 export class InputSearchComponent implements OnInit {
 
+  value = 'Clear me';
+
   @Output() searchListener = new EventEmitter();
 
   constructor() { }

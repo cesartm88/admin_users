@@ -5,20 +5,20 @@ import { map } from 'rxjs/operators';
 import { User } from '../../../models/User';
 
 @Component({
-  selector: 'linear-list',
+  selector: "linear-list",
   templateUrl: './linear-list.component.html',
   styleUrls: ['./linear-list.component.scss']
 })
 export class LinearListComponent implements OnInit {
   listUsers = null;
   List: Observable<Array<User>> = null;
-  Pages: Observable<Array<number>> = null;
-  LastPage: number = 0;
-  FocusPage: number = 1;
-  CurrentOrder: number = 0;
+  Pages: Observable<Array<number>>;
+  LastPage = 0;
+  FocusPage = 1;
+  CurrentOrder = 0;
   @Input() perPage = 10;
   @Input() showToFields;
-  @Input() search:string;
+  @Input() search;
   list = [];
 
   constructor() {
@@ -26,9 +26,7 @@ export class LinearListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.List = of(this.listUsers.setDataPerPage(this.perPage,this.FocusPage));
-
+    this.List = of(this.listUsers.setDataPerPage(this.perPage, this.FocusPage));
     this.LastPage = this.listUsers.getTotalPages();
     for (let index = 1; index <= this.LastPage; index++) {
       if (this.Pages){
@@ -42,7 +40,6 @@ export class LinearListComponent implements OnInit {
 
   setItemsPerPage = (numberItems) => {
     this.List = of(this.listUsers.setDataPerPage(numberItems,this.FocusPage));
-    console.log("numberItems: ",numberItems);
     this.Pages = this.listUsers.getTotalPages(numberItems);
   }
 

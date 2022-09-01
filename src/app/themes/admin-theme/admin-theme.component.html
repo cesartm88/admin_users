@@ -1,5 +1,6 @@
 <div class="adminTemplate">
     <div class="adminTemplate__container">
+
         <header class="adminTemplate__container--header">
             <div class="adminTemplate__container--header--left">
                 <img src="../../../assets/images/logo.png" class="adminTemplate__container--header--left--logo">
@@ -9,14 +10,25 @@
             </div>
         </header>
         <div class="adminTemplate__container--Row">
-            <div class="adminTemplate__container--Row--right">
-                <div class="adminTemplate__container--Row--right--header">
-                    <ng-content select="[header]"></ng-content>
-                </div>
-                <div class="adminTemplate__container--Row--right--container">
-                    <ng-content select="[body]"></ng-content>
-                </div>
+          <div class="adminTemplate__container--Row--left">
+            <div class="adminTemplate__container--Row--left--menu">
+              <a>Pruebas 1</a>
             </div>
+            <div class="adminTemplate__container--Row--left--menu">
+              <a>Pruebas 2</a>
+            </div>
+            <div class="adminTemplate__container--Row--left--menu">
+              <a>Pruebas 3</a>
+            </div>
+          </div>
+          <div class="adminTemplate__container--Row--right">
+              <div class="adminTemplate__container--Row--right--header">
+                  <ng-content select="[header]"></ng-content>
+              </div>
+              <div class="adminTemplate__container--Row--right--container">
+                  <ng-content select="[body]"></ng-content>
+              </div>
+          </div>
         </div>
     </div>
 </div>

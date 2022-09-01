@@ -50,8 +50,8 @@
 */
 /* .sm < | Small devices and down (landscape, phones) less than 768px */
 @media (max-width: 767.98px) {
-  .adminTemplate__container--Row--left {
-    display: none !important;
+  .adminTemplate__container--Row {
+    flex-direction: column !important;
   }
 }
 /* .md < | Medium devices and down (tablets) less than 992px */
@@ -74,7 +74,7 @@
     flex-direction: column;
   }
   .col_row div {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
   }
   .col_row .fieldsInput--left {
     display: flex;
@@ -99,7 +99,7 @@
     flex-direction: column;
   }
   .col_row div {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
   }
   .col_row .fieldsInput--left {
     display: flex;
@@ -124,7 +124,7 @@
     flex-direction: column;
   }
   .col_row div {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
   }
   .col_row .fieldsInput--left {
     display: flex;
@@ -145,7 +145,7 @@
 }
 /* .lg = | Large devices only (desktops) upper 992px and less than 1200px */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  
+
   .align_items_btns {
     align-items: center;
     margin-right: 15px;

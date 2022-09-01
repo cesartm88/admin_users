@@ -1,5 +1,10 @@
 @import '../../../../../palette.scss';
 
+:host {
+  display: flex;
+  flex:1;
+}
+
 .header__container{
     display:flex;
     flex:1;
@@ -52,7 +57,7 @@
 }
 
 //table container
-.container_list{    
+.container_list{
     display: flex;
     flex-direction: column;
     align-items: stretch;

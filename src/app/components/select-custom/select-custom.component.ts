@@ -36,6 +36,10 @@ export class SelectCustomComponent implements OnInit {
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/images/cross.svg`)
     );
     this.matIconRegistry.addSvgIcon(
+      "arrow",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/images/arrow.svg`)
+    );
+    this.matIconRegistry.addSvgIcon(
       "user",
       this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.icon}`)
     );

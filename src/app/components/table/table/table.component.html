@@ -5,7 +5,7 @@
         <app-select-custom [title]="'Registros por página'" (onSelect)="changeDataPerPage($event)" [Options]="options_per_page"></app-select-custom>
     </div>
 
-    <!-- <div class="btnOption pointer white-gray" (click)="changeView('list')">
+    <div class="btnOption pointer white-gray" (click)="changeView('list')">
         <svg-icon src="../../../../../assets/images/list.svg" [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
         </svg-icon>
     </div>
@@ -13,7 +13,7 @@
     <div class="btnOption pointer white-gray" (click)="changeView('card')">
         <svg-icon src="../../../../../assets/images/square.svg" [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
         </svg-icon>
-    </div> -->
+    </div>
 </div>
 <div class="container_list_table">
     <linear-list *ngIf="view == 'list'" [showToFields]="showToFields" [perPage]="perPage" [search]="searchWord"></linear-list>
