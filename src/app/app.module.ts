@@ -12,6 +12,8 @@ import { LocalStorageService  } from './services/storage/storage.service';
 import { CRUDService } from './services/crud/crud.service';
 import { SharedModule } from '../app/modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 
 
@@ -28,7 +30,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularSvgIconModule.forRoot(),
     StorageServiceModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    })
   ],
   providers: [LocalStorageService,CRUDService],
   bootstrap: [AppComponent]
