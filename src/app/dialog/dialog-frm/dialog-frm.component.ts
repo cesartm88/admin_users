@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from '../../modules/dialog/dialog.service';
-import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { UntypedFormGroup,UntypedFormBuilder,Validators } from '@angular/forms';
 import { User } from '../../models/User';
 
 @Component({
@@ -10,7 +10,7 @@ import { User } from '../../models/User';
 })
 export class DialogFrmComponent implements OnInit {
 
-  addUserFrm:FormGroup;
+  addUserFrm:UntypedFormGroup;
   fields;
   usr:User= {
           picture:'',
@@ -22,7 +22,7 @@ export class DialogFrmComponent implements OnInit {
           active:true
       };
 
-  constructor(private dialogService:DialogService,private fb:FormBuilder) { 
+  constructor(private dialogService:DialogService,private fb:UntypedFormBuilder) { 
       this.fields = {
         picture:['',[]],
         name:['',[Validators.required,Validators.minLength(2)]],
