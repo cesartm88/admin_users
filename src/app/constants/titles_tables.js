@@ -1,4 +1,4 @@
-export const users_config = {
+const users_config = {
     "picture": {
         "show": 1,
         "alias": "Imagen"
@@ -28,3 +28,15 @@ export const users_config = {
         "alias": ""
     }
 };
+
+const jobs_list = {
+  "jobCompany": {
+    "show": 1,
+    "alias": "Nombre compania"
+  }
+};
+
+export {
+  users_config,
+  jobs_list
+}

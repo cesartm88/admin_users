@@ -5,14 +5,16 @@ import { ListUsersComponent  } from './ModuleComponents/list-users/list-users.co
 import { AdminThemeComponent } from '../../themes/admin-theme/admin-theme.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { JobsComponent } from './ModuleComponents/jobs/jobs.component';
+import { HeaderComponent } from './components/index';
 
 
 @NgModule({
-  declarations: [ ListUsersComponent,AdminThemeComponent],
+  declarations: [ ListUsersComponent, AdminThemeComponent, JobsComponent, HeaderComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class UsersModule { }

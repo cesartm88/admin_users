@@ -17,7 +17,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 //material angular
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import { MatIconModule } from "@angular/material/icon";
+import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 
 //directives

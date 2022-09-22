@@ -31,6 +31,9 @@ export class SelectCustomComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.icon);
+  }
+
+  ngAfterViewInit(){
     this.matIconRegistry.addSvgIcon(
       "cross",
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/images/cross.svg`)
@@ -43,9 +46,6 @@ export class SelectCustomComponent implements OnInit {
       "user",
       this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.icon}`)
     );
-  }
-
-  ngAfterViewInit(){
     this.Select.nativeElement.style.setProperty("--opacity",0);
   }
 

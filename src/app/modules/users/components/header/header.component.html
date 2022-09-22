@@ -1,0 +1,16 @@
+<div class="header__container--left">
+  <span class="header__container--left--col1--title">Usuarios</span>
+  <span class="header__container--left--col1--subtitle">Listado</span>
+</div>
+<div class="col_row align_items_btns header__container--right">
+  <div class="btn btn_preview white">
+    <svg-icon  src="../../../../../assets/images/eye.svg"  [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
+    </svg-icon>
+    <span class="btn_preview--text">Preview</span>
+  </div>
+  <div class="btn btn_add orange pointer">
+    <svg-icon  src="../../../../../assets/images/add.svg"  [svgStyle]="{ 'height.px':50,'fill':'rgb(255, 255, 255)' }">
+    </svg-icon>
+    <span class="btn_add--text" (click)="openDialog()">Add User</span>
+  </div>
+</div>

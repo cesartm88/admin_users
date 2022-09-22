@@ -5,20 +5,17 @@
             <div class="adminTemplate__container--header--left">
                 <img src="../../../assets/images/logo.png" class="adminTemplate__container--header--left--logo">
                 <div class="select-component">
-                    <app-select-custom (onSelect)="selectedValue($event)" [title]="'Pedro Paramo'" [icon]="'../../assets/images/user.svg'" [Options]="Options_user"></app-select-custom>
+                    <!--<app-select-custom (onSelect)="selectedValue($event)" [title]="'Pedro Paramo'" [icon]="'../../assets/images/user.svg'" [Options]="Options_user"></app-select-custom>-->
                 </div>
             </div>
         </header>
         <div class="adminTemplate__container--Row">
           <div class="adminTemplate__container--Row--left">
-            <div class="adminTemplate__container--Row--left--menu">
-              <a>Pruebas 1</a>
+            <div class="adminTemplate__container--Row--left--menu" [ngClass]="routeActive== 'list'?'selected':''">
+              <span routerLink="/users/list">Usuarios</span>
             </div>
-            <div class="adminTemplate__container--Row--left--menu">
-              <a>Pruebas 2</a>
-            </div>
-            <div class="adminTemplate__container--Row--left--menu">
-              <a>Pruebas 3</a>
+            <div class="adminTemplate__container--Row--left--menu" [ngClass]="routeActive== 'jobs'?'selected':''">
+              <span routerLink="/users/jobs">Jobs</span>
             </div>
           </div>
           <div class="adminTemplate__container--Row--right">

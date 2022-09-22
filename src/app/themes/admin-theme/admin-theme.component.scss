@@ -7,6 +7,7 @@
   display: flex;
   flex:1;
 }
+
 /*.adminTemplate__container_menu_left{
   position: relative;
   right: 0px;
@@ -99,6 +100,11 @@
 }
 
 .adminTemplate__container--Row--left--menu:hover{
+  border-left: 5px solid #FA6A00;
+  color: #FA6A00;
+}
+
+.selected{
   border-left: 5px solid #FA6A00;
   color: #FA6A00;
 }

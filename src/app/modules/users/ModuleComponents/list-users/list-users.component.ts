@@ -11,14 +11,8 @@ import { users_config } from '../../../../constants/titles_tables';
 export class ListUsersComponent implements OnInit {
 
   titles = users_config;
-  constructor(private dialog: DialogService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-
-  openDialog() {
-    console.log("add!!!");
-    this.dialog.open(DialogFrmComponent);
-  }
-
 }
