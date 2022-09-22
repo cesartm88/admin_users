@@ -15,7 +15,6 @@ export class InputSearchComponent implements OnInit {
   }
 
   onSearchChange(searchWord){
-    console.log("TEst!!");
     this.searchListener.emit(searchWord);
   }
 

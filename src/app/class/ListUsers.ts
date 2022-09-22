@@ -4,10 +4,10 @@ import  _users from '../../assets/json/users';
 import { Input } from '@angular/core';
 
 export class ListUsers extends List{
-    
+
     List:Array<User> = [];
     pageSize:number = 10;
-    
+
     constructor(){
         super('sync');
         this.List = <Array<User>> _users;
@@ -16,7 +16,7 @@ export class ListUsers extends List{
     setDataPerPage(pages:number,focusPage){
         this.pageSize = pages;
         return this.paginate(focusPage);
-    } 
+    }
 
     addItem(Item: User): boolean {
         return true;
@@ -44,10 +44,6 @@ export class ListUsers extends List{
 
     getTotalPages(pageSize?:number){
         this.pageSize = (pageSize)?pageSize:this.pageSize;
-
-        console.warn("pageSize:",this.pageSize);
-
-        console.log("calc_pages:",Math.ceil(this.List.length/this.pageSize));
         return Math.ceil(this.List.length/this.pageSize);
     }
 
@@ -61,5 +57,5 @@ export class ListUsers extends List{
     return order;
     }
 
-    
+
 }

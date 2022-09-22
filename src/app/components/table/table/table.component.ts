@@ -11,7 +11,7 @@ import { LinearListComponent } from '../linear-list/linear-list.component';
 })
 export class TableComponent  implements OnInit{
   /**
-   * @param View : string 
+   * @param View : string
    * values: "list | card"
    * @description : Changes View of table between list and card
    * Default : list
@@ -39,18 +39,18 @@ export class TableComponent  implements OnInit{
 
   searchWord:string = "";
 
-  
 
-  /** 
+
+  /**
    * @param showToFields Object with titles of columns in table.
    */
   @Input() showToFields;
 
-  constructor(private dialogService: DialogService) { 
+  constructor(private dialogService: DialogService) {
   }
 
   /**
-   * 
+   *
    * @param view string type of view selected
    */
   changeView(view:string){
@@ -58,11 +58,11 @@ export class TableComponent  implements OnInit{
   }
 
   ngOnInit(): void {
-    
+
   }
 
   ngAfterViewInit(){
-   
+
   }
 
   openDialog(){
@@ -70,14 +70,11 @@ export class TableComponent  implements OnInit{
   }
 
   changeDataPerPage = ($perpage) => {
-    console.log($perpage.value);
     this.perPage = $perpage.value;
-    console.log("perpage: ",this.perPage);
     this.linearList.setItemsPerPage(this.perPage);
   }
 
   searchListener = ($event) => {
-    console.log("searching!!!",$event);
     this.searchWord = $event;
   }
 }

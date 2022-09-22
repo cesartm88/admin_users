@@ -19,7 +19,6 @@ export class AdminThemeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.data['element']);
     this.routeActive = this.route.snapshot.data['element'];
   }
 
