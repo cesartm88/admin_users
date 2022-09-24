@@ -30,9 +30,21 @@ const users_config = {
 };
 
 const jobs_list = {
-  "jobCompany": {
+  "id": {
+    "show": 0,
+    "alias": "Nombre compania"
+  },
+  "company": {
     "show": 1,
     "alias": "Nombre compania"
+  },
+  "start_date": {
+    "show": 1,
+    "alias": "fecha de inicio"
+  },
+  "finish_date": {
+    "show": 1,
+    "alias": "fecha de fin"
   }
 };
 

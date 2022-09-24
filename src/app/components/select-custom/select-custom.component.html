@@ -1,7 +1,7 @@
 <div class="btn btn_user pointer" (click)="onClick($event)">
   <mat-icon class="icon-display">user</mat-icon>
 
-  <mat-icon  class="icon-cross" *ngIf="validate_focus()" (click)="unfocus()">cross</mat-icon>
+  --<mat-icon   (click)="unFocus()" svgIcon="cross"></mat-icon> --
     <span class="btn_user--username">
     {{(focusItem)?focusItem:title}}
   </span>

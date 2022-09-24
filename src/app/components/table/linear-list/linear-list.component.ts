@@ -1,33 +1,37 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ListUsers } from '../../../class/ListUsers';
+import { GenericList } from '../../../class/ListUsers';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../../../models/User';
 
 @Component({
-  selector: "linear-list",
+  selector: 'app-linear-list',
   templateUrl: './linear-list.component.html',
   styleUrls: ['./linear-list.component.scss']
 })
-export class LinearListComponent implements OnInit {
+
+export class LinearListComponent<T> implements OnInit {
   listUsers = null;
-  List: Observable<Array<User>> = null;
-  Pages: Observable<Array<number>>;
+  List: Observable<Array<any>> = null;
+  Pages: Observable<Array<number>> = of([]);
   LastPage = 0;
   FocusPage = 1;
   CurrentOrder = 0;
   @Input() perPage = 10;
   @Input() showToFields;
   @Input() search;
+  @Input() items: Array<T> = [];
   list = [];
 
   constructor() {
-    this.listUsers = new ListUsers();
+
   }
 
   ngOnInit(): void {
+    this.listUsers = new GenericList();
+    this.listUsers.setData(this.items);
     this.List = of(this.listUsers.setDataPerPage(this.perPage, this.FocusPage));
     this.LastPage = this.listUsers.getTotalPages();
+    this.Pages = of(this.getList(1, this.LastPage));
     for (let index = 1; index <= this.LastPage; index++) {
       if (this.Pages){
         this.Pages.pipe(map(usersList => {
@@ -38,14 +42,27 @@ export class LinearListComponent implements OnInit {
     }
   }
 
+  initList(data: any){
+    this.listUsers = new GenericList<any>();
+    this.listUsers.setData(data);
+  }
+
   setItemsPerPage = (numberItems) => {
-    this.List = of(this.listUsers.setDataPerPage(numberItems,this.FocusPage));
-    this.Pages = this.listUsers.getTotalPages(numberItems);
+    this.List = of(this.listUsers.setDataPerPage(numberItems, this.FocusPage));
+    this.Pages = of(this.getList(1, this.listUsers.getTotalPages(numberItems)));
   }
 
   setPage = (page) => {
     this.FocusPage = page;
     this.List = of(this.listUsers.paginate(this.FocusPage));
+  }
+
+  getList(first: number, last: number){
+    const lisTmp = [];
+    for (let i = first; i <= last; i ++){
+      lisTmp.push(i);
+    }
+    return lisTmp;
   }
 
   nextPage = () => {
@@ -59,12 +76,12 @@ export class LinearListComponent implements OnInit {
   }
 
   orderElement = (title) => {
-    if(this.CurrentOrder == 0){
+    if (this.CurrentOrder === 0){
       this.CurrentOrder = 1;
-    }else{
+    } else {
       this.CurrentOrder = 0;
     }
-    this.List = of(this.listUsers.orderItems(this.CurrentOrder,title));
+    this.List = of(this.listUsers.orderItems(this.CurrentOrder, title));
   }
 
 }

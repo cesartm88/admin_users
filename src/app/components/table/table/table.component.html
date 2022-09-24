@@ -2,7 +2,7 @@
     <input-search (searchListener)="searchListener($event)"></input-search>
 
     <div style="margin-left: 10px;">
-        <app-select-custom [title]="'Registros por página'" (onSelect)="changeDataPerPage($event)" [Options]="options_per_page"></app-select-custom>
+        <app-select-custom [title]="pageText" (onSelect)="changeDataPerPage($event)" [Options]="optionsPerPage"></app-select-custom>
     </div>
 
     <div class="btnOption pointer white-gray" (click)="changeView('list')">
@@ -16,6 +16,6 @@
     </div>
 </div>
 <div class="container_list_table">
-    <linear-list *ngIf="view == 'list'" [showToFields]="showToFields" [perPage]="perPage" [search]="searchWord"></linear-list>
+    <app-linear-list *ngIf="view == 'list'" [showToFields]="showToFields" [items]="items" [perPage]="perPage" [search]="searchWord"></app-linear-list>
     <card-list *ngIf="view == 'card'"></card-list>
 </div>

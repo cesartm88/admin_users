@@ -1,43 +1,44 @@
-import { Component,ViewChild, OnInit,Input } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { DialogService } from '../../../modules/dialog/dialog.service';
 import { DialogFrmComponent } from '../../../dialog/dialog-frm/dialog-frm.component';
 import { LinearListComponent } from '../linear-list/linear-list.component';
-
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent  implements OnInit{
+export class TableComponent<T>  implements OnInit{
   /**
    * @param View : string
-   * values: "list | card"
+   * values: 'list | card'
    * @description : Changes View of table between list and card
    * Default : list
    */
-  view:string = "list";
+  view = 'list';
 
-  @ViewChild(LinearListComponent) linearList:LinearListComponent;
+  @Input() items: Array<T> = [];
 
-  options_per_page=[
-    {"value":8,"name":"8 por página" },
-    {"value":16,"name":"16 por página" },
-    {"value":32,"name":"32 por página" }
+  @ViewChild(LinearListComponent) linearList: LinearListComponent<T>;
+
+  optionsPerPage = [
+    { value: 8, name: '8 por página' },
+    { value: 16, name: '16 por página' },
+    { value: 32, name: '32 por página' }
   ];
 
-  page_text = "Registros por página";
+  pageText = 'Registros por página';
 
-  options_order=[
-    {"option":0,"text":"Ordenar A-Z" },
-    {"option":1,"text":"Ordenar Z-A" },
+  optionsOrder = [
+    {option: 0, text: 'Ordenar A-Z' },
+    {option: 1, text: 'Ordenar Z-A' },
   ];
 
   perPage = 10;
 
-  order_text = "Orden de los registros";
+  orderText = 'Orden de los registros';
 
-  searchWord:string = "";
+  searchWord = '';
 
 
 
@@ -53,7 +54,7 @@ export class TableComponent  implements OnInit{
    *
    * @param view string type of view selected
    */
-  changeView(view:string){
+  changeView(view){
     this.view = view;
   }
 
@@ -61,16 +62,12 @@ export class TableComponent  implements OnInit{
 
   }
 
-  ngAfterViewInit(){
-
-  }
-
   openDialog(){
     this.dialogService.open(DialogFrmComponent);
   }
 
-  changeDataPerPage = ($perpage) => {
-    this.perPage = $perpage.value;
+  changeDataPerPage = (perPage) => {
+    this.perPage = perPage.value;
     this.linearList.setItemsPerPage(this.perPage);
   }
 

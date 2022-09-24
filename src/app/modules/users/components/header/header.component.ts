@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   }
 
   openDialog() {
-    console.log("add!!!");
     this.dialog.open(DialogFrmComponent);
   }
 
