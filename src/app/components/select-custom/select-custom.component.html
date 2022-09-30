@@ -1,11 +1,12 @@
 <div class="btn btn_user pointer" (click)="onClick($event)">
-  <mat-icon class="icon-display">user</mat-icon>
-
-  --<mat-icon   (click)="unFocus()" svgIcon="cross"></mat-icon> --
+  <span *ngFor="let icon of customIcons | keys ">
+    <mat-icon *ngIf="dIcon !== '' && icon === dIcon" class="icon-display" [svgIcon]="icon"></mat-icon>
+  </span>
+  <mat-icon *ngIf="focusItem !== ''" class="icon-cross" [svgIcon]="iconCross" (click)="unFocus()" ></mat-icon>
     <span class="btn_user--username">
     {{(focusItem)?focusItem:title}}
   </span>
-  <mat-icon class="btn_user--icon_row" >arrow</mat-icon>
+  <mat-icon class="btn_user--icon_row" [svgIcon]="iconArrow" ></mat-icon>
 </div>
 <div class="optionsArea" #Select>
     <ng-container *ngFor="let item of Options">

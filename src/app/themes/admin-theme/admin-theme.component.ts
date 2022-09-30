@@ -8,22 +8,23 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AdminThemeComponent implements OnInit {
 
-  routeActive:string = "";
+  routeActive = '';
 
-  Options_user:Array<any>=[
-    {"name":"Test1","value":"Test1"},
-    {"name":"Tes2","value":"Test2"}
+  OptionsUser: Array<any> = [
+    {name: 'Test1', value: 'Test1'},
+    {name: 'Tes2', value: 'Test2' }
   ];
 
-  constructor(private route:ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.routeActive = this.route.snapshot.data['element'];
+    const keyElement = 'element';
+    this.routeActive = this.route.snapshot.data[keyElement];
   }
 
   selectedValue($event){
-    console.warn("$event:",$event);
+    console.warn('$event:', $event);
   }
 
 }

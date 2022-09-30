@@ -11,42 +11,50 @@ export class SelectCustomComponent implements OnInit, AfterViewInit {
 
   @Input() Options: Array<any> = [];
 
-  showOptions = false;
+  @Input() dIcon = '';
 
-  @Output() onSelect: EventEmitter<any> = new EventEmitter();
+  customIcons = {user : '../../assets/images/user.svg'};
+
+  showOptions = false;
 
   @ViewChild('Select') Select: ElementRef;
 
   @Input() title = '';
 
-  @Input() icon = '';
+  @Output() onSelect: EventEmitter<any> = new EventEmitter();
 
-  focusItem = 'test';
+  focusItem = '';
+
+  iconCross = 'cross';
+
+  iconArrow = 'arrow';
 
   constructor(
       private matIconRegistry: MatIconRegistry,
       private domSanitizer: DomSanitizer
   ) {
-  }
-
-  ngOnInit(): void {
-    console.log(this.icon);
-
-  }
-
-  ngAfterViewInit(){
     this.matIconRegistry.addSvgIcon(
-      'cross',
+      this.iconCross,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/images/cross.svg`)
     );
     this.matIconRegistry.addSvgIcon(
-      'arrow',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`../../../assets/images/arrow.svg`)
+      this.iconArrow,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/images/arrow.svg`)
     );
-    this.matIconRegistry.addSvgIcon(
-      'user',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.icon}`)
-    );
+    for (const csIcon in this.customIcons) {
+      if (csIcon !== ''){
+        this.matIconRegistry.addSvgIcon(
+          csIcon,
+          this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.customIcons[csIcon]}`)
+        );
+      }
+    }
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(){
     this.Select.nativeElement.style.setProperty('--opacity', 0);
   }
 
@@ -65,7 +73,6 @@ export class SelectCustomComponent implements OnInit, AfterViewInit {
     this.Select.nativeElement.style.setProperty('--opacity', 0);
     this.showOptions = false;
     this.focusItem = item.name;
-    console.log("pruebas:");
     console.dir(this.focusItem);
     this.onSelect.emit(item);
   }
