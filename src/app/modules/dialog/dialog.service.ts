@@ -25,12 +25,10 @@ export class DialogService {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DialogComponent);
     const componentRef = componentFactory.create(this.injector);
     this.appRef.attachView(componentRef.hostView);
-  
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
-  
     this.dialogComponentRef = componentRef;
-    this.dialogComponentRef.instance._onClose_ 
+    this.dialogComponentRef.instance._onClose_.emit();
   }
 
   private removeDialogComponentFromBody() {
@@ -47,5 +45,5 @@ export class DialogService {
     this.dialogComponentRef.instance.childComponentType = componentType;
 }
 
-  
+
 }

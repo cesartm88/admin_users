@@ -7,14 +7,15 @@ import {
   CardListComponent,
   CardComponent,
   SelectComponent,
-  SelectCustomComponent
+  SelectCustomComponent,
+  DialogCustomComponent
 } from '../../components/index';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DialogModule } from '../dialog/dialog.module';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-//material angular
+/*material angular*/
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -40,6 +41,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     CardComponent,
     SelectComponent,
     SelectCustomComponent,
+    DialogCustomComponent,
 
 
     //directive
@@ -79,6 +81,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     CardListComponent,
     CardComponent,
     SelectCustomComponent,
+    DialogCustomComponent,
 
     //directives
     AdDirective,

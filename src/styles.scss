@@ -13,6 +13,8 @@ body {
 }
 
 .btn {
+    min-width: 80px;
+    height: 40px;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -61,3 +63,24 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn_add{
+  flex:1;
+  margin-left:15px;
+}
+.btn_add--text{
+  color: $primary-color;
+}
+.btn_preview{
+  flex:1;
+}
+.btn_preview--text{
+  color: $primary-color-dark;
+  margin-left:15px
+}
+.red{
+  background: red !important;
+}
+.blue{
+  background: blue !important;
+}

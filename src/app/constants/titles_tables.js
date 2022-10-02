@@ -26,13 +26,23 @@ const users_config = {
     "active": {
         "show": 0,
         "alias": ""
-    }
+    },
+  "button_edit": {
+    "button": 1,
+    "alias": "Editar",
+    "color": "default"
+  },
+  "button_delete": {
+    "button": 1,
+    "alias": 'Eliminar',
+    "color": 'red'
+  }
 };
 
 const jobs_list = {
   "id": {
     "show": 0,
-    "alias": "Nombre compania"
+    "alias": "Identificador"
   },
   "company": {
     "show": 1,
@@ -45,6 +55,16 @@ const jobs_list = {
   "finish_date": {
     "show": 1,
     "alias": "fecha de fin"
+  },
+  "button_edit": {
+    "button": 1,
+    "alias": "Editar",
+    "color": "default"
+  },
+  "button_delete": {
+    "button": 1,
+    "alias": 'Eliminar',
+    "color": 'red'
   }
 };
 

@@ -7,19 +7,21 @@
         </th>
     </tr>
     <tr *ngFor="let item of List | async">
-
         <td *ngFor="let val of item | keys | search: item:search">
             <ng-container *ngIf="showToFields[val]?.show == 1">
                 <ng-container *ngIf="(item[val]|isurl) == false">
                     <span class="field_table">
                         {{item[val]}}
                     </span>
-
                 </ng-container>
                 <ng-container *ngIf="(item[val]|isurl) == true">
                     <img src="{{item[val]}}" />
                 </ng-container>
-
+            </ng-container>
+            <ng-container *ngIf="showToFields[val]?.button == 1">
+              <div class="btn btn_add pointer" [ngClass]="showToFields[val]?.color == 'default'?'orange':showToFields[val]?.color" >
+                <span class="btn_add--text" (click)="openDialog()" >{{showToFields[val]?.alias}}</span>
+              </div>
             </ng-container>
         </td>
     </tr>

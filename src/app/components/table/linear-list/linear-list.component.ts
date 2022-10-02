@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GenericList } from '../../../class/ListUsers';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DialogService } from '../../../modules/dialog/dialog.service';
+import { DialogCustomComponent } from '../dialog-custom/dialog-custom.component';
 
 @Component({
   selector: 'app-linear-list',
@@ -22,7 +24,7 @@ export class LinearListComponent<T> implements OnInit {
   @Input() items: Array<T> = [];
   list = [];
 
-  constructor() {
+  constructor(private dialog: DialogService) {
 
   }
 
@@ -82,6 +84,10 @@ export class LinearListComponent<T> implements OnInit {
       this.CurrentOrder = 0;
     }
     this.List = of(this.listUsers.orderItems(this.CurrentOrder, title));
+  }
+
+  openDialog() {
+    this.dialog.open(DialogCustomComponent);
   }
 
 }

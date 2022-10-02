@@ -19,6 +19,7 @@ import { reducers, metaReducers } from './reducers';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -35,7 +36,7 @@ import { reducers, metaReducers } from './reducers';
       metaReducers
     })
   ],
-  providers: [LocalStorageService,CRUDService],
+  providers: [LocalStorageService, CRUDService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
