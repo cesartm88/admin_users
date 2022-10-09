@@ -18,6 +18,7 @@ export class TableComponent<T>  implements OnInit{
   view = 'list';
 
   @Input() items: Array<T> = [];
+  @Input() formConfig = {};
 
   @ViewChild(LinearListComponent) linearList: LinearListComponent<T>;
 
@@ -59,7 +60,6 @@ export class TableComponent<T>  implements OnInit{
   }
 
   ngOnInit(): void {
-
   }
 
   openDialog(){

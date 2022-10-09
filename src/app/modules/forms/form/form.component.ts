@@ -23,8 +23,6 @@ export class FormComponent implements OnInit {
   }
 
   createForm() {
-    console.warn('__________FORM___________');
-    console.dir(this.formJson);
     if (this.formJson == null) { return 0; }
     const dataObject = this.formJson;
     const objectProps = Object.keys(dataObject).map(prop => {

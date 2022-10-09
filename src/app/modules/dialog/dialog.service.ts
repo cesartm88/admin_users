@@ -7,43 +7,30 @@ import {
   ComponentRef,
 } from '@angular/core';
 import { DialogModule } from './dialog.module';
-import { DialogComponent } from './dialog.component'
+import { DialogComponent } from './dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Injectable({
   providedIn: DialogModule,
 })
 export class DialogService {
-  dialogComponentRef: ComponentRef<DialogComponent>
-
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
-    private injector: Injector
+    public dialog: MatDialog
   ) {}
 
-  private appendDialogComponentToBody(){
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DialogComponent);
-    const componentRef = componentFactory.create(this.injector);
-    this.appRef.attachView(componentRef.hostView);
-    const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-    document.body.appendChild(domElem);
-    this.dialogComponentRef = componentRef;
-    this.dialogComponentRef.instance._onClose_.emit();
-  }
-
-  private removeDialogComponentFromBody() {
-    this.appRef.detachView(this.dialogComponentRef.hostView);
-    this.dialogComponentRef.destroy();
-  }
-
   public close(){
-    this.removeDialogComponentFromBody();
+    this.dialog.closeAll();
   }
 
-  public open(componentType) {
-    this.appendDialogComponentToBody();
-    this.dialogComponentRef.instance.childComponentType = componentType;
-}
+  public open(componentType, args?) {
+    const dialogRef = this.dialog.open(componentType, {
+      data : args
+    });
 
-
+    dialogRef.afterClosed().subscribe(result => {
+      /**
+       * result is what you get after you close the Modal
+       */
+    });
+  }
 }

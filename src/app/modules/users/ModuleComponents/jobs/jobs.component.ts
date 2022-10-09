@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '../../../dialog/dialog.service';
 import { jobs_list } from '../../../../constants/titles_tables';
 import _jobs from '../../../../../assets/json/jobs';
-import {Jobs} from '../../../../models/Jobs';
+import { Jobs } from '../../../../models/Jobs';
+import { formUser } from '../../../../constants/form';
 
 @Component({
   selector: 'app-jobs',
@@ -15,7 +15,9 @@ export class JobsComponent implements OnInit {
 
   titles = jobs_list;
 
-  constructor(private dialog: DialogService) { }
+  form = formUser;
+
+  constructor() { }
 
   ngOnInit(): void {
   }

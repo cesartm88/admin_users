@@ -1,8 +1,8 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormGroup } from '@angular/forms';
-import {User} from '../../../models/User';
 import {DialogService} from '../../../modules/dialog/dialog.service';
 import {FormComponent} from '../../../modules/forms/form/form.component';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-custom',
@@ -11,72 +11,17 @@ import {FormComponent} from '../../../modules/forms/form/form.component';
 })
 export class DialogCustomComponent implements OnInit {
 
-  json: any = {
-    name: {
-      label: 'Name',
-      value: 'test',
-      type: 'text',
-      validation: {
-        required: true,
-        minLength: 5,
-        maxLength: 10
-      },
-    },
-    age: {
-      label: 'Age',
-      value: 32,
-      type: 'number'
-    },
-    email: {
-      label: 'Email Address',
-      value: null,
-      type: 'email'
-    },
-    profilePic: {
-      label: 'Profile Picture Upload',
-      type: 'file'
-    },
-    comment: {
-      label: 'comment',
-      value: null,
-      type: 'text',
-      validation: {
-        required: true,
-        minLength: 5,
-        maxLength: 10
-      },
-    },
-    gender: {
-      label: 'Gender',
-      value: 'M',
-      type: 'radio',
-      options: [
-        { label: 'Male', value: 'M' },
-        { label: 'Female', value: 'F' }
-      ]
-    },
-    city: {
-      label: 'City',
-      value: '39010',
-      type: 'select',
-      options: [
-        { label: '(choose one)', value: '' },
-        { label: 'Bolzano', value: '39100' },
-        { label: 'Meltina', value: '39010' },
-        { label: 'Appiano', value: '39057' }
-      ],
-      validation: {
-        required: true
-      }
-    }
-  };
+  json: any = {};
 
   @ViewChild(FormComponent) form: FormComponent;
 
-  constructor(private dialogService: DialogService){}
+  constructor(
+        private dialogService: DialogService,
+        @Inject(MAT_DIALOG_DATA) public data
+  ){}
 
   ngOnInit(): void {
-
+    this.json = this.data.data;
   }
 
   close(){

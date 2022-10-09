@@ -22,6 +22,7 @@ export class LinearListComponent<T> implements OnInit {
   @Input() showToFields;
   @Input() search;
   @Input() items: Array<T> = [];
+  @Input() jsonForm: any = {};
   list = [];
 
   constructor(private dialog: DialogService) {
@@ -87,7 +88,9 @@ export class LinearListComponent<T> implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogCustomComponent);
+    this.dialog.open( DialogCustomComponent, {
+      data: this.jsonForm
+    });
   }
 
 }
