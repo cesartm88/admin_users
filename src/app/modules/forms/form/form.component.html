@@ -4,20 +4,23 @@
       <h2>Form ID: {{f.id}}</h2>
       <div *ngFor="let prop of f.metaData">
         <ng-container [ngSwitch]="prop.type">
-
-          <mat-form-field appearance="standard" *ngSwitchCase="'text'" >
+          <mat-form-field appearance="fill" *ngSwitchCase="'text'" >
             <mat-label>{{prop.label}}</mat-label>
             <input matInput placeholder="Placeholder" [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
             <mat-hint>Hint</mat-hint>
           </mat-form-field>
-
-          <input *ngSwitchCase="'file'" type="file" [id]="prop.key" [formControlName]="prop.key">
+          <mat-form-field appearance="fill" *ngSwitchCase="'number'">
+            <mat-label>{{prop.label}}</mat-label>
+            <input matInput placeholder="Placeholder" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
           <input *ngSwitchCase="'checkbox'" type="checkbox" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+          <input *ngSwitchCase="'file'" type="file" [id]="prop.key" [formControlName]="prop.key">
           <input *ngSwitchCase="'email'" type="email" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'date'" type="date" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'datetime'" type="datetime" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'datetime-local'" type="datetime-local" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-          <input *ngSwitchCase="'number'" type="number" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+
           <input *ngSwitchCase="'reset'" type="reset" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'tel'" type="tel" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'url'" type="url" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
