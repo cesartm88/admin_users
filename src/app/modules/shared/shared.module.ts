@@ -13,6 +13,9 @@ import {
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DialogModule } from '../dialog/dialog.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogFrmComponent } from '../../dialog/dialog-frm/dialog-frm.component';
+import { FormsOwnModule } from '../forms/formsown.module';
+import { NotfoundComponent } from '../../modules/users/ModuleComponents/notfound/notfound.component';
 
 
 /*material angular*/
@@ -21,19 +24,19 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 
-//directives
+/*directives*/
 import { AdDirective } from '../../directives/add/add.directive';
 
-//pipes
+/*pipes*/
 import { KeysPipe } from '../../pipes/key.pipe';
 import { SearchPipe } from '../../pipes/search/search.pipe';
 import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
 
-//service
+/*service*/
 
 @NgModule({
   declarations: [
-    //componets
+    /*componets*/
     TableComponent,
     LinearListComponent,
     InputSearchComponent,
@@ -42,12 +45,13 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     SelectComponent,
     SelectCustomComponent,
     DialogCustomComponent,
+    DialogFrmComponent,
+    NotfoundComponent,
 
-
-    //directive
+    /*directive*/
     AdDirective,
 
-    //pipes
+    /*pipes*/
     KeysPipe,
     SearchPipe,
     IsurlPipe
@@ -61,10 +65,11 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     MatButtonModule,
     FormsModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    FormsOwnModule
   ],
   exports: [
-    //modules
+    /*modules*/
     AngularSvgIconModule,
     DialogModule,
     ReactiveFormsModule,
@@ -73,8 +78,9 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    FormsOwnModule,
 
-    //components
+    /*components*/
     TableComponent,
     LinearListComponent,
     InputSearchComponent,
@@ -82,11 +88,13 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     CardComponent,
     SelectCustomComponent,
     DialogCustomComponent,
+    DialogFrmComponent,
+    NotfoundComponent,
 
-    //directives
+    /*directives*/
     AdDirective,
 
-    //pipes
+    /*pipes*/
     KeysPipe,
     SearchPipe,
     IsurlPipe

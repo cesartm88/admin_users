@@ -3,27 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListUsersComponent } from './ModuleComponents/list-users/list-users.component';
 import { JobsComponent } from './ModuleComponents/jobs/jobs.component';
 
-
-const routes:Routes = [
-  /*{
-    path: '**',
-    component:ListUsersComponent,
-    pathMatch: 'full'
-  },*/
+const routes: Routes = [
   {
-    path:'list',
-    component:ListUsersComponent,
-    //pathMatch: 'full'
-    data:{
-      element:'list'
+    path: 'list',
+    component: ListUsersComponent,
+    data: {
+      element: 'list'
     }
   },
   {
-    path:'jobs',
-    component:JobsComponent,
-    //pathMatch: 'full'
-    data:{
-      element:'jobs'
+    path: 'jobs',
+    component: JobsComponent,
+    data: {
+      element: 'jobs'
     }
   }
 ];

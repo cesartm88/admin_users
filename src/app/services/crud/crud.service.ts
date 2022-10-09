@@ -6,15 +6,15 @@ import { LocalStorageService } from '../storage/storage.service';
   providedIn: 'root'
 })
 export class CRUDService extends crudModel {
-  constructor(private storage:LocalStorageService) {
+  constructor(private storage: LocalStorageService) {
     super();
   }
-  
+
   connect() {
   }
 
-  saveItem(key,value) {
-      this.storage.set(key,value);
+  saveItem(key, value) {
+      this.storage.set(key, value);
   }
 
   editItem() {
