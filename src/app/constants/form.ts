@@ -1,7 +1,7 @@
 const formUser = {
   name: {
     label: 'Name',
-    value: 'test',
+    value: 'test1',
     type: 'text',
     validation: {
       required: true,
@@ -12,12 +12,23 @@ const formUser = {
   age: {
     label: 'Age',
     value: 32,
-    type: 'number'
+    type: 'number',
+    validation: {
+      numbers: true
+    }
   },
   email: {
     label: 'Email Address',
     value: null,
-    type: 'email'
+    type: 'email',
+    validation: {
+      email: true
+    }
+  },
+  birthDate: {
+    label: 'Fecha de nacimiento',
+    value: null,
+    type: 'date',
   },
   profilePic: {
     label: 'Profile Picture Upload',

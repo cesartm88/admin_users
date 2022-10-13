@@ -4,22 +4,31 @@
       <h2>Form ID: {{f.id}}</h2>
       <div *ngFor="let prop of f.metaData">
         <ng-container [ngSwitch]="prop.type">
-          <mat-form-field appearance="fill" *ngSwitchCase="'text'" >
+          <mat-form-field appearance="standard" *ngSwitchCase="'text'" >
             <mat-label>{{prop.label}}</mat-label>
-            <input matInput placeholder="Placeholder" [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
-            <mat-hint>Hint</mat-hint>
+            <input matInput [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
           </mat-form-field>
-          <mat-form-field appearance="fill" *ngSwitchCase="'number'">
+          <mat-form-field appearance="standard" *ngSwitchCase="'number'">
             <mat-label>{{prop.label}}</mat-label>
-            <input matInput placeholder="Placeholder" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-            <mat-hint>Hint</mat-hint>
+            <input matInput [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           </mat-form-field>
+          <mat-form-field appearance="standard" *ngSwitchCase="'email'">
+            <mat-label>{{prop.label}}</mat-label>
+            <input matInput type="email" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+          </mat-form-field>
+          <mat-form-field appearance="standard" *ngSwitchCase="'date'">
+            <mat-label>{{prop.label}}</mat-label>
+            <input matInput [matDatepicker]="picker" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
           <input *ngSwitchCase="'checkbox'" type="checkbox" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'file'" type="file" [id]="prop.key" [formControlName]="prop.key">
-          <input *ngSwitchCase="'email'" type="email" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-          <input *ngSwitchCase="'date'" type="date" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'datetime'" type="datetime" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'datetime-local'" type="datetime-local" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+
 
           <input *ngSwitchCase="'reset'" type="reset" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'tel'" type="tel" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">

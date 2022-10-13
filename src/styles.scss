@@ -84,3 +84,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .blue{
   background: blue !important;
 }
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+  overflow: auto;
+  pointer-events: auto;
+}

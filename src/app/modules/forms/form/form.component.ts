@@ -33,7 +33,7 @@ export class FormComponent implements OnInit {
       formGroup[prop] = new FormControl(dataObject[prop].value || '', this.mapValidators(dataObject[prop].validation));
     }
 
-    this.fg = new FormGroup(formGroup)
+    this.fg = new FormGroup(formGroup);
     const form = {
       id: new Date().getUTCMilliseconds().toString(),
       formGroup: this.fg,
@@ -52,12 +52,22 @@ export class FormComponent implements OnInit {
 
     if (validators) {
       for (const validation of Object.keys(validators)) {
-        if (validation === 'required') {
-          formValidators.push(Validators.required);
-        } else if (validation === 'minLength') {
-          formValidators.push(Validators.minLength(validators[validation]));
-        } else if (validation === 'maxLength') {
-          formValidators.push(Validators.maxLength(validators[validation]));
+        switch (validation){
+          case 'required':
+            formValidators.push(Validators.required);
+            break;
+          case 'minLength':
+            formValidators.push(Validators.minLength(validators[validation]));
+            break;
+          case 'maxLength':
+            formValidators.push(Validators.maxLength(validators[validation]));
+            break;
+          case 'numbers':
+            formValidators.push(Validators.pattern('^[0-9]*$'));
+            break;
+          case 'email':
+            formValidators.push(Validators.email);
+            break;
         }
       }
     }
