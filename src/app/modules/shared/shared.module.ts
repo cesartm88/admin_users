@@ -25,6 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 /*directives*/
 import { AdDirective } from '../../directives/add/add.directive';
@@ -70,7 +71,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     MatInputModule,
     FormsOwnModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   exports: [
     /*modules*/
@@ -85,6 +87,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     FormsOwnModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
 
     /*components*/
     TableComponent,
