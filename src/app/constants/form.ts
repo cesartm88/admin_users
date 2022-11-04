@@ -30,6 +30,16 @@ const formUser = {
     value: null,
     type: 'date',
   },
+  date: {
+    label: 'Fecha de uno',
+    value: null,
+    type: 'datetime-local',
+  },
+  datedos: {
+    label: 'Fecha de dos',
+    value: null,
+    type: 'datetime',
+  },
   profilePic: {
     label: 'Profile Picture Upload',
     type: 'file'

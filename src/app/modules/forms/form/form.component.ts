@@ -1,5 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup, AbstractControl } from '@angular/forms';
+import * as moment from 'moment';
+
+export const CUSTOM_MOMENT_FORMATS  = {
+  parse: {
+    dateInput: "l, LT"
+  },
+  display: {
+    dateInput: "l, LT",
+    monthYearLabel: "MMM YYYY",
+    dateA11yLabel: "LL",
+    monthYearA11yLabel: "MMMM YYYY"
+  }
+};
 
 @Component({
   selector: 'app-form',
@@ -13,6 +26,8 @@ export class FormComponent implements OnInit {
   @Input() debug = false;
   @Output() output: EventEmitter<FormGroup> = new EventEmitter();
   fg: FormGroup;
+  public minDate: moment.Moment;
+  public maxDate: moment.Moment;
 
   constructor(
     private fb: FormBuilder,

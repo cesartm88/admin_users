@@ -16,20 +16,33 @@
             <mat-label>{{prop.label}}</mat-label>
             <input matInput type="email" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           </mat-form-field>
-          <mat-form-field appearance="standard" *ngSwitchCase="'date'">
-            <mat-label>{{prop.label}}</mat-label>
-            <input matInput [matDatepicker]="picker" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <mat-checkbox *ngSwitchCase="'checkbox'" type="checkbox" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">Checked</mat-checkbox>
-          <input *ngSwitchCase="'file'" type="file" [id]="prop.key" [formControlName]="prop.key">
-          <input *ngSwitchCase="'datetime'" type="datetime" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-          <input *ngSwitchCase="'datetime-local'" type="datetime-local" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
 
-          <mat-form-field>
-            <input matInput type="datetime-local" placeholder="start date">
+          <mat-checkbox *ngSwitchCase="'checkbox'" type="checkbox" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">{{prop.label}}</mat-checkbox>
+          <input *ngSwitchCase="'file'" type="file" [id]="prop.key" [formControlName]="prop.key">
+
+          <mat-form-field *ngSwitchCase="'date'">
+            <input matInput placeholder="{{prop.label}}"  [min]="minDate" [max]="maxDate"  [ngxMatDatetimePicker]="picker" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker
+                                     [hideTime]="true"
+                                     [color]="'primary'">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+
+          <mat-form-field *ngSwitchCase="'datetime'">
+            <input matInput placeholder="{{prop.label}}"  [min]="minDate" [max]="maxDate"  [ngxMatDatetimePicker]="picker" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker
+                                     [showSpinners]="true"
+                                     [showSeconds]="true"
+                                     [stepHour]="1" [stepMinute]="1"
+                                     [stepSecond]="1"
+                                     [touchUi]="true"
+                                     [enableMeridian]="true"
+                                     [color]="'primary'">
+            </ngx-mat-datetime-picker>
           </mat-form-field>
 
           <input *ngSwitchCase="'reset'" type="reset" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">

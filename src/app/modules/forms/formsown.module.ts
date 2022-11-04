@@ -6,6 +6,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
+
+import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +25,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
+    NgxMatMomentModule
   ],
   exports: [
     FormComponent,

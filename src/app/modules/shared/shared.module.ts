@@ -16,7 +16,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogFrmComponent } from '../../dialog/dialog-frm/dialog-frm.component';
 import { FormsOwnModule } from '../forms/formsown.module';
 import { NotfoundComponent } from '../../modules/users/ModuleComponents/notfound/notfound.component';
-
+import {
+  NGX_MAT_DATE_FORMATS, NgxMatDateAdapter,
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
+import {
+  NgxMatMomentModule,
+  NgxMatMomentAdapter,
+  NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS
+}
+from '@angular-material-components/moment-adapter';
 
 /*material angular*/
 import {MatSelectModule} from '@angular/material/select';
@@ -36,6 +47,18 @@ import { SearchPipe } from '../../pipes/search/search.pipe';
 import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
 
 /*service*/
+
+export const CUSTOM_MOMENT_FORMATS  = {
+  parse: {
+    dateInput: "l, LT"
+  },
+  display: {
+    dateInput: "l, LT",
+    monthYearLabel: "MMM YYYY",
+    dateA11yLabel: "LL",
+    monthYearA11yLabel: "MMMM YYYY"
+  }
+};
 
 @NgModule({
   declarations: [
@@ -72,7 +95,11 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     FormsOwnModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
+    NgxMatMomentModule
   ],
   exports: [
     /*modules*/
@@ -88,6 +115,10 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
+    NgxMatMomentModule,
 
     /*components*/
     TableComponent,
@@ -108,6 +139,10 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     SearchPipe,
     IsurlPipe
   ],
-  providers: []
+  providers: [
+    { provide: NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    { provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_MOMENT_FORMATS },
+    { provide: NgxMatDateAdapter, useClass: NgxMatMomentAdapter },
+  ]
 })
 export class SharedModule { }
