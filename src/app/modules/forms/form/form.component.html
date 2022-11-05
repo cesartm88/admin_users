@@ -20,18 +20,10 @@
           <mat-checkbox *ngSwitchCase="'checkbox'" type="checkbox" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">{{prop.label}}</mat-checkbox>
           <input *ngSwitchCase="'file'" type="file" [id]="prop.key" [formControlName]="prop.key">
 
-          <mat-form-field *ngSwitchCase="'date'">
-            <input matInput placeholder="{{prop.label}}"  [min]="minDate" [max]="maxDate"  [ngxMatDatetimePicker]="picker" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-            <mat-datepicker-toggle matSuffix [for]="picker">
-            </mat-datepicker-toggle>
-            <ngx-mat-datetime-picker #picker
-                                     [hideTime]="true"
-                                     [color]="'primary'">
-            </ngx-mat-datetime-picker>
-          </mat-form-field>
+          <app-date *ngSwitchCase="'date'" [prop]="prop" [formGroup]="f.formGroup"></app-date>
 
           <mat-form-field *ngSwitchCase="'datetime'">
-            <input matInput placeholder="{{prop.label}}"  [min]="minDate" [max]="maxDate"  [ngxMatDatetimePicker]="picker" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+            <input matInput placeholder="{{prop.label}}"  [min]="minDate" [max]="maxDate"  [ngxMatDatetimePicker]="picker" [id]="prop.key" [value]="prop.value"   [formControlName]="prop.key">
             <mat-datepicker-toggle matSuffix [for]="picker">
             </mat-datepicker-toggle>
             <ngx-mat-datetime-picker #picker
@@ -49,11 +41,14 @@
           <input *ngSwitchCase="'tel'" type="tel" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           <input *ngSwitchCase="'url'" type="url" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
 
-          <select [formControlName]="prop.key" *ngSwitchCase="'select'" class="form-control">
-            <option *ngFor="let option of prop.options" [value]="option.value">
-              {{option.label}}
-            </option>
-          </select>
+          <mat-form-field appearance="fill" *ngSwitchCase="'select'">
+            <mat-label>{{prop.label}}</mat-label>
+            <mat-select [formControlName]="prop.key"  class="form-control">
+              <mat-option  *ngFor="let option of prop.options" [value]="option.value">
+                {{option.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
           <ng-container *ngSwitchCase="'radio'">
             <label *ngFor="let option of prop.options">

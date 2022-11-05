@@ -1,18 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup, AbstractControl } from '@angular/forms';
 import * as moment from 'moment';
+import {NGX_MAT_DATE_FORMATS} from '@angular-material-components/datetime-picker';
 
-export const CUSTOM_MOMENT_FORMATS  = {
-  parse: {
-    dateInput: "l, LT"
-  },
-  display: {
-    dateInput: "l, LT",
-    monthYearLabel: "MMM YYYY",
-    dateA11yLabel: "LL",
-    monthYearA11yLabel: "MMMM YYYY"
-  }
-};
 
 @Component({
   selector: 'app-form',
@@ -88,6 +78,10 @@ export class FormComponent implements OnInit {
     }
 
     return formValidators;
+  }
+
+  public pruebas($event){
+    console.dir($event);
   }
 
   public hasValidator(controlName: string, validator: string): boolean {
