@@ -47,8 +47,6 @@ export class FormComponent implements OnInit, OnDestroy {
     }
 
     this.fg = new FormGroup(formGroup);
-    console.log("form");
-    this.getValues(this.formJson);
     const form: FormObj = {
       id: new Date().getUTCMilliseconds().toString(),
       formGroup: this.fg,
@@ -65,12 +63,9 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   private getValues(form: any){
-    (Object.keys(form)).forEach((key, indx) => {
-      console.log(key);
-      console.dir(form[key]?.label, form[key]?.value);
-      console.dir(indx);
+    Object.entries(this.fg.controls).forEach(e => {
+      form[e[0]].value = e[1].value;
     });
-    Object.entries(this.fg.controls).forEach(e => form[e[0]].value = (form[e[0]].value) ? e[1].value : form[e[0]].value);
     return form;
   }
 
