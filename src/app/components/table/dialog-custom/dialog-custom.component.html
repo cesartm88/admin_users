@@ -20,13 +20,13 @@
     </div>
     <div class="content__frm">
       <span>Información básica--</span>
-      <app-form [formJson]="json" [debug]="false" (output)="components($event)"></app-form>
+      <app-form [formJson]="json" [debug]="false" (output)="components($event)" [events]="eventsSubject.asObservable()"></app-form>
     </div>
 
 
     <div class="footer col_row">
-      <div class="btn btn--cancel">Save</div>
-      <div class="btn btn--aceptar" (click)="close()">Cancel</div>
+      <div class="btn btn--cancel" (click)="close()">Cancelar</div>
+      <div class="btn btn--aceptar" (click)="aceptar()">Guardar</div>
     </div>
   </div>
 </div>

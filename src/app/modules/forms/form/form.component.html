@@ -1,18 +1,25 @@
 <div class="form-group" *ngIf="forms != null">
-  <div *ngFor="let f of forms">
+  <div *ngFor="let f of forms;">
     <form novalidate (ngSubmit)="onSubmit(f.value)" [formGroup]="f.formGroup">
       <h2>Form ID: {{f.id}}</h2>
-      <div *ngFor="let prop of f.metaData">
-        <ng-container [ngSwitch]="prop.type">
-          <mat-form-field appearance="standard" *ngSwitchCase="'text'" >
+      <div class="forms-content"  *ngFor="let prop of f.metaData">
+        <div class="error" *ngIf="(f.formGroup.get(prop.key).dirty || f.formGroup.get(prop.key).touched) && f.formGroup.get(prop.key).invalid">
+          <p>
+            {{showError(f.formGroup.get(prop.key).errors)}}
+          </p>
+        </div>
+        <ng-container  [ngSwitch]="prop.type">
+          <mat-form-field class="fieldsInput--left" appearance="outline" *ngSwitchCase="'text'" >
             <mat-label>{{prop.label}}</mat-label>
             <input matInput [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
           </mat-form-field>
-          <mat-form-field appearance="standard" *ngSwitchCase="'number'">
+
+          <mat-form-field class="fieldsInput--right" appearance="outline" *ngSwitchCase="'number'">
             <mat-label>{{prop.label}}</mat-label>
             <input matInput [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           </mat-form-field>
-          <mat-form-field appearance="standard" *ngSwitchCase="'email'">
+
+          <mat-form-field appearance="outline" *ngSwitchCase="'email'">
             <mat-label>{{prop.label}}</mat-label>
             <input matInput type="email" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
           </mat-form-field>
@@ -22,7 +29,7 @@
 
           <app-date *ngSwitchCase="'date'" [prop]="prop" [formGroup]="f.formGroup"></app-date>
 
-          <mat-form-field *ngSwitchCase="'datetime'">
+          <mat-form-field *ngSwitchCase="'datetime'" appearance="outline">
             <input matInput placeholder="{{prop.label}}"  [min]="minDate" [max]="maxDate"  [ngxMatDatetimePicker]="picker" [id]="prop.key" [value]="prop.value"   [formControlName]="prop.key">
             <mat-datepicker-toggle matSuffix [for]="picker">
             </mat-datepicker-toggle>
@@ -37,31 +44,27 @@
             </ngx-mat-datetime-picker>
           </mat-form-field>
 
-          <input *ngSwitchCase="'reset'" type="reset" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-          <input *ngSwitchCase="'tel'" type="tel" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
-          <input *ngSwitchCase="'url'" type="url" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+          <input matInput appearance="outline" *ngSwitchCase="'reset'" type="reset" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+          <input matInput appearance="outline" *ngSwitchCase="'tel'" type="tel" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+          <input matInput appearance="outline" *ngSwitchCase="'url'" type="url" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
 
-          <mat-form-field appearance="fill" *ngSwitchCase="'select'">
+          <mat-form-field appearance="outline" *ngSwitchCase="'select'">
             <mat-label>{{prop.label}}</mat-label>
-            <mat-select [formControlName]="prop.key"  class="form-control">
+            <mat-select [formControlName]="prop.key" >
               <mat-option  *ngFor="let option of prop.options" [value]="option.value">
                 {{option.label}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <ng-container *ngSwitchCase="'radio'">
-            <label *ngFor="let option of prop.options">
-              <input type="radio" [name]="prop.key" [formControlName]="prop.key" [value]="option.value" class="form-control">{{option.label}}
-            </label>
+          <ng-container  *ngSwitchCase="'radio'">
+            <mat-radio-group >
+              <span *ngFor="let option of prop.options;let i = index">
+                <mat-radio-button appearance="outline"  name="{{prop.key}}" ngDefaultControl [name]="prop.key" [formControlName]="prop.key" [value]="option.value" [ngClass]="i % 2 == 0?'':'radio'">{{option.label}}</mat-radio-button>
+              </span>
+            </mat-radio-group>
           </ng-container>
         </ng-container>
-
-        <div class="error" *ngIf="(f.formGroup.get(prop.key).dirty || f.formGroup.get(prop.key).touched) && f.formGroup.get(prop.key).invalid">
-          <p>
-            {{f.formGroup.get(prop.key).errors | json}}
-          </p>
-        </div>
       </div>
       <div *ngIf="debug">
         <h2>Form Meta Data</h2>
@@ -70,7 +73,6 @@
         <pre>{{ f.formGroup.value | json }}</pre>
       </div>
       <br>
-      <!-- <button (click)="updateForm(f.id, f.formGroup.value)">Update</button> -->
     </form>
     <hr>
   </div>

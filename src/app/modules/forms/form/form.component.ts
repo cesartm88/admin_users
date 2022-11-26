@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup, AbstractControl } from '@angular/forms';
 import * as moment from 'moment';
-import {NGX_MAT_DATE_FORMATS} from '@angular-material-components/datetime-picker';
+import { errors } from '../../../constants/errors';
+import {FormObj} from '../../../interfaces/form.obj';
+import {Observable, Subscription} from 'rxjs';
 
 
 @Component({
@@ -9,15 +11,17 @@ import {NGX_MAT_DATE_FORMATS} from '@angular-material-components/datetime-picker
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnDestroy {
 
   forms = [];
   @Input() formJson: any;
   @Input() debug = false;
-  @Output() output: EventEmitter<FormGroup> = new EventEmitter();
+  @Input() events: Observable<void>;
+  @Output() output: EventEmitter<FormObj> = new EventEmitter();
   fg: FormGroup;
   public minDate: moment.Moment;
   public maxDate: moment.Moment;
+  private eventsSubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -25,6 +29,10 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+  }
+
+  ngOnDestroy() {
+    this.eventsSubscription.unsubscribe();
   }
 
   createForm() {
@@ -39,16 +47,30 @@ export class FormComponent implements OnInit {
     }
 
     this.fg = new FormGroup(formGroup);
-    const form = {
+    console.log("form");
+    this.getValues(this.formJson);
+    const form: FormObj = {
       id: new Date().getUTCMilliseconds().toString(),
       formGroup: this.fg,
       metaData: objectProps,
       transactionalData: [],
+      form: this.formJson
     };
-    this.fg.valueChanges.subscribe(values => {
-      this.output.emit(this.fg);
-    });
+    console.dir(this.fg.status);
+    this.fg.valueChanges.subscribe(values => form.form = this.getValues(this.formJson));
     this.forms.push(form);
+
+    this.eventsSubscription = this.events.subscribe(() => this.output.emit(form));
+    return form;
+  }
+
+  private getValues(form: any){
+    (Object.keys(form)).forEach((key, indx) => {
+      console.log(key);
+      console.dir(form[key]?.label, form[key]?.value);
+      console.dir(indx);
+    });
+    Object.entries(this.fg.controls).forEach(e => form[e[0]].value = (form[e[0]].value) ? e[1].value : form[e[0]].value);
     return form;
   }
 
@@ -76,7 +98,6 @@ export class FormComponent implements OnInit {
         }
       }
     }
-
     return formValidators;
   }
 
@@ -99,6 +120,13 @@ export class FormComponent implements OnInit {
       return hasValidator;
     }
     return false;
+  }
+
+  public showError(error){
+    /**
+     * Object.entries(error).forEach(e => console.dir(Object.entries(error)));
+     */
+    return Object.entries(error).map(e => (e.length > 0) ? errors[e[0]] : '');
   }
 
   // updateForm(id: string, transactionalData: any) {

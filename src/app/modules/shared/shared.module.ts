@@ -33,6 +33,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 /*directives*/
 import { AdDirective } from '../../directives/add/add.directive';
@@ -83,7 +84,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
-    NgxMatMomentModule
+    NgxMatMomentModule,
+    MatRadioModule
   ],
   exports: [
     /*modules*/
@@ -103,6 +105,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     NgxMatMomentModule,
+    MatRadioModule,
 
     /*components*/
     TableComponent,

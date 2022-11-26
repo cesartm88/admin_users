@@ -3,6 +3,8 @@ import {FormGroup } from '@angular/forms';
 import {DialogService} from '../../../modules/dialog/dialog.service';
 import {FormComponent} from '../../../modules/forms/form/form.component';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Subject} from 'rxjs';
+import {FormObj} from '../../../interfaces/form.obj';
 
 @Component({
   selector: 'app-dialog-custom',
@@ -10,8 +12,10 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./dialog-custom.component.scss']
 })
 export class DialogCustomComponent implements OnInit {
-
+  eventsSubject: Subject<void> = new Subject<void>();
   json: any = {};
+  formResult: FormGroup;
+  frm: FormGroup;
 
   @ViewChild(FormComponent) form: FormComponent;
 
@@ -28,16 +32,25 @@ export class DialogCustomComponent implements OnInit {
     this.dialogService.close();
   }
 
-  components(fg: FormGroup) {
+  components(fg: FormObj) {
     const gender = 'gender';
     const age = 'age';
-
-    if (fg.controls[gender].value === 'F' && fg.controls[age].value !== '--') {
-      fg.controls[age].setValue('--');
-      fg.controls[age].disable();
-    } else if (fg.controls[gender].value === 'M' && !fg.controls[age].enabled) {
-      fg.controls[age].enable();
-      fg.controls[age].setValue('');
+    console.log("status:");
+    console.warn(fg.formGroup.status);
+    console.dir(fg);
+    this.frm = fg.formGroup;
+    if (this.frm.valid){
+      if (this.frm.controls[gender].value === 'F' && this.frm.controls[age].value !== '--') {
+        this.frm.controls[age].setValue('--');
+        this.frm.controls[age].disable();
+      } else if (this.frm.controls[gender].value === 'M' && !this.frm.controls[age].enabled) {
+        this.frm.controls[age].enable();
+        this.frm.controls[age].setValue('');
+      }
+      this.formResult = this.frm;
+      console.log(this.formResult);
+    }else{
+      console.log("not valid!!");
     }
   }
 
@@ -54,7 +67,15 @@ export class DialogCustomComponent implements OnInit {
       this.json = JSON.parse(v);
     }catch (e) {
       console.log('error occored while you were typing the JSON');
-    };
+    }
+  }
+
+  aceptar(){
+    this.eventsSubject.next();
+    console.dir(this.formResult);
+    /*if (this.formResult != null){
+      Object.entries(this.formResult.controls).forEach(e => console.dir(e[1].value));
+    }*/
   }
 
 }

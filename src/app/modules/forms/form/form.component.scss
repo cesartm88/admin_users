@@ -3,3 +3,22 @@
 mat-form-field {
   width: 100%;
 }
+.form-group{
+
+}
+.forms-content{
+
+}
+.radio{
+  margin-left: 10px;
+}
+
+.mat-radio-group{
+  display:flex ;
+  width:100%;
+  //justify-content: space-between;
+  margin-bottom: 20px;
+}
+.error{
+  color: red;
+}

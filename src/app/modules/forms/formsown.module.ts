@@ -7,6 +7,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 import {
   NgxMatDatetimePickerModule,
@@ -34,7 +36,8 @@ import { DateComponent } from './components/date/date.component';
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     NgxMatMomentModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   exports: [
     FormComponent
