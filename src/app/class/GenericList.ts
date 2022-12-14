@@ -5,6 +5,7 @@ export class GenericList<T> extends List{
     List: Array<T> = [];
     pageSize = 10;
 
+
     constructor(){
         super('sync');
     }

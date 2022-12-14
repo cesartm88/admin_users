@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {FormGroup } from '@angular/forms';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {DialogService} from '../../../modules/dialog/dialog.service';
 import {FormComponent} from '../../../modules/forms/form/form.component';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -14,8 +13,7 @@ import {FormObj} from '../../../interfaces/form.obj';
 export class DialogCustomComponent implements OnInit {
   eventsSubject: Subject<void> = new Subject<void>();
   json: any = {};
-  formResult: FormGroup;
-  frm: FormGroup;
+  formResult: object;
 
   @ViewChild(FormComponent) form: FormComponent;
 
@@ -33,9 +31,9 @@ export class DialogCustomComponent implements OnInit {
   }
 
   components(fg: FormObj) {
-    const gender = 'gender';
+    /*const gender = 'gender';
     const age = 'age';
-    console.log("status:");
+    console.log('status:');
     console.warn(fg.formGroup.status);
     console.dir(fg);
     this.frm = fg.formGroup;
@@ -50,8 +48,9 @@ export class DialogCustomComponent implements OnInit {
       this.formResult = this.frm;
       console.log(this.formResult);
     }else{
-      console.log("not valid!!");
-    }
+      console.log('not valid!!');
+    }*/
+    this.formResult = fg;
   }
 
   update($event) {
@@ -72,10 +71,7 @@ export class DialogCustomComponent implements OnInit {
 
   aceptar(){
     this.eventsSubject.next();
-    console.dir(this.formResult);
-    /*if (this.formResult != null){
-      Object.entries(this.formResult.controls).forEach(e => console.dir(e[1].value));
-    }*/
+    this.dialogService.close(this.formResult);
   }
 
 }

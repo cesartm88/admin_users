@@ -1,0 +1,15 @@
+<div class="modelContent">
+  <div class="header">
+    <div class="header_left"><span class="titleDialog">{{content?.title}}</span></div>
+    <div class="header_right"><span class="pointer" (click)="close()">X</span></div>
+  </div>
+  <div class="content">
+    <div class="content__picture col_row">
+      <span class="content__subtitule">{{content.content}}</span>
+    </div>
+    <div class="footer col_row">
+      <div class="btn btn--cancel" (click)="close()">Cancelar</div>
+      <div class="btn btn--aceptar" (click)="aceptar()">Eliminar</div>
+    </div>
+  </div>
+</div>

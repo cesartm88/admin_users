@@ -20,7 +20,7 @@
             </ng-container>
             <ng-container *ngIf="showToFields[val]?.button == 1">
               <div class="btn btn_add pointer" [ngClass]="showToFields[val]?.color == 'default'?'orange':showToFields[val]?.color" >
-                <span class="btn_add--text" (click)="openDialog()" >{{showToFields[val]?.alias}}</span>
+                <span class="btn_add--text" (click)="openDialog(showToFields[val], item)" >{{showToFields[val]?.alias}}</span>
               </div>
             </ng-container>
         </td>

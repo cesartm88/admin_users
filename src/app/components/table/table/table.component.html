@@ -16,6 +16,6 @@
     </div>-->
 </div>
 <div class="container_list_table">
-    <app-linear-list *ngIf="view == 'list'" [showToFields]="showToFields" [items]="items" [perPage]="perPage" [search]="searchWord" [jsonForm]="formConfig"></app-linear-list>
+    <app-linear-list *ngIf="view == 'list'" [showToFields]="showToFields" [items]="items" [perPage]="perPage" [search]="searchWord" [jsonForm]="formConfig" [config]="config" (getForm)="getForm($event)"></app-linear-list>
     <!--<card-list *ngIf="view == 'card'"></card-list>-->
 </div>

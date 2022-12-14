@@ -1,7 +1,9 @@
-import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import {Component, ViewChild, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { DialogService } from '../../../modules/dialog/dialog.service';
 import { DialogFrmComponent } from '../../../dialog/dialog-frm/dialog-frm.component';
 import { LinearListComponent } from '../linear-list/linear-list.component';
+import {FormObj} from '../../../interfaces/form.obj';
+import {TableObj} from '../../../interfaces/table.obj';
 
 @Component({
   selector: 'app-table',
@@ -19,6 +21,8 @@ export class TableComponent<T>  implements OnInit{
 
   @Input() items: Array<T> = [];
   @Input() formConfig = {};
+  @Input() config: TableObj;
+  @Output() formResult: EventEmitter<FormObj> = new EventEmitter();
 
   @ViewChild(LinearListComponent) linearList: LinearListComponent<T>;
 
@@ -63,7 +67,7 @@ export class TableComponent<T>  implements OnInit{
   }
 
   openDialog(){
-    this.dialogService.open(DialogFrmComponent);
+    const dialogRef = this.dialogService.open(DialogFrmComponent);
   }
 
   changeDataPerPage = (perPage) => {
@@ -73,5 +77,9 @@ export class TableComponent<T>  implements OnInit{
 
   searchListener = ($event) => {
     this.searchWord = $event;
+  }
+
+  getForm($event: FormObj){
+    this.formResult.emit($event);
   }
 }

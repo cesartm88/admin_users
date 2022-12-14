@@ -1,9 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { GenericList } from '../../../class/ListUsers';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { GenericList } from '../../../class/GenericList';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DialogService } from '../../../modules/dialog/dialog.service';
 import { DialogCustomComponent } from '../dialog-custom/dialog-custom.component';
+import {FormObj} from '../../../interfaces/form.obj';
+import {DialogDeleteComponent} from '../dialog-delete/dialog-delete.component';
+import {CONSTATES} from '../../../constants/Constants';
+import {TableObj} from '../../../interfaces/table.obj';
+import {ActionObj} from '../../../interfaces/action.obj';
 
 @Component({
   selector: 'app-linear-list',
@@ -12,7 +17,7 @@ import { DialogCustomComponent } from '../dialog-custom/dialog-custom.component'
 })
 
 export class LinearListComponent<T> implements OnInit {
-  listUsers = null;
+  listItems = null;
   List: Observable<Array<any>> = null;
   Pages: Observable<Array<number>> = of([]);
   LastPage = 0;
@@ -23,6 +28,8 @@ export class LinearListComponent<T> implements OnInit {
   @Input() search;
   @Input() items: Array<T> = [];
   @Input() jsonForm: any = {};
+  @Input() config: TableObj;
+  @Output() getForm: EventEmitter<ActionObj> = new EventEmitter();
   list = [];
 
   constructor(private dialog: DialogService) {
@@ -30,10 +37,10 @@ export class LinearListComponent<T> implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listUsers = new GenericList();
-    this.listUsers.setData(this.items);
-    this.List = of(this.listUsers.setDataPerPage(this.perPage, this.FocusPage));
-    this.LastPage = this.listUsers.getTotalPages();
+    this.listItems = new GenericList(this.config.ID);
+    this.listItems.setData(this.items);
+    this.List = of(this.listItems.setDataPerPage(this.perPage, this.FocusPage));
+    this.LastPage = this.listItems.getTotalPages();
     this.Pages = of(this.getList(1, this.LastPage));
     for (let index = 1; index <= this.LastPage; index++) {
       if (this.Pages){
@@ -46,18 +53,18 @@ export class LinearListComponent<T> implements OnInit {
   }
 
   initList(data: any){
-    this.listUsers = new GenericList<any>();
-    this.listUsers.setData(data);
+    this.listItems = new GenericList<any>();
+    this.listItems.setData(data);
   }
 
   setItemsPerPage = (numberItems) => {
-    this.List = of(this.listUsers.setDataPerPage(numberItems, this.FocusPage));
-    this.Pages = of(this.getList(1, this.listUsers.getTotalPages(numberItems)));
+    this.List = of(this.listItems.setDataPerPage(numberItems, this.FocusPage));
+    this.Pages = of(this.getList(1, this.listItems.getTotalPages(numberItems)));
   }
 
   setPage = (page) => {
     this.FocusPage = page;
-    this.List = of(this.listUsers.paginate(this.FocusPage));
+    this.List = of(this.listItems.paginate(this.FocusPage));
   }
 
   getList(first: number, last: number){
@@ -70,12 +77,12 @@ export class LinearListComponent<T> implements OnInit {
 
   nextPage = () => {
     this.FocusPage = (this.FocusPage < this.LastPage) ? this.FocusPage + 1 : this.FocusPage;
-    this.List = of(this.listUsers.paginate(this.FocusPage));
+    this.List = of(this.listItems.paginate(this.FocusPage));
   }
 
   beforePage = () => {
     this.FocusPage = (this.FocusPage > 1) ? this.FocusPage - 1 : this.FocusPage;
-    this.List = of(this.listUsers.paginate(this.FocusPage));
+    this.List = of(this.listItems.paginate(this.FocusPage));
   }
 
   orderElement = (title) => {
@@ -84,13 +91,38 @@ export class LinearListComponent<T> implements OnInit {
     } else {
       this.CurrentOrder = 0;
     }
-    this.List = of(this.listUsers.orderItems(this.CurrentOrder, title));
+    this.List = of(this.listItems.orderItems(this.CurrentOrder, title));
   }
 
-  openDialog() {
-    this.dialog.open( DialogCustomComponent, {
-      data: this.jsonForm
-    });
+  openDeleteDialog(){
+    this.dialog.open(DialogDeleteComponent, {});
+  }
+
+  openDialog(args?: object, item?: object) {
+    if (args[CONSTATES.keyAlias] === CONSTATES.deleteKey){
+      const dialogRef = this.dialog.open( DialogDeleteComponent, {
+        data: item,
+        config: this.config
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        const data: ActionObj = {
+          action: 'delete',
+          data: result
+        };
+        this.getForm.emit(data);
+      });
+    }else{
+      const dialogRef = this.dialog.open( DialogCustomComponent, {
+        data: this.jsonForm
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        const data: ActionObj = {
+          action: 'edit',
+          data: result
+        };
+        this.getForm.emit(data);
+      });
+    }
   }
 
 }
