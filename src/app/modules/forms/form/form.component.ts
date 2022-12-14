@@ -64,7 +64,8 @@ export class FormComponent implements OnInit, OnDestroy {
 
   private getValues(form: any){
     Object.entries(this.fg.controls).forEach(e => {
-      form[e[0]].value = e[1].value;
+      const formatDate = (form[e[0]].type === 'date') ? 'MM/DD/YYYY' : 'MM/DD/YYYY hh:mm A';
+      form[e[0]].value = (e[1].value instanceof moment) ? moment(e[1].value).format(formatDate) : e[1].value;
     });
     return form;
   }

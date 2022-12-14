@@ -30,10 +30,10 @@ const formUser = {
     value: null,
     type: 'date',
   },
-  date: {
+  dateuno: {
     label: 'Fecha de uno',
     value: null,
-    type: 'datetime-local',
+    type: 'datetime',
   },
   datedos: {
     label: 'Fecha de dos',

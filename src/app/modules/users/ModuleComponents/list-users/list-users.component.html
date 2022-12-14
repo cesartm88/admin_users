@@ -1,9 +1,9 @@
 <admin-theme>
 
     <div class="header__container" header>
-      <app-header></app-header>
+      <app-header [config]="ID"></app-header>
     </div>
     <div body class="container_list">
-        <app-table [showToFields]="titles" [items]="users"></app-table>
+        <app-table [showToFields]="titles" [items]="users" [config]="ID"></app-table>
     </div>
 </admin-theme>

@@ -1,8 +1,8 @@
 <admin-theme>
   <div class="header__container" header>
-    <app-header></app-header>
+    <app-header [config]="ID"></app-header>
   </div>
   <div body class="container_list">
-    <app-table  [showToFields]="titles" [items]="jobs" [formConfig]="form"></app-table>
+    <app-table  [showToFields]="titles" [items]="jobs" [formConfig]="form" (formResult)="getFormResult($event)" [config]="ID"></app-table>
   </div>
 </admin-theme>

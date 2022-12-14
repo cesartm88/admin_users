@@ -1,13 +1,16 @@
 import { List } from './List.abstract';
+import {FormObj} from '../interfaces/form.obj';
 
+/**
+ * The GenericList.
+ */
 export class GenericList<T> extends List{
 
     List: Array<T> = [];
     pageSize = 10;
 
-
-    constructor(){
-        super('sync');
+    constructor(type?: string){
+        super(type);
     }
 
     setData(lList: Array<T>){
