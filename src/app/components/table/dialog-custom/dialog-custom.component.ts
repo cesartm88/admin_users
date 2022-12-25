@@ -1,9 +1,11 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {DialogService} from '../../../modules/dialog/dialog.service';
 import {FormComponent} from '../../../modules/forms/form/form.component';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Subject} from 'rxjs';
 import {FormObj} from '../../../interfaces/form.obj';
+import {DialogsObj} from '../../../interfaces/dialogs.obj';
+import {CONSTATES} from '../../../constants/Constants';
 
 @Component({
   selector: 'app-dialog-custom',
@@ -14,13 +16,22 @@ export class DialogCustomComponent implements OnInit {
   eventsSubject: Subject<void> = new Subject<void>();
   json: any = {};
   formResult: object;
+  content: DialogsObj = {
+    title: '',
+    content: ''
+  };
 
   @ViewChild(FormComponent) form: FormComponent;
 
   constructor(
         private dialogService: DialogService,
         @Inject(MAT_DIALOG_DATA) public data
-  ){}
+  ){
+    console.log(this.data);
+    const TYPE = data.config.moduleName;
+    const ACTION = (data.config.action === CONSTATES.CONSTANTE_EDIT) ? CONSTATES.editKey : CONSTATES.addKey;
+    this.content.title = `${ACTION} ${TYPE}`;
+  }
 
   ngOnInit(): void {
     this.json = this.data.data;
@@ -57,6 +68,7 @@ export class DialogCustomComponent implements OnInit {
     this.json = JSON.parse($event.target.value);
   }
 
+  /*
   get rapidPageValue() {
     return JSON.stringify(this.json, null, 2);
   }
@@ -68,6 +80,7 @@ export class DialogCustomComponent implements OnInit {
       console.log('error occored while you were typing the JSON');
     }
   }
+  */
 
   aceptar(){
     this.eventsSubject.next();

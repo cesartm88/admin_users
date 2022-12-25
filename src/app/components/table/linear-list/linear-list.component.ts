@@ -99,6 +99,7 @@ export class LinearListComponent<T> implements OnInit {
   }
 
   openDialog(args?: object, item?: object) {
+    console.dir(args);
     if (args[CONSTATES.keyAlias] === CONSTATES.deleteKey){
       const dialogRef = this.dialog.open( DialogDeleteComponent, {
         data: item,
@@ -106,23 +107,38 @@ export class LinearListComponent<T> implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         const data: ActionObj = {
-          action: 'delete',
+          action: CONSTATES.CONSTANTE_DELETE,
           data: result
         };
         this.getForm.emit(data);
       });
-    }else{
-      const dialogRef = this.dialog.open( DialogCustomComponent, {
-        data: this.jsonForm
+    }else if (args[CONSTATES.keyAlias] === CONSTATES.editKey){
+      const  mergedFrm = this.fillData(this.jsonForm, item);
+      /*const dialogRef = this.dialog.open( DialogCustomComponent, {
+        editData: item,
+        data: mergedFrm,
+        config: this.config,
+        action: CONSTATES.CONSTANTE_EDIT
       });
       dialogRef.afterClosed().subscribe(result => {
         const data: ActionObj = {
-          action: 'edit',
+          action: CONSTATES.CONSTANTE_EDIT,
           data: result
         };
         this.getForm.emit(data);
-      });
+      });*/
     }
+  }
+
+
+
+  fillData(data: any, dataEdit): any{
+    const valKey = 'value';
+    const obj = Object.entries(data);
+    obj.forEach(([key, value]) => {
+      data[key][valKey] =  dataEdit[key];
+    });
+    return data;
   }
 
 }

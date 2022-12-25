@@ -1,25 +1,10 @@
 <div class="modelContent">
   <div class="header">
-    <div class="header_left"><span class="addUser">Add User</span></div>
+    <div class="header_left"><span class="addUser">{{content?.title | titlecase}}</span></div>
     <div class="header_right"><span class="pointer" (click)="close()">X</span></div>
   </div>
   <div class="content">
-    <span class="content__subtitule">Picture Profile</span>
-    <div class="content__picture col_row">
-      <div class="content__picture--areapic">
-        <img height="30" src="../../../assets/images/profile_2x.png" alt="">
-      </div>
-      <div class="content__picture--right">
-        <span class="content__picture--text">
-          JPG, PNG | Minimum size of 300px × 300px
-        </span>
-        <div class="content__picture--uppic">
-          upload picture --
-        </div>
-      </div>
-    </div>
     <div class="content__frm">
-      <span>Información básica--</span>
       <app-form [formJson]="json" [debug]="false" (output)="components($event)" [events]="eventsSubject.asObservable()"></app-form>
     </div>
 
