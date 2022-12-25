@@ -79,7 +79,37 @@ const formUser = {
   }
 };
 
+const jobs = {
+  company: {
+    label: 'Nombre Compañia',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 5,
+      maxLength: 10
+    }
+  },
+  start_date: {
+    label: 'Fecha Inicio',
+    value: null,
+    type: 'date',
+    validation: {
+      required: true,
+    }
+  },
+  finish_date: {
+    label: 'Fecha Fin',
+    value: null,
+    type: 'date',
+    validation: {
+      required: true,
+    }
+  },
+};
+
 export {
-  formUser
+  formUser,
+  jobs
 };
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { jobs_list } from '../../../../constants/titles_tables';
 import _jobs from '../../../../../assets/json/jobs';
 import { Jobs } from '../../../../models/Jobs';
-import { formUser } from '../../../../constants/form';
+import { jobs } from '../../../../constants/form';
 import {FormObj} from '../../../../interfaces/form.obj';
 import {TableObj} from '../../../../interfaces/table.obj';
 
@@ -17,7 +17,7 @@ export class JobsComponent implements OnInit {
 
   titles = jobs_list;
 
-  form = formUser;
+  form = jobs;
 
   ID: TableObj = {
     ID: 'id',
