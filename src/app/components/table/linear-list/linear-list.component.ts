@@ -9,6 +9,7 @@ import {DialogDeleteComponent} from '../dialog-delete/dialog-delete.component';
 import {CONSTATES} from '../../../constants/Constants';
 import {TableObj} from '../../../interfaces/table.obj';
 import {ActionObj} from '../../../interfaces/action.obj';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-linear-list',
@@ -114,7 +115,7 @@ export class LinearListComponent<T> implements OnInit {
       });
     }else if (args[CONSTATES.keyAlias] === CONSTATES.editKey){
       const  mergedFrm = this.fillData(this.jsonForm, item);
-      /*const dialogRef = this.dialog.open( DialogCustomComponent, {
+      const dialogRef = this.dialog.open( DialogCustomComponent, {
         editData: item,
         data: mergedFrm,
         config: this.config,
@@ -126,7 +127,7 @@ export class LinearListComponent<T> implements OnInit {
           data: result
         };
         this.getForm.emit(data);
-      });*/
+      });
     }
   }
 
@@ -136,7 +137,12 @@ export class LinearListComponent<T> implements OnInit {
     const valKey = 'value';
     const obj = Object.entries(data);
     obj.forEach(([key, value]) => {
-      data[key][valKey] =  dataEdit[key];
+      const date = moment(dataEdit[key]);
+      if (date.isValid()){
+        data[key][valKey] =  date;
+      }else{
+        data[key][valKey] =  dataEdit[key];
+      }
     });
     return data;
   }
