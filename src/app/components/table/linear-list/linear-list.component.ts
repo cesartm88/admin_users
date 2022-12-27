@@ -99,6 +99,22 @@ export class LinearListComponent<T> implements OnInit {
     this.dialog.open(DialogDeleteComponent, {});
   }
 
+  openNewDialog(){
+    const dialogRef = this.dialog.open( DialogCustomComponent, {
+      editData: {},
+      data: this.jsonForm,
+      config: this.config,
+      action: CONSTATES.CONSTANTE_NUEVO
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      const data: ActionObj = {
+        action: CONSTATES.CONSTANTE_NUEVO,
+        data: result
+      };
+      this.getForm.emit(data);
+    });
+  }
+
   openDialog(args?: object, item?: object) {
     console.dir(args);
     if (args[CONSTATES.keyAlias] === CONSTATES.deleteKey){

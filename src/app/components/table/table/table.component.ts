@@ -75,6 +75,10 @@ export class TableComponent<T>  implements OnInit{
     this.linearList.setItemsPerPage(this.perPage);
   }
 
+  opennewDialog(){
+    this.linearList.openNewDialog();
+  }
+
   searchListener = ($event) => {
     this.searchWord = $event;
   }

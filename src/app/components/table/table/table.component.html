@@ -5,6 +5,11 @@
         <app-select-custom [title]="pageText" (onSelect)="changeDataPerPage($event)" [Options]="optionsPerPage"></app-select-custom>
     </div>
 
+
+    <div class="btnOption pointer white-gray" (click)="opennewDialog()">
+      Añadir
+    </div>
+
     <!--<div class="btnOption pointer white-gray" (click)="changeView('list')">
         <svg-icon src="../../../../../assets/images/list.svg" [svgStyle]="{ 'height.px':50,'fill':'rgb(250, 106, 0)' }">
         </svg-icon>
