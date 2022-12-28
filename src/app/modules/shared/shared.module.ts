@@ -8,7 +8,9 @@ import {
   CardComponent,
   SelectComponent,
   SelectCustomComponent,
-  DialogCustomComponent
+  DialogCustomComponent,
+  DialogDeleteComponent,
+  DialogCreateComponent
 } from '../../components/index';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DialogModule } from '../dialog/dialog.module';
@@ -58,6 +60,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     DialogCustomComponent,
     DialogFrmComponent,
     NotfoundComponent,
+    DialogDeleteComponent,
+    DialogCreateComponent,
 
     /*directive*/
     AdDirective,
@@ -117,6 +121,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     DialogCustomComponent,
     DialogFrmComponent,
     NotfoundComponent,
+    DialogDeleteComponent,
+    DialogCreateComponent,
 
     /*directives*/
     AdDirective,

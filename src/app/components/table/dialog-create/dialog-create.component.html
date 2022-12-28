@@ -1,0 +1,17 @@
+<div class="modelContent">
+  <div class="header">
+    <div class="header_left"><span class="addUser">{{content?.title | titlecase}}</span></div>
+    <div class="header_right"><span class="pointer" (click)="close()">X</span></div>
+  </div>
+  <div class="content">
+    <div class="content__frm">
+      <app-form [formJson]="json" [debug]="false" (output)="components($event)" [events]="eventsSubject.asObservable()"></app-form>
+    </div>
+
+
+    <div class="footer col_row">
+      <div class="btn btn--cancel" (click)="close()">Cancelar</div>
+      <div class="btn btn--aceptar" (click)="aceptar()">Guardar</div>
+    </div>
+  </div>
+</div>

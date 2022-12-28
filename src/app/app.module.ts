@@ -14,17 +14,12 @@ import { SharedModule } from '../app/modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
-import { DialogDeleteComponent } from './components/table/dialog-delete/dialog-delete.component';
-
-
-
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DialogDeleteComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

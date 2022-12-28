@@ -3,6 +3,7 @@
     <app-header [config]="ID"></app-header>
   </div>
   <div body class="container_list">
+    <div (click)="pruebas()">pruebas</div>
     <app-table  [showToFields]="titles" [items]="jobs" [formConfig]="form" (formResult)="getFormResult($event)" [config]="ID"></app-table>
   </div>
 </admin-theme>

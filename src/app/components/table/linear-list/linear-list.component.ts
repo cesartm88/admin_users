@@ -10,6 +10,7 @@ import {CONSTATES} from '../../../constants/Constants';
 import {TableObj} from '../../../interfaces/table.obj';
 import {ActionObj} from '../../../interfaces/action.obj';
 import * as moment from 'moment';
+import {DialogCreateComponent} from '../dialog-create/dialog-create.component';
 
 @Component({
   selector: 'app-linear-list',
@@ -100,7 +101,7 @@ export class LinearListComponent<T> implements OnInit {
   }
 
   openNewDialog(){
-    const dialogRef = this.dialog.open( DialogCustomComponent, {
+    const dialogRef = this.dialog.open( DialogCreateComponent, {
       editData: {},
       data: this.jsonForm,
       config: this.config,

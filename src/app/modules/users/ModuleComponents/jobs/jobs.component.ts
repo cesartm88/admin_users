@@ -5,6 +5,10 @@ import { Jobs } from '../../../../models/Jobs';
 import { jobs } from '../../../../constants/form';
 import {FormObj} from '../../../../interfaces/form.obj';
 import {TableObj} from '../../../../interfaces/table.obj';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { addJob } from '../../../../actions/jobs.actions';
+import {JobObj} from '../../../../interfaces/job.obj';
 
 @Component({
   selector: 'app-jobs',
@@ -25,13 +29,24 @@ export class JobsComponent implements OnInit {
     name: 'el trabajo'
   };
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
 
   getFormResult($event: FormObj){
     console.dir($event);
+  }
+
+  pruebas(){
+    const obj: JobObj = {
+      id: 1,
+      company: 'pruebas',
+      start_date: '12/11/1988',
+      finish_date: '12/11/1988'
+    };
+    this.store.dispatch(addJob({ job: obj }));
+    console.log('pruebas!!');
   }
 
 }

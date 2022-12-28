@@ -4,5 +4,6 @@ export const CONSTATES = {
   editKey: 'Editar',
   addKey: 'Añadir',
   CONSTANTE_EDIT : 'edit',
-  CONSTANTE_DELETE : 'delete'
+  CONSTANTE_DELETE : 'delete',
+  CONSTANTE_NUEVO: 'nuevo'
 };

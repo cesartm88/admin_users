@@ -6,6 +6,8 @@ import { CardComponent       } from './table/card/card.component';
 import { SelectComponent     } from './select/select.component';
 import { SelectCustomComponent } from './select-custom/select-custom.component';
 import { DialogCustomComponent } from './table/dialog-custom/dialog-custom.component';
+import { DialogDeleteComponent } from './table/dialog-delete/dialog-delete.component';
+import { DialogCreateComponent } from './table/dialog-create/dialog-create.component';
 
 
 export {
@@ -16,5 +18,7 @@ export {
     CardComponent,
     SelectComponent,
     SelectCustomComponent,
-    DialogCustomComponent
+    DialogCustomComponent,
+    DialogDeleteComponent,
+    DialogCreateComponent
 };
