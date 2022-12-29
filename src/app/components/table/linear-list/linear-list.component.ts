@@ -108,6 +108,7 @@ export class LinearListComponent<T> implements OnInit {
       action: CONSTATES.CONSTANTE_NUEVO
     });
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
       const data: ActionObj = {
         action: CONSTATES.CONSTANTE_NUEVO,
         data: result

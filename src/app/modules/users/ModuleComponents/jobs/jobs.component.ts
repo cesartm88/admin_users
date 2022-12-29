@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { addJob } from '../../../../actions/jobs.actions';
 import {JobObj} from '../../../../interfaces/job.obj';
+import {CONSTATES} from '../../../../constants/Constants';
 
 @Component({
   selector: 'app-jobs',
@@ -17,7 +18,7 @@ import {JobObj} from '../../../../interfaces/job.obj';
 })
 export class JobsComponent implements OnInit {
 
-  jobs: Array<Jobs> = _jobs;
+  jobs: Observable<Array<Jobs>> = new Observable<Array<Jobs>>();
 
   titles = jobs_list;
 
@@ -34,19 +35,20 @@ export class JobsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getFormResult($event: FormObj){
-    console.dir($event);
-  }
-
-  pruebas(){
-    const obj: JobObj = {
-      id: 1,
-      company: 'pruebas',
-      start_date: '12/11/1988',
-      finish_date: '12/11/1988'
-    };
-    this.store.dispatch(addJob({ job: obj }));
-    console.log('pruebas!!');
+  getFormResult($event: any){
+    console.dir($event.data.data);
+    const FRM = $event.data.data;
+    console.dir(FRM.formGroup.status);
+    if ( $event.action = CONSTATES.CONSTANTE_NUEVO && FRM.formGroup.status !== 'INVALID'){
+       const jobC: JobObj = {
+         id: null,
+         company: FRM.form.company.value,
+         start_date: FRM.form.start_date.value,
+         finish_date: FRM.form.finish_date.value
+       };
+       console.log('store!!', jobC);
+       this.store.dispatch(addJob({ job: jobC }));
+    }
   }
 
 }

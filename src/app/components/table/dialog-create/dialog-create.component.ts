@@ -42,7 +42,7 @@ export class DialogCreateComponent implements OnInit {
   }
 
   components(fg: FormObj) {
-    fg.formGroup.reset();
+    console.dir(fg);
     this.formResult = fg;
   }
 
@@ -51,6 +51,7 @@ export class DialogCreateComponent implements OnInit {
   }
 
   aceptar(){
+    console.log('suscribe!!!');
     this.eventsSubject.next();
     this.dialogService.close(this.formResult);
   }

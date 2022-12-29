@@ -4,6 +4,7 @@ import { DialogFrmComponent } from '../../../dialog/dialog-frm/dialog-frm.compon
 import { LinearListComponent } from '../linear-list/linear-list.component';
 import {FormObj} from '../../../interfaces/form.obj';
 import {TableObj} from '../../../interfaces/table.obj';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -19,7 +20,7 @@ export class TableComponent<T>  implements OnInit{
    */
   view = 'list';
 
-  @Input() items: Array<T> = [];
+  @Input() items: Observable<Array<T>>;
   @Input() formConfig = {};
   @Input() config: TableObj;
   @Output() formResult: EventEmitter<FormObj> = new EventEmitter();
@@ -83,7 +84,8 @@ export class TableComponent<T>  implements OnInit{
     this.searchWord = $event;
   }
 
-  getForm($event: FormObj){
+  getForm($event){
+    console.dir($event);
     this.formResult.emit($event);
   }
 }

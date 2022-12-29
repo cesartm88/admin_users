@@ -12,9 +12,10 @@ import { LocalStorageService  } from './services/storage/storage.service';
 import { CRUDService } from './services/crud/crud.service';
 import { SharedModule } from '../app/modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
+import {StoreModule, Action, MetaReducer, ActionReducer} from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
-
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { reducers, metaReducers } from './reducers';
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, {
       metaReducers
-    })
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [LocalStorageService, CRUDService],
   bootstrap: [AppComponent]

@@ -42,12 +42,12 @@ export class GenericList<T> extends List{
     }
 
     paginate(pageNumber) {
-        return this.List.slice((pageNumber - 1) *  this.pageSize, pageNumber *  this.pageSize);
+        return (this.List) ? this.List.slice((pageNumber - 1) *  this.pageSize, pageNumber *  this.pageSize) : 0;
     }
 
     getTotalPages(pageSize?: number){
       this.pageSize = (pageSize) ? pageSize : this.pageSize;
-      return Math.ceil(this.List.length / this.pageSize);
+      return (this.List) ? Math.ceil(this.List.length / this.pageSize) : 1;
     }
 
     orderItems(orderType?: number, field?: string): Array<T> {
