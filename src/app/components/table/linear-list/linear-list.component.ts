@@ -20,7 +20,7 @@ import {DialogCreateComponent} from '../dialog-create/dialog-create.component';
 
 export class LinearListComponent<T> implements OnInit {
   listItems = null;
-  List: Observable<Array<any>> = null;
+  List: Observable<T[]> = null;
   Pages: Observable<Array<number>> = of([]);
   LastPage = 0;
   FocusPage = 1;
@@ -28,7 +28,7 @@ export class LinearListComponent<T> implements OnInit {
   @Input() perPage = 10;
   @Input() showToFields;
   @Input() search;
-  @Input() items: Array<T> = [];
+  @Input() items$: Observable<T[]> = new Observable<T[]>();
   @Input() jsonForm: any = {};
   @Input() config: TableObj;
   @Output() getForm: EventEmitter<ActionObj> = new EventEmitter();
@@ -40,7 +40,7 @@ export class LinearListComponent<T> implements OnInit {
 
   ngOnInit(): void {
     this.listItems = new GenericList(this.config.ID);
-    this.listItems.setData(this.items);
+    this.listItems.setData(this.items$);
     this.List = of(this.listItems.setDataPerPage(this.perPage, this.FocusPage));
     this.LastPage = this.listItems.getTotalPages();
     this.Pages = of(this.getList(1, this.LastPage));

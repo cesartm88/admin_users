@@ -20,12 +20,12 @@ export class TableComponent<T>  implements OnInit{
    */
   view = 'list';
 
-  @Input() items: Observable<Array<T>>;
+  @Input() items$: Observable<T[]> = new Observable<T[]>();
   @Input() formConfig = {};
   @Input() config: TableObj;
   @Output() formResult: EventEmitter<FormObj> = new EventEmitter();
 
-  @ViewChild(LinearListComponent) linearList: LinearListComponent<T>;
+  @ViewChild(LinearListComponent) linearList: LinearListComponent<T[]>;
 
   optionsPerPage = [
     { value: 8, name: '8 por página' },
