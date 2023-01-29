@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, ViewChild, OnInit, Input, Output, EventEmitter, AfterViewInit, OnChanges, SimpleChanges} from '@angular/core';
 import { DialogService } from '../../../modules/dialog/dialog.service';
 import { DialogFrmComponent } from '../../../dialog/dialog-frm/dialog-frm.component';
 import { LinearListComponent } from '../linear-list/linear-list.component';
@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent<T>  implements OnInit{
+export class TableComponent<T>  implements OnInit, OnChanges{
   /**
    * @param View : string
    * values: 'list | card'
@@ -20,10 +20,11 @@ export class TableComponent<T>  implements OnInit{
    */
   view = 'list';
 
-  @Input() items$: Observable<T[]> = new Observable<T[]>();
+  @Input() items$: Observable<T> [] = [];
   @Input() formConfig = {};
   @Input() config: TableObj;
   @Output() formResult: EventEmitter<FormObj> = new EventEmitter();
+  List: any[] = [];
 
   @ViewChild(LinearListComponent) linearList: LinearListComponent<T[]>;
 
@@ -65,6 +66,14 @@ export class TableComponent<T>  implements OnInit{
   }
 
   ngOnInit(): void {
+    console.dir(this.items$);
+    this.List = this.items$;
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    if(changes.item$){
+      this.items$ = changes.item$.currentValue;
+    }
   }
 
   openDialog(){

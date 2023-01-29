@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {jobs_list} from '../../../../constants/titles_tables';
 import {Jobs} from '../../../../models/Jobs';
 import {jobs} from '../../../../constants/form';
@@ -12,6 +12,8 @@ import {State} from '../../../../interfaces/state.obj';
 import * as fromStore from '../../../../constants/ReduxConstants';
 import {map} from 'rxjs/operators';
 import {buttonsActions} from '../../../../constants/buttons';
+import {ItemListComponent} from '../../../../class/GenericItems';
+import {TableComponent} from '../../../../components';
 
 @Component({
   selector: 'app-jobs',
@@ -20,7 +22,11 @@ import {buttonsActions} from '../../../../constants/buttons';
 })
 export class JobsComponent implements OnInit {
 
-  jobs$: Observable<Jobs[]> = new Observable<Jobs[]>();
+  @ViewChild('tableJobs') tableJobs: TableComponent<Jobs>;
+
+  jobs$: Observable<Jobs> [] = [];
+
+  itemsList: ItemListComponent<Jobs> = new ItemListComponent<Jobs>();
 
   titles = jobs_list;
 
@@ -37,6 +43,7 @@ export class JobsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   async updateTable(){
@@ -46,8 +53,8 @@ export class JobsComponent implements OnInit {
         const jB = allJobs.map( job => {
           return { ...job, ...buttonsActions};
         });
-        console.error(jB);
         this.jobs$ = jB;
+        console.log(this.jobs$);
       }
     );
   }

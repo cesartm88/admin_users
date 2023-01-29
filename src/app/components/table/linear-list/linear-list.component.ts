@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import { GenericList } from '../../../class/GenericList';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,7 +18,7 @@ import {DialogCreateComponent} from '../dialog-create/dialog-create.component';
   styleUrls: ['./linear-list.component.scss']
 })
 
-export class LinearListComponent<T> implements OnInit {
+export class LinearListComponent<T> implements OnInit, OnChanges {
   listItems = null;
   List: Observable<T[]> = null;
   Pages: Observable<Array<number>> = of([]);
@@ -28,7 +28,7 @@ export class LinearListComponent<T> implements OnInit {
   @Input() perPage = 10;
   @Input() showToFields;
   @Input() search;
-  @Input() items$: Observable<T[]> = new Observable<T[]>();
+  @Input() items$: any[] = [];
   @Input() jsonForm: any = {};
   @Input() config: TableObj;
   @Output() getForm: EventEmitter<ActionObj> = new EventEmitter();
@@ -39,6 +39,10 @@ export class LinearListComponent<T> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.runList();
+  }
+
+  runList(){
     this.listItems = new GenericList(this.config.ID);
     this.listItems.setData(this.items$);
     this.List = of(this.listItems.setDataPerPage(this.perPage, this.FocusPage));
@@ -51,6 +55,14 @@ export class LinearListComponent<T> implements OnInit {
           return usersList;
         }));
       }
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes){
+      console.log(changes);
+      this.items$ = changes.items$.currentValue;
+      this.runList();
     }
   }
 
