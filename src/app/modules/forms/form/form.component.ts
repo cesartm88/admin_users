@@ -45,7 +45,6 @@ export class FormComponent implements OnInit, OnDestroy {
     for (const prop of Object.keys(dataObject)) {
       formGroup[prop] = new FormControl(dataObject[prop].value || '', this.mapValidators(dataObject[prop].validation));
     }
-
     this.fg = new FormGroup(formGroup);
     const form: FormObj = {
       id: new Date().getUTCMilliseconds().toString(),
@@ -54,7 +53,6 @@ export class FormComponent implements OnInit, OnDestroy {
       transactionalData: [],
       form: this.formJson
     };
-    console.dir(this.fg.status);
     this.fg.valueChanges.subscribe(values => form.form = this.getValues(this.formJson));
     this.forms.push(form);
 

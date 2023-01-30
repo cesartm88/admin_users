@@ -73,7 +73,6 @@ export class SelectCustomComponent implements OnInit, AfterViewInit {
     this.Select.nativeElement.style.setProperty('--opacity', 0);
     this.showOptions = false;
     this.focusItem = item.name;
-    console.dir(this.focusItem);
     this.onSelect.emit(item);
   }
 

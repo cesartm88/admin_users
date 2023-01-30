@@ -27,7 +27,6 @@ export class DialogCustomComponent implements OnInit {
         private dialogService: DialogService,
         @Inject(MAT_DIALOG_DATA) public data
   ){
-    console.log(this.data);
     const TYPE = data.config.moduleName;
     const ACTION = (data.config.action === CONSTATES.CONSTANTE_EDIT) ? CONSTATES.editKey : CONSTATES.addKey;
     this.content.title = `${ACTION} ${TYPE}`;
@@ -44,9 +43,6 @@ export class DialogCustomComponent implements OnInit {
   components(fg: FormObj) {
     /*const gender = 'gender';
     const age = 'age';
-    console.log('status:');
-    console.warn(fg.formGroup.status);
-    console.dir(fg);
     this.frm = fg.formGroup;
     if (this.frm.valid){
       if (this.frm.controls[gender].value === 'F' && this.frm.controls[age].value !== '--') {
@@ -57,9 +53,7 @@ export class DialogCustomComponent implements OnInit {
         this.frm.controls[age].setValue('');
       }
       this.formResult = this.frm;
-      console.log(this.formResult);
     }else{
-      console.log('not valid!!');
     }*/
     this.formResult = fg;
   }

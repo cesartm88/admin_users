@@ -66,12 +66,11 @@ export class TableComponent<T>  implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
-    console.dir(this.items$);
     this.List = this.items$;
   }
 
   ngOnChanges(changes: SimpleChanges){
-    if(changes.item$){
+    if (changes.item$){
       this.items$ = changes.item$.currentValue;
     }
   }
@@ -94,7 +93,6 @@ export class TableComponent<T>  implements OnInit, OnChanges{
   }
 
   getForm($event){
-    console.dir($event);
     this.formResult.emit($event);
   }
 }

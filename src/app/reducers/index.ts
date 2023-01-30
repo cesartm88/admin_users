@@ -9,13 +9,15 @@ import { environment } from '../../environments/environment';
 import { jobReducer } from './job.reducer';
 import {localStorageSync} from 'ngrx-store-localstorage';
 import { State } from '../interfaces/state.obj';
+import {userReducer} from './user.reducer';
 
 const key = 's1jdD3LHsZ=';
 
 
 export const reducers: ActionReducerMap< State > = {
   [key]: combineReducers({
-     jobs: jobReducer
+     jobs: jobReducer,
+     users: userReducer
   })
 };
 

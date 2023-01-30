@@ -60,7 +60,6 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes){
-      console.log(changes);
       this.items$ = changes.items$.currentValue;
       this.runList();
     }
@@ -120,7 +119,6 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
       action: CONSTATES.CONSTANTE_NUEVO
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       const data: ActionObj = {
         action: CONSTATES.CONSTANTE_NUEVO,
         data: result
@@ -130,7 +128,6 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
   }
 
   openDialog(args?: object, item?: object) {
-    console.dir(args);
     if (args[CONSTATES.keyAlias] === CONSTATES.deleteKey){
       const dialogRef = this.dialog.open( DialogDeleteComponent, {
         data: item,

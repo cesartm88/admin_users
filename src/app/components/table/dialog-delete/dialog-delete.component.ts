@@ -21,7 +21,6 @@ export class DialogDeleteComponent implements OnInit {
     private dialogService: DialogService,
     @Inject(MAT_DIALOG_DATA) public data
   ) {
-    console.dir(data);
     this.info = data.data;
     const keyID = data.config.ID;
     const ID = this.info[keyID];

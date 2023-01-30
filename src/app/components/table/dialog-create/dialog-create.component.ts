@@ -27,7 +27,6 @@ export class DialogCreateComponent implements OnInit {
     private dialogService: DialogService,
     @Inject(MAT_DIALOG_DATA) public data
   ){
-    console.log(this.data);
     const TYPE = data.config.moduleName;
     const ACTION = (data.config.action === CONSTATES.CONSTANTE_EDIT) ? CONSTATES.editKey : CONSTATES.addKey;
     this.content.title = `${ACTION} ${TYPE}`;
@@ -42,7 +41,6 @@ export class DialogCreateComponent implements OnInit {
   }
 
   components(fg: FormObj) {
-    console.dir(fg);
     this.formResult = fg;
   }
 
@@ -51,7 +49,6 @@ export class DialogCreateComponent implements OnInit {
   }
 
   aceptar(){
-    console.log('suscribe!!!');
     this.eventsSubject.next();
     this.dialogService.close(this.formResult);
   }

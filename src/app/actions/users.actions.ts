@@ -1,18 +1,18 @@
 import {createAction, props} from '@ngrx/store';
-import {JobObj} from '../interfaces/job.obj';
+import {User} from '../models/User';
 
 
-export const addJob = createAction(
-  '[job] create',
-  props<{ job: JobObj }>()
+export const addUser = createAction(
+  '[user] create',
+  props<{ user: User }>()
 );
 
-export const editJob = createAction(
-  '[job] edit',
-  props<{ job: JobObj }>()
+export const editUser = createAction(
+  '[user] edit',
+  props<{ user: User }>()
 );
 
-export const deleteJob = createAction(
-  '[job] delete',
-  props<{ job: JobObj }>()
+export const deleteUser = createAction(
+  '[user] delete',
+  props<{ user: User }>()
 );

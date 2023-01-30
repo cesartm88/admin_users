@@ -42,6 +42,12 @@
     justify-content: stretch;
     margin-top: 35px;
   }
+  .col_row .fieldsInput--left-zero {
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    height: 0px !important;
+  }
 }
 
 /******************************************************************************

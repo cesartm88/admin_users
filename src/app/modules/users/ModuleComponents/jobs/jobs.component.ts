@@ -5,15 +5,15 @@ import {jobs} from '../../../../constants/form';
 import {TableObj} from '../../../../interfaces/table.obj';
 import {Store} from '@ngrx/store';
 import {Observable, of} from 'rxjs';
-import {addJob} from '../../../../actions/jobs.actions';
+import {addJob, deleteJob, editJob} from '../../../../actions/jobs.actions';
 import {JobObj} from '../../../../interfaces/job.obj';
 import {CONSTATES} from '../../../../constants/Constants';
 import {State} from '../../../../interfaces/state.obj';
 import * as fromStore from '../../../../constants/ReduxConstants';
-import {map} from 'rxjs/operators';
 import {buttonsActions} from '../../../../constants/buttons';
 import {ItemListComponent} from '../../../../class/GenericItems';
 import {TableComponent} from '../../../../components';
+import {StringServiceService} from '../../../../services/string-service.service';
 
 @Component({
   selector: 'app-jobs',
@@ -38,7 +38,7 @@ export class JobsComponent implements OnInit {
     name: 'el trabajo'
   };
 
-  constructor(private store: Store<State>) {
+  constructor(private store: Store<State>, private stringServiceService: StringServiceService) {
     this.updateTable();
   }
 
@@ -49,26 +49,38 @@ export class JobsComponent implements OnInit {
   async updateTable(){
     this.store.select(fromStore.selectJobs).subscribe(
       allJobs => {
-        console.warn(allJobs);
         const jB = allJobs.map( job => {
           return { ...job, ...buttonsActions};
         });
         this.jobs$ = jB;
-        console.log(this.jobs$);
       }
     );
   }
 
   getFormResult($event: any){
     const FRM = $event.data.data;
-    if ( $event.action === CONSTATES.CONSTANTE_NUEVO && FRM.formGroup.status !== 'INVALID'){
-       const jobC: JobObj = {
-         id: null,
-         company: FRM.form.company.value,
-         start_date: FRM.form.start_date.value,
-         finish_date: FRM.form.finish_date.value
-       };
-       this.store.dispatch(addJob({ job: jobC }));
+    if ( $event.action === CONSTATES.CONSTANTE_NUEVO){
+      const jobC: JobObj = {
+        id: (FRM.form.id.value) ? FRM.form.id.value : this.stringServiceService.randomString(10),
+        company: FRM.form.company.value,
+        start_date: FRM.form.start_date.value,
+        finish_date: FRM.form.finish_date.value
+      };
+      if ( FRM.formGroup.status !== 'INVALID'){
+        this.store.dispatch(addJob({ job: jobC }));
+      }
+    }else if ($event.action === CONSTATES.CONSTANTE_DELETE) {
+        this.store.dispatch(deleteJob({job: FRM}));
+    }else if ($event.action === CONSTATES.CONSTANTE_EDIT){
+      const jobC: JobObj = {
+        id: (FRM.form.id.value) ? FRM.form.id.value : this.stringServiceService.randomString(10),
+        company: FRM.form.company.value,
+        start_date: FRM.form.start_date.value,
+        finish_date: FRM.form.finish_date.value
+      };
+      if (FRM.formGroup.status !== 'INVALID') {
+        this.store.dispatch(editJob({job: jobC}));
+      }
     }
   }
 

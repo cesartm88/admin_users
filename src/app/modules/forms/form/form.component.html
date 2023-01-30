@@ -9,9 +9,14 @@
           </p>
         </div>
         <ng-container  [ngSwitch]="prop.type">
+
+          <mat-form-field class="fieldsInput--left-zero" *ngSwitchCase="'label'" >
+            <input matInput class="fieldsInput--left-zero" [formControlName]="prop.key" [id]="prop.key" [value]="prop.value" [hidden]="true">
+          </mat-form-field>
+
           <mat-form-field class="fieldsInput--left" appearance="outline" *ngSwitchCase="'text'" >
             <mat-label>{{prop.label}}</mat-label>
-            <input matInput [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
+            <input matInput [formControlName]="prop.key" [id]="prop.key" [type]="prop.type" [value]="prop.value">
           </mat-form-field>
 
           <mat-form-field class="fieldsInput--right" appearance="outline" *ngSwitchCase="'number'">

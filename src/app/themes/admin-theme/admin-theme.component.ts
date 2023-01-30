@@ -24,7 +24,6 @@ export class AdminThemeComponent implements OnInit {
   }
 
   selectedValue($event){
-    console.warn('$event:', $event);
   }
 
 }

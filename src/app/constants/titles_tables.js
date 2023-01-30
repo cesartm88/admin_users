@@ -1,4 +1,8 @@
 const users_config = {
+  sync: {
+    show: 0,
+    alias: 'Identificador'
+  },
   picture: {
     show: 1,
     alias: 'Imagen'
