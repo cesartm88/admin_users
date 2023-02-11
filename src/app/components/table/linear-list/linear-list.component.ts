@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DialogService } from '../../../modules/dialog/dialog.service';
 import { DialogCustomComponent } from '../dialog-custom/dialog-custom.component';
-import {FormObj} from '../../../interfaces/form.obj';
 import {DialogDeleteComponent} from '../dialog-delete/dialog-delete.component';
 import {CONSTATES} from '../../../constants/Constants';
 import {TableObj} from '../../../interfaces/table.obj';
@@ -17,6 +16,7 @@ import {DialogCreateComponent} from '../dialog-create/dialog-create.component';
   templateUrl: './linear-list.component.html',
   styleUrls: ['./linear-list.component.scss']
 })
+
 
 export class LinearListComponent<T> implements OnInit, OnChanges {
   listItems = null;

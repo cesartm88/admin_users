@@ -1,7 +1,7 @@
 <div class="form-group" *ngIf="forms != null">
   <div *ngFor="let f of forms;">
     <form novalidate (ngSubmit)="onSubmit(f.value)" [formGroup]="f.formGroup">
-      <h2>Form ID: {{f.id}}</h2>
+      <!--<h2>Form ID: {{f.id}}</h2>-->
       <div class="forms-content"  *ngFor="let prop of f.metaData">
         <div class="error" *ngIf="(f.formGroup.get(prop.key).dirty || f.formGroup.get(prop.key).touched) && f.formGroup.get(prop.key).invalid">
           <p>
@@ -15,6 +15,11 @@
           </mat-form-field>
 
           <mat-form-field class="fieldsInput--left" appearance="outline" *ngSwitchCase="'text'" >
+            <mat-label>{{prop.label}}</mat-label>
+            <input matInput [formControlName]="prop.key" [id]="prop.key" [type]="prop.type" [value]="prop.value">
+          </mat-form-field>
+
+          <mat-form-field class="fieldsInput--left" appearance="outline" *ngSwitchCase="'password'" >
             <mat-label>{{prop.label}}</mat-label>
             <input matInput [formControlName]="prop.key" [id]="prop.key" [type]="prop.type" [value]="prop.value">
           </mat-form-field>

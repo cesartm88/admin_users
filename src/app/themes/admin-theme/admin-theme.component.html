@@ -3,23 +3,20 @@
         <header class="adminTemplate__container--header">
             <div class="adminTemplate__container--header--left">
                 <img src="../../../assets/images/logo.png" class="adminTemplate__container--header--left--logo">
-                <div class="select-component">
+                <div class="select-component" *ngIf="showTopMenu">
                     <app-select-custom (onSelect)="selectedValue($event)" [title]="'Pedro Paramo'" [dIcon]="'user'" [Options]="OptionsUser"></app-select-custom>
                 </div>
             </div>
         </header>
-        <div class="adminTemplate__container--Row">
-          <div class="adminTemplate__container--Row--left">
-            <div class="adminTemplate__container--Row--left--menu" [ngClass]="routeActive== 'list'?'selected':''">
-              <span routerLink="/users/list">Usuarios</span>
-            </div>
-            <div class="adminTemplate__container--Row--left--menu" [ngClass]="routeActive== 'jobs'?'selected':''">
-              <span routerLink="/users/jobs">Jobs</span>
+        <div class="adminTemplate__container--Row" >
+          <div class="adminTemplate__container--Row--left" *ngIf="showSideMenu">
+            <div *ngFor="let menu of menuOptions" class="adminTemplate__container--Row--left--menu" [ngClass]="routeActive== menu.class?'selected':''">
+              <span routerLink="{{menu.path}}">{{menu.name}}</span>
             </div>
           </div>
           <div class="adminTemplate__container--Row--right">
-              <div class="adminTemplate__container--Row--right--header">
-                  <ng-content select="[header]"></ng-content>
+              <div class="adminTemplate__container--Row--right--header" *ngIf="showTopMenu">
+                  <ng-content select="[header]" ></ng-content>
               </div>
               <div class="adminTemplate__container--Row--right--container">
                   <ng-content select="[body]"></ng-content>

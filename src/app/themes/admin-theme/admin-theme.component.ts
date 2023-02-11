@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {MenuObj} from '../../interfaces/menu.obj';
+import {MENU_CONFIG} from '../../constants/Menu';
 
 @Component({
   selector: 'admin-theme',
@@ -7,8 +9,10 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./admin-theme.component.scss']
 })
 export class AdminThemeComponent implements OnInit {
-
-  routeActive = '';
+  menuOptions: Array<MenuObj> = MENU_CONFIG;
+  @Input() routeActive = '';
+  @Input() showSideMenu = true;
+  @Input() showTopMenu = true;
 
   OptionsUser: Array<any> = [
     {name: 'Test1', value: 'Test1'},

@@ -97,8 +97,32 @@ const jobs = {
   },
 };
 
+const login = {
+  company: {
+    label: 'Usuario',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 2,
+      maxLength: 10
+    }
+  },
+  password: {
+    label: 'Password',
+    value: '',
+    type: 'password',
+    validation: {
+      required: true,
+      minLength: 2,
+      maxLength: 50
+    }
+  }
+};
+
 export {
   formUser,
-  jobs
+  jobs,
+  login
 };
 

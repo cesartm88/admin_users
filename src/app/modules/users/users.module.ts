@@ -8,11 +8,12 @@ import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/materia
 import { SharedModule } from '../shared/shared.module';
 import { JobsComponent } from './ModuleComponents/jobs/jobs.component';
 import { HeaderComponent } from './components/index';
+import { LoginComponent } from './ModuleComponents/login/login.component';
 
 
 
 @NgModule({
-  declarations: [ ListUsersComponent, AdminThemeComponent, JobsComponent, HeaderComponent],
+  declarations: [ ListUsersComponent, AdminThemeComponent, JobsComponent, HeaderComponent, LoginComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
