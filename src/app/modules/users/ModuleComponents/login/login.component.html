@@ -8,7 +8,7 @@
          <app-form [formJson]="json" [debug]="false" (output)="components($event)" [events]="eventsSubject.asObservable()"></app-form>
        </div>
        <div class="footer col_row">
-         <div class="btn btn--aceptar">Ingresar</div>
+         <div class="btn btn--aceptar" (click)="aceptar()">Ingresar</div>
        </div>
      </div>
   </div>

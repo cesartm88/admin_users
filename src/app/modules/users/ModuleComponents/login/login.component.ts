@@ -18,10 +18,6 @@ export class LoginComponent implements OnInit {
   eventsSubject: Subject<void> = new Subject<void>();
   json: any = {};
   formResult: object;
-  content: DialogsObj = {
-    title: '',
-    content: ''
-  };
 
   @ViewChild(FormComponent) form: FormComponent;
 
@@ -33,14 +29,12 @@ export class LoginComponent implements OnInit {
 
   components(fg: FormObj) {
     this.formResult = fg;
-  }
-
-  update($event) {
-    this.json = JSON.parse($event.target.value);
+    console.dir(this.formResult);
   }
 
   aceptar(){
     this.eventsSubject.next();
+    console.dir(this.formResult);
   }
 
 }

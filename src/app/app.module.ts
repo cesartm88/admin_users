@@ -16,6 +16,7 @@ import {StoreModule, Action, MetaReducer, ActionReducer} from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    NgIdleKeepaliveModule.forRoot()
   ],
   providers: [LocalStorageService, CRUDService],
   bootstrap: [AppComponent]
