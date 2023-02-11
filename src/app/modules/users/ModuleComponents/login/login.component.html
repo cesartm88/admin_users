@@ -1,0 +1,16 @@
+<admin-theme [showSideMenu]="false" [showTopMenu]="false">
+  <div body class="container_list">
+     <div class="loginBox">
+       <div class="header-box">
+         <span>Login</span>
+       </div>
+       <div class="form-content">
+         <app-form [formJson]="json" [debug]="false" (output)="components($event)" [events]="eventsSubject.asObservable()"></app-form>
+       </div>
+       <div class="footer col_row">
+         <div class="btn btn--aceptar">Ingresar</div>
+       </div>
+     </div>
+  </div>
+</admin-theme>
+
