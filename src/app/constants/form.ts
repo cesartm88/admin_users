@@ -98,14 +98,14 @@ const jobs = {
 };
 
 const login = {
-  company: {
-    label: 'Usuario',
+  email: {
+    label: 'Email',
     value: '',
-    type: 'text',
+    type: 'email',
     validation: {
       required: true,
       minLength: 2,
-      maxLength: 10
+      maxLength: 50
     }
   },
   password: {

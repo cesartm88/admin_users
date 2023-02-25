@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
+import {UserLoguedObj} from '../../interfaces/user.obj';
 
 
-let  headers = {
+const headers = {
   'Content-Type':  'application/json',
 };
 
@@ -13,21 +14,21 @@ let  headers = {
 })
 export class RequestService {
   public url;
-  
+
   private httpOptions;
   constructor(
-    private http : HttpClient
+    private http: HttpClient
   ) {
     this.url = {
-      test: environment,
-    }
+      backend_api: environment.backend,
+    };
 
     this.httpOptions = {
       headers : new HttpHeaders(headers)
     };
   }
 
-  test( form ):Observable<any>{
-    return this.http.post(`${this.url.microservices_api}/v1/Chat/upload_foto`,form,{ headers : new HttpHeaders()});
+  login( form ): Observable<any>{
+    return this.http.post(`${this.url.backend_api}api/login`, form, {headers : new HttpHeaders()});
   }
 }
