@@ -2,17 +2,12 @@ import {createAction, props} from '@ngrx/store';
 import {User} from '../models/User';
 
 
-export const addUser = createAction(
-  '[user] create',
+export const updateInfo = createAction(
+  '[userInfo] create',
   props<{ user: User }>()
 );
 
-export const editUser = createAction(
-  '[user] edit',
-  props<{ user: User }>()
-);
-
-export const deleteUser = createAction(
-  '[user] delete',
+export const deleteInfo = createAction(
+  '[userInfo] delete',
   props<{ user: User }>()
 );
