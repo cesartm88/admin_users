@@ -1,10 +1,14 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {FormComponent} from '../../../forms/form/form.component';
 import {FormObj} from '../../../../interfaces/form.obj';
 import {login} from '../../../../constants/form';
 import {RequestService} from '../../../../services/request/request.service';
 import {UserLoguedObj, UserObj} from '../../../../interfaces/user.obj';
+import {Store} from '@ngrx/store';
+import {State} from '../../../../interfaces/state.obj';
+import {updateInfo} from '../../../../actions/userInfo.actions';
+import {UserInfo} from '../../../../models/UserInfo';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   @ViewChild(FormComponent) form: FormComponent;
 
-  constructor(private requestService: RequestService){}
+  constructor(private store: Store<State>, private requestService: RequestService){}
 
   ngOnInit(): void {
     this.json = login;
@@ -42,10 +46,17 @@ export class LoginComponent implements OnInit {
     this.login.password = this.formResult[keyForm].password?.value;
     console.dir(this.login);
     const loggedUser: Observable<any> = this.requestService.login(this.login);
+    const these = this;
     loggedUser.subscribe({
       next(result){
         this.userLogged = result;
-        console.dir(this.userLogged);
+        const usr: UserInfo = {
+          name: this.userLogged.user.name,
+          email: this.userLogged.user.email,
+          token: this.userLogged.authorisation.token
+        };
+        console.log(usr);
+        these.store.dispatch(updateInfo({userInfo: usr}));
       },
       error(error){
         console.error(error);

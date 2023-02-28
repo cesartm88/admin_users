@@ -1,20 +1,19 @@
 import { createReducer, on} from '@ngrx/store';
-import {addJob, deleteJob, editJob} from '../actions/jobs.actions';
-import {addUser, deleteUser, editUser} from '../actions/users.actions';
+import {deleteInfo, updateInfo} from '../actions/userInfo.actions';
 
-export const initialState = [];
 
-export const userReducer = createReducer(
+export const initialState = {
+  name: '',
+  email: '',
+  token: ''
+};
+
+export const userInfoReducer = createReducer(
   initialState,
-  on(addUser, (state, { user }) => {
-    return [ ...state, user];
+  on(updateInfo, (state, { userInfo }) => {
+    return userInfo;
   }),
-  on(editUser, (state, { user }) => {
-    const filtered = state.filter((item) => item.sync !== user.sync);
-    return [ ...filtered, user ];
-  }),
-  on(deleteUser, (state, { user }) => {
-    const newState = state.filter((val) => val.sync !== user.sync );
-    return newState;
+  on(deleteInfo, (state, { userInfo }) => {
+    return initialState;
   })
 );

@@ -4,9 +4,14 @@ interface UserObj {
    password?: string;
 };
 
+interface TokenObj{
+  token: string;
+  type: string;
+}
+
 interface UserLoguedObj {
     user: UserObj;
-    token: string;
+    authorisation?: TokenObj;
 };
 
 export {
