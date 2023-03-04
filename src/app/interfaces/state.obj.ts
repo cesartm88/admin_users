@@ -4,6 +4,7 @@ interface State {
   [key]: {
     jobs: any;
     users: any;
+    userInfo: any;
   };
 }
 

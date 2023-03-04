@@ -12,7 +12,7 @@ interface TokenObj{
 interface UserLoguedObj {
     user: UserObj;
     authorisation?: TokenObj;
-};
+}
 
 export {
   UserLoguedObj,

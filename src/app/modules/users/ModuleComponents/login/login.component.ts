@@ -9,6 +9,7 @@ import {Store} from '@ngrx/store';
 import {State} from '../../../../interfaces/state.obj';
 import {updateInfo} from '../../../../actions/userInfo.actions';
 import {UserInfo} from '../../../../models/UserInfo';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   @ViewChild(FormComponent) form: FormComponent;
 
-  constructor(private store: Store<State>, private requestService: RequestService){}
+  constructor(private store: Store<State>, private router: Router, private requestService: RequestService){}
 
   ngOnInit(): void {
     this.json = login;
@@ -63,8 +64,8 @@ export class LoginComponent implements OnInit {
       },
       complete(){
         console.log('ready');
+        these.router.navigate(['/users/list']);
       }
     });
   }
-
 }

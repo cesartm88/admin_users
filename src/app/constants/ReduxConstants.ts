@@ -4,7 +4,10 @@ const selectJobs = (state: State) => state[key].jobs;
 
 const selectUsers = (state: State) => state[key].users;
 
+const selectUserInfo = (state: State) => state[key].userInfo;
+
 export {
   selectJobs,
-  selectUsers
+  selectUsers,
+  selectUserInfo
 };

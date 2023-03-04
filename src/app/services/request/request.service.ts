@@ -31,4 +31,12 @@ export class RequestService {
   login( form ): Observable<any>{
     return this.http.post(`${this.url.backend_api}api/login`, form, {headers : new HttpHeaders()});
   }
+
+  refresh( form ): Observable<any>{
+    return this.http.post(`${this.url.backend_api}api/refresh`, form, {headers : new HttpHeaders()});
+  }
+
+  logout( form ): Observable<any>{
+    return this.http.post(`${this.url.backend_api}api/logout`, form, {headers : new HttpHeaders()});
+  }
 }
