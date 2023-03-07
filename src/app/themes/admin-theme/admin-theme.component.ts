@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MenuObj} from '../../interfaces/menu.obj';
 import {MENU_CONFIG} from '../../constants/Menu';
+import {Store} from '@ngrx/store';
+import {State} from '../../interfaces/state.obj';
 
 @Component({
   selector: 'admin-theme',
@@ -19,7 +21,7 @@ export class AdminThemeComponent implements OnInit {
     {name: 'Tes2', value: 'Test2' }
   ];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private store: Store<State>, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {

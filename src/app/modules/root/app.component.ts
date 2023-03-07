@@ -27,8 +27,8 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store<State>, private router: Router, private requestService: RequestService, private idle: Idle, keepalive: Keepalive, cd: ChangeDetectorRef) {
     // set idle parameters
-    idle.setIdle(5); // how long can they be inactive before considered idle, in seconds
-    idle.setTimeout(5); // how long can they be idle before considered timed out, in seconds
+    idle.setIdle(300); // how long can they be inactive before considered idle, in seconds
+    idle.setTimeout(30); // how long can they be idle before considered timed out, in seconds
     idle.setInterrupts(DEFAULT_INTERRUPTSOURCES); // provide sources that will "interrupt" aka provide events indicating the user is active
 
     // do something when the user becomes idle
@@ -43,7 +43,10 @@ export class AppComponent implements OnInit {
       cd.detectChanges(); // how do i avoid this kludge?
     });
     // do something when the user has timed out
-    idle.onTimeout.subscribe(() => this.idleState = 'TIMED_OUT');
+    idle.onTimeout.subscribe(() =>{
+      this.idleState = 'TIMED_OUT';
+      this.logout();
+    });
     // do something as the timeout countdown does its thing
     idle.onTimeoutWarning.subscribe(seconds => this.countdown = seconds);
 
@@ -72,6 +75,11 @@ export class AppComponent implements OnInit {
     const these = this;
     userLogut.subscribe({
       next(result){
+        const usr: UserInfo = {
+          name: '',
+          email: '',
+          token: ''
+        };
         these.store.dispatch(deleteInfo({userInfo: null}));
       },
       error(error){
@@ -79,6 +87,7 @@ export class AppComponent implements OnInit {
       },
       complete(){
         console.log('updated!!');
+        these.router.navigate(['/users/login']);
       }
     });
   }
