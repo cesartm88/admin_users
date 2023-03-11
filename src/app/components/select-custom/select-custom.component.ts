@@ -25,6 +25,8 @@ export class SelectCustomComponent implements OnInit, AfterViewInit {
 
   focusItem = '';
 
+  @Input() isChangeTitle = true;
+
   iconCross = 'cross';
 
   iconArrow = 'arrow';
@@ -69,7 +71,6 @@ export class SelectCustomComponent implements OnInit, AfterViewInit {
   }
 
   SelectItem(item){
-
     this.Select.nativeElement.style.setProperty('--opacity', 0);
     this.showOptions = false;
     this.focusItem = item.name;

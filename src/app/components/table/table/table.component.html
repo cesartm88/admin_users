@@ -2,7 +2,7 @@
     <input-search (searchListener)="searchListener($event)"></input-search>
 
     <div style="margin-left: 10px;">
-        <app-select-custom [title]="pageText" (onSelect)="changeDataPerPage($event)" [Options]="optionsPerPage"></app-select-custom>
+        <app-select-custom [title]="pageText" (onSelect)="changeDataPerPage($event)" [Options]="optionsPerPage" [isChangeTitle]="true"></app-select-custom>
     </div>
 
 

@@ -5,10 +5,8 @@ import {MENU_CONFIG} from '../../constants/Menu';
 import {Store} from '@ngrx/store';
 import {State} from '../../interfaces/state.obj';
 import {UserInfo} from '../../models/UserInfo';
-import * as fromStore from '../../constants/ReduxConstants';
-import {Observable} from 'rxjs';
-import {deleteInfo} from '../../actions/userInfo.actions';
 import {RequestService} from '../../services/request/request.service';
+import {QueriesServiceService} from '../../services/queries-service.service';
 
 @Component({
   selector: 'admin-theme',
@@ -28,51 +26,26 @@ export class AdminThemeComponent implements OnInit {
     this.userSessionLogout,
   ];
 
-  constructor(private store: Store<State>, private route: ActivatedRoute, private router: Router, private requestService: RequestService) {
+  constructor(
+    private store: Store<State>,
+    private route: ActivatedRoute,
+    private router: Router,
+    private requestService: RequestService,
+    private queriesServiceService: QueriesServiceService
+  ){
+    this.userInfoLogged = this.queriesServiceService.getInfoUser();
+    this.title = this.userInfoLogged.name;
   }
 
   ngOnInit(): void {
     const keyElement = 'element';
     this.routeActive = this.route.snapshot.data[keyElement];
-    this.getInfoUser();
-    this.title = this.userInfoLogged.name;
-  }
-
-  getInfoUser(){
-    this.store.select(fromStore.selectUserInfo).subscribe(
-      userInfo => {
-        this.userInfoLogged = userInfo;
-      }
-    );
   }
 
   selectedValue($event){
     console.log($event.value);
     if ($event.value === this.userSessionLogout.value){
-      this.logout();
+      this.queriesServiceService.logout(this.userInfoLogged);
     }
   }
-
-  logout(){
-    const userLogut: Observable<any> = this.requestService.logout({token: this.userInfoLogged.token});
-    const these = this;
-    userLogut.subscribe({
-      next(result){
-        const usr: UserInfo = {
-          name: '',
-          email: '',
-          token: ''
-        };
-        these.store.dispatch(deleteInfo({userInfo: null}));
-      },
-      error(error){
-        console.error(error);
-      },
-      complete(){
-        console.log('updated!!');
-        these.router.navigate(['/users/login']);
-      }
-    });
-  }
-
 }

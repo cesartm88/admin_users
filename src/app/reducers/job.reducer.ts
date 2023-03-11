@@ -1,10 +1,13 @@
 import { createReducer, on} from '@ngrx/store';
-import {addJob, deleteJob, editJob} from '../actions/jobs.actions';
+import {addJob, deleteJob, editJob, AllJobs } from '../actions/jobs.actions';
 
 export const initialState = [];
 
 export const jobReducer = createReducer(
   initialState,
+  on(AllJobs, (state, { job }) => {
+    return [ job ];
+  }),
   on(addJob, (state, { job }) => {
     return [ ...state, job];
   }),

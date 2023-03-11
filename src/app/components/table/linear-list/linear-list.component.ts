@@ -59,7 +59,7 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes){
+    if (changes.items$){
       this.items$ = changes.items$.currentValue;
       this.runList();
     }
@@ -95,6 +95,7 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
 
   beforePage = () => {
     this.FocusPage = (this.FocusPage > 1) ? this.FocusPage - 1 : this.FocusPage;
+    console.log(this.FocusPage);
     this.List = of(this.listItems.paginate(this.FocusPage));
   }
 
@@ -173,5 +174,4 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
     });
     return data;
   }
-
 }

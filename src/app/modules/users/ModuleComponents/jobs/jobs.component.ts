@@ -14,6 +14,7 @@ import {buttonsActions} from '../../../../constants/buttons';
 import {ItemListComponent} from '../../../../class/GenericItems';
 import {TableComponent} from '../../../../components';
 import {StringServiceService} from '../../../../services/string-service.service';
+import {RequestService} from '../../../../services/request/request.service';
 
 @Component({
   selector: 'app-jobs',
@@ -38,12 +39,29 @@ export class JobsComponent implements OnInit {
     name: 'el trabajo'
   };
 
-  constructor(private store: Store<State>, private stringServiceService: StringServiceService) {
+  constructor(private store: Store<State>, private stringServiceService: StringServiceService, private request: RequestService) {
     this.updateTable();
   }
 
   ngOnInit(): void {
+    this.getJobsInfo();
+  }
 
+  getJobsInfo(){
+    const module = 'jobs';
+    const result = this.request.getModule(module);
+    result.subscribe({
+      next(results){
+          console.log(results);
+          this.store.dispatch();
+      },
+      error(results){
+
+      },
+      complete(){
+
+      }
+    });
   }
 
   async updateTable(){

@@ -79,11 +79,18 @@ img {
 }
 
 .title_table {
-    font-family: 'WorksSansRegular';
+    font-family: 'WorksSansLight';
     font-size: 18px;
 }
 
 .field_table {
     font-family: 'WorksSansMedium';
     font-size: 15px;
+}
+
+.emptyMsg {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }

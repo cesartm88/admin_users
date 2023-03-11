@@ -4,7 +4,7 @@
             <div class="adminTemplate__container--header--left">
                 <img src="../../../assets/images/logo.png" class="adminTemplate__container--header--left--logo">
                 <div class="select-component" *ngIf="showTopMenu">
-                    <app-select-custom (onSelect)="selectedValue($event)" [title]="title" [dIcon]="'user'" [Options]="OptionsUser"></app-select-custom>
+                    <app-select-custom (onSelect)="selectedValue($event)" [title]="title" [dIcon]="'user'" [Options]="OptionsUser" [isChangeTitle]="false"></app-select-custom>
                 </div>
             </div>
         </header>
