@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MenuObj} from '../../interfaces/menu.obj';
 import {MENU_CONFIG} from '../../constants/Menu';
@@ -13,7 +13,7 @@ import {QueriesServiceService} from '../../services/queries-service.service';
   templateUrl: './admin-theme.component.html',
   styleUrls: ['./admin-theme.component.scss']
 })
-export class AdminThemeComponent implements OnInit {
+export class AdminThemeComponent implements OnInit, OnChanges {
   menuOptions: Array<MenuObj> = MENU_CONFIG;
   @Input() routeActive = '';
   @Input() showSideMenu = true;
@@ -21,6 +21,7 @@ export class AdminThemeComponent implements OnInit {
   userInfoLogged: UserInfo;
   title = '';
   userSessionLogout = {name: 'Cerrar Sesión', value: 'Logout'};
+  loader = false;
 
   OptionsUser: Array<any> = [
     this.userSessionLogout,
@@ -40,6 +41,12 @@ export class AdminThemeComponent implements OnInit {
   ngOnInit(): void {
     const keyElement = 'element';
     this.routeActive = this.route.snapshot.data[keyElement];
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    const systemConfig = this.queriesServiceService.getSystemConfig();
+    this.loader = systemConfig.loader;
   }
 
   selectedValue($event){

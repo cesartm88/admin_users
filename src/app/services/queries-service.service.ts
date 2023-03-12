@@ -7,6 +7,8 @@ import {Observable} from 'rxjs';
 import {UserInfo} from '../models/UserInfo';
 import {deleteInfo, updateInfo} from '../actions/userInfo.actions';
 import * as fromStore from '../constants/ReduxConstants';
+import {SystemConfig} from '../models/SystemConfig';
+import {systemConfig} from '../constants/ReduxConstants';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +48,16 @@ export class QueriesServiceService {
       }
     );
     return userInfoLogged;
+  }
+
+  getSystemConfig(): SystemConfig {
+    let systemConfiguration: SystemConfig;
+    this.store.select(fromStore.systemConfig).subscribe(
+      config => {
+        systemConfiguration = config;
+      }
+    );
+    return systemConfiguration;
   }
 
   refreshLogin(){

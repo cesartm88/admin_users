@@ -5,6 +5,7 @@ interface State {
     jobs: any;
     users: any;
     userInfo: any;
+    systemConfig: any;
   };
 }
 

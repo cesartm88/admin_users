@@ -6,8 +6,11 @@ const selectUsers = (state: State) => state[key].users;
 
 const selectUserInfo = (state: State) => state[key].userInfo;
 
+const systemConfig = (state: State) => state[key].systemConfig;
+
 export {
   selectJobs,
   selectUsers,
-  selectUserInfo
+  selectUserInfo,
+  systemConfig
 };

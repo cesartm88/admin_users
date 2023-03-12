@@ -4,7 +4,7 @@ import {JobObj} from '../interfaces/job.obj';
 
 export const AllJobs = createAction(
   '[saveAllJobs] create',
-  props<{ job: JobObj }>()
+  props<{ job: any[] }>()
 );
 
 export const addJob = createAction(

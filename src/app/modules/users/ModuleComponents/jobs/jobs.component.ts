@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {jobs_list} from '../../../../constants/titles_tables';
 import {Jobs} from '../../../../models/Jobs';
 import {jobs} from '../../../../constants/form';
 import {TableObj} from '../../../../interfaces/table.obj';
 import {Store} from '@ngrx/store';
 import {Observable, of} from 'rxjs';
-import {addJob, deleteJob, editJob} from '../../../../actions/jobs.actions';
+import {addJob, AllJobs, deleteJob, editJob} from '../../../../actions/jobs.actions';
 import {JobObj} from '../../../../interfaces/job.obj';
 import {CONSTATES} from '../../../../constants/Constants';
 import {State} from '../../../../interfaces/state.obj';
@@ -40,26 +40,28 @@ export class JobsComponent implements OnInit {
   };
 
   constructor(private store: Store<State>, private stringServiceService: StringServiceService, private request: RequestService) {
-    this.updateTable();
+
   }
 
   ngOnInit(): void {
     this.getJobsInfo();
+    this.updateTable();
   }
 
   getJobsInfo(){
     const module = 'jobs';
     const result = this.request.getModule(module);
+    const these = this;
     result.subscribe({
       next(results){
           console.log(results);
-          this.store.dispatch();
+          these.store.dispatch(AllJobs({job: results.data}));
       },
-      error(results){
-
+      error(error){
+        console.error(error);
       },
       complete(){
-
+        console.log('ready!');
       }
     });
   }
@@ -102,4 +104,30 @@ export class JobsComponent implements OnInit {
     }
   }
 
+  guardar(){
+    if ( this.jobs$.length > 0){
+      console.log("pruebas");
+      this.store.select(fromStore.selectJobs).subscribe(
+        allJobs => {
+          console.dir(allJobs);
+          const json = {
+            module: 'jobs',
+            data: allJobs
+          };
+          const result = this.request.setModule(json);
+          result.subscribe({
+            next(res){
+              console.log(res);
+            },
+            error(error){
+              console.error(error);
+            },
+            complete(){
+              console.log('ready!');
+            }
+          });
+        }
+      );
+    }
+  }
 }

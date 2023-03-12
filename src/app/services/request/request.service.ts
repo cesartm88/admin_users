@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import {QueriesServiceService} from '../queries-service.service';
 import {UserInfo} from '../../models/UserInfo';
 import * as fromStore from '../../constants/ReduxConstants';
 import {Store} from '@ngrx/store';
@@ -53,6 +52,19 @@ export class RequestService {
         headers : new HttpHeaders({
         Authorization: `Bearer ${infoUser.token}`,
       })}
+    );
+  }
+
+  setModule(json): Observable<any>{
+    const infoUser = this.getInfoUser();
+    console.dir(json);
+    return this.http.post(
+      `${this.url.backend_api}api/create`,
+      json,
+      {
+        headers : new HttpHeaders({
+          Authorization: `Bearer ${infoUser.token}`,
+        })}
     );
   }
 
