@@ -1,0 +1,14 @@
+<admin-theme>
+  <div class="header__container" header>
+    <app-header [config]="ID"></app-header>
+  </div>
+  <div body class="container_list">
+    <app-table  [showToFields]="titles" [items$]="jobs$" [formConfig]="form" (formResult)="getFormResult($event)" [config]="ID" #tableJobs></app-table>
+
+    <div class="float-button-container" >
+      <button mat-fab color="primary" aria-label="guardar" (click)="guardar()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </div>
+</admin-theme>

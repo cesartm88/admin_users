@@ -39,6 +39,7 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    console.dir(this.showToFields);
     this.runList();
   }
 

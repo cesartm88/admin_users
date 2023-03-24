@@ -12,6 +12,10 @@ import { State } from '../interfaces/state.obj';
 import {userReducer} from './user.reducer';
 import {userInfoReducer} from './userInfo.reducer';
 import {systemConfigReducer} from './systemconfig.reducer';
+import {studiesReducer} from './studies.reducer';
+import {personalInfoReducer} from './personalInfo.reducer';
+import {coursesReducer} from './courses.reducer';
+import {LanguajesReducer} from './languajes.reducer';
 
 const key = 's1jdD3LHsZ=';
 
@@ -21,7 +25,11 @@ export const reducers: ActionReducerMap< State > = {
      jobs: jobReducer,
      users: userReducer,
      userInfo: userInfoReducer,
-     systemConfig: systemConfigReducer
+     systemConfig: systemConfigReducer,
+     studies: studiesReducer,
+     personalInfo: personalInfoReducer,
+     courses: coursesReducer,
+     languajes: LanguajesReducer
   })
 };
 
