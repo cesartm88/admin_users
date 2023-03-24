@@ -15,6 +15,7 @@ import {CONSTATES} from '../../../../constants/Constants';
 import {PersonalInfoObj} from '../../../../interfaces/personalInfo.obj';
 import {personaInfo_list} from '../../../../constants/titles_tables';
 import {addPersonalInfo, AllPersonalInfo, deletePersonalInfo, editPersonalInfo} from '../../../../actions/personalInfo.actions';
+import {personalInfoFieldsOrder} from '../../../../constants/orders_tables';
 
 @Component({
   selector: 'app-personal-info',
@@ -28,6 +29,8 @@ export class PersonalInfoComponent implements OnInit {
   jobs$: Observable<PersonalInfo> [] = [];
 
   itemsList: ItemListComponent<PersonalInfo> = new ItemListComponent<PersonalInfo>();
+
+  order: string[] = personalInfoFieldsOrder;
 
   titles = personaInfo_list;
 

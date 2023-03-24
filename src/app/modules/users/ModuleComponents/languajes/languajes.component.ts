@@ -15,6 +15,7 @@ import {languajes_list } from '../../../../constants/titles_tables';
 import {Languaje} from '../../../../models/Languajes';
 import {LanguajeObj} from '../../../../interfaces/languaje.obj';
 import {addLanguajes, AllLanguajes, deleteLanguajes, editLanguajes} from '../../../../actions/languajes.actions';
+import {languajesOrder} from '../../../../constants/orders_tables';
 
 @Component({
   selector: 'app-languajes',
@@ -30,6 +31,8 @@ export class LanguajesComponent implements OnInit {
   itemsList: ItemListComponent<Languaje> = new ItemListComponent<Languaje>();
 
   titles = languajes_list;
+
+  order: string[] = languajesOrder;
 
   form = languajes;
 

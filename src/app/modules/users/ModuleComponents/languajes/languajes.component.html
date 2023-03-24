@@ -3,7 +3,7 @@
     <app-header [config]="ID"></app-header>
   </div>
   <div body class="container_list">
-    <app-table  [showToFields]="titles" [items$]="jobs$" [formConfig]="form" (formResult)="getFormResult($event)" [config]="ID" #tableLanguajes></app-table>
+    <app-table  [showToFields]="titles" [orderFieldsConfig]="order" [items$]="jobs$" [formConfig]="form" (formResult)="getFormResult($event)" [config]="ID" #tableLanguajes></app-table>
 
     <div class="float-button-container" >
       <button mat-fab color="primary" aria-label="guardar" (click)="guardar()">

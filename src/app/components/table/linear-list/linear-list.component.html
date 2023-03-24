@@ -1,29 +1,31 @@
 <table *ngIf="(List | async).length > 0">
     <tr>
-        <th *ngFor="let title of showToFields | keys ">
+        <th *ngFor="let title of orderFieldsConfig">
             <ng-container *ngIf="showToFields[title]?.show == 1">
                 <a class="title_table" (click)="orderElement(title)">{{showToFields[title]["alias"]}}</a>
             </ng-container>
         </th>
     </tr>
     <tr *ngFor="let item of List | async">
-        <td *ngFor="let val of item | keys | search: item:search">
-            <ng-container *ngIf="showToFields[val]?.show == 1">
-                <ng-container *ngIf="(item[val]|isurl) == false">
+       <ng-container *ngFor="let val of orderFieldsConfig">
+         <td *ngIf="item[val] | search: item:search" >
+           <ng-container *ngIf="showToFields[val]?.show == 1">
+             <ng-container *ngIf="(item[val]|isurl) == false">
                     <span class="field_table">
                         {{item[val]}}
                     </span>
-                </ng-container>
-                <ng-container *ngIf="(item[val]|isurl) == true">
-                    <img src="{{item[val]}}" />
-                </ng-container>
-            </ng-container>
-            <ng-container *ngIf="showToFields[val]?.button == 1">
-              <div class="btn btn_add pointer" [ngClass]="showToFields[val]?.color == 'default'?'orange':showToFields[val]?.color" >
-                <span class="btn_add--text" (click)="openDialog(showToFields[val], item)" >{{showToFields[val]?.alias}}</span>
-              </div>
-            </ng-container>
-        </td>
+             </ng-container>
+             <ng-container *ngIf="(item[val]|isurl) == true">
+               <img src="{{item[val]}}" />
+             </ng-container>
+           </ng-container>
+           <ng-container *ngIf="showToFields[val]?.button == 1">
+             <div class="btn btn_add pointer" [ngClass]="showToFields[val]?.color == 'default'?'orange':showToFields[val]?.color" >
+               <span class="btn_add--text" (click)="openDialog(showToFields[val], item)" >{{showToFields[val]?.alias}}</span>
+             </div>
+           </ng-container>
+         </td>
+       </ng-container>
     </tr>
 </table>
 <div class="paginate" *ngIf="(List | async).length > 0">

@@ -33,14 +33,17 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
   @Input() config: TableObj;
   @Output() getForm: EventEmitter<ActionObj> = new EventEmitter();
   list = [];
+  @Input() orderFieldsConfig: string[] = [];
 
   constructor(private dialog: DialogService) {
 
   }
 
   ngOnInit(): void {
-    console.dir(this.showToFields);
+    this.orderFieldsConfig = (this.orderFieldsConfig.length > 0) ? this.orderFieldsConfig : Object.keys(this.showToFields);
+    console.dir(this.orderFieldsConfig);
     this.runList();
+    console.dir(this.List);
   }
 
   runList(){

@@ -54,6 +54,11 @@ export class TableComponent<T>  implements OnInit, OnChanges{
    */
   @Input() showToFields;
 
+  /**
+   * @param orderFieldsConfig Object containing field order settings
+   */
+  @Input() orderFieldsConfig: string[] = [];
+
   constructor(private dialogService: DialogService) {
   }
 
