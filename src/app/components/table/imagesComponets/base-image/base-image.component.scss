@@ -5,7 +5,11 @@
   overflow: hidden;
   background: purple;
 }
-
+.profile-photo img {
+  width: 100px;
+  display: block;
+  image-rendering: auto;
+}
 .profile-photo span {
   width: 100%;
   height: 100%;

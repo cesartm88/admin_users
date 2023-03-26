@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BaseImageComponent} from '../base-image/base-image.component';
 
 @Component({
@@ -8,12 +8,15 @@ import {BaseImageComponent} from '../base-image/base-image.component';
 })
 export class ImageProfileComponent extends BaseImageComponent implements OnInit {
 
+  @Input() height = 100;
+  @Input() width = 100;
+
+
   constructor() {
     super();
   }
 
   ngOnInit(): void {
-    this.url = 'https://assets.reedpopcdn.com/bloodborne-preview-1402452338617.jpg/BROK/thumbnail/1200x1200/quality/100/bloodborne-preview-1402452338617.jpg';
   }
 
 }

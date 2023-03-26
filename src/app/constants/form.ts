@@ -7,10 +7,12 @@ const formUser = {
   picture: {
     label: 'Imagen',
     value: '',
-    type: 'file',
+    type: 'text',
     validation: {
-      required: true
-    },
+      required: true,
+      minLength: 5,
+      maxLength: 100000
+    }
   },
   name: {
     label: 'Name',
@@ -68,6 +70,16 @@ const personalInfo = {
     label: 'id',
     value: '',
     type: 'label',
+  },
+  profile_image: {
+    label: 'Imagen',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 5,
+      maxLength: 100000
+    }
   },
   name: {
     label: 'Nombre',

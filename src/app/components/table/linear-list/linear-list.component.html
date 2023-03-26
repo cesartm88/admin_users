@@ -15,9 +15,9 @@
                         {{item[val]}}
                     </span>
              </ng-container>
-             <ng-container *ngIf="(item[val]|isurl) == true">
-               <img src="{{item[val]}}" />
-             </ng-container>
+             <span class="field_table" *ngIf="(item[val]|isurl)">
+               <app-image-profile [height]="120" [width]="120" [url]="item[val]"></app-image-profile>
+             </span>
            </ng-container>
            <ng-container *ngIf="showToFields[val]?.button == 1">
              <div class="btn btn_add pointer" [ngClass]="showToFields[val]?.color == 'default'?'orange':showToFields[val]?.color" >

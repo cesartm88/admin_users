@@ -48,6 +48,10 @@ const personaInfo_list = {
     show: 0,
     alias: 'Identificador'
   },
+  profile_image:{
+    show: 1,
+    alias: 'Imagen de perfil'
+  },
   name: {
     show: 1,
     alias: 'Nombre'

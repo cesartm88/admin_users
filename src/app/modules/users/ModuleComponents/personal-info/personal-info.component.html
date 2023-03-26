@@ -4,9 +4,9 @@
   </div>
   <div body class="container_list">
     <app-table  [showToFields]="titles" [orderFieldsConfig]="order" [items$]="jobs$" [formConfig]="form" (formResult)="getFormResult($event)" [config]="ID" #tableJobs></app-table>
-
-    <app-image-profile></app-image-profile>
-    <app-base-image></app-base-image>
+    <!-- example implements image components
+    <app-image-profile [height]="150" [width]="150"></app-image-profile>
+    <app-base-image></app-base-image>-->
 
     <div class="float-button-container" >
       <button mat-fab color="primary" aria-label="guardar" (click)="guardar()">
