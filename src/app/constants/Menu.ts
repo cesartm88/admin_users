@@ -30,5 +30,10 @@ export const MENU_CONFIG: Array<MenuObj> = [
     name: 'Cursos y Diplomados',
     path: '/users/courses',
     class: 'courses'
+  },
+  {
+    name: 'Habilidades',
+    path: '/users/skills',
+    class: 'skills'
   }
 ];

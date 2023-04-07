@@ -12,6 +12,7 @@ interface State {
     personalInfo: any;
     courses: any;
     languajes: any;
+    skills: any;
   };
 }
 

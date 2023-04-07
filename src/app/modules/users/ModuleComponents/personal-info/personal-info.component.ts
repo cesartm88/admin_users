@@ -57,7 +57,7 @@ export class PersonalInfoComponent implements OnInit {
     const these = this;
     result.subscribe({
       next(results){
-        console.log(results);
+        console.dir(results);
         these.store.dispatch(AllPersonalInfo({personalInfo: results.data}));
       },
       error(error){
@@ -85,8 +85,10 @@ export class PersonalInfoComponent implements OnInit {
     if ( $event.action === CONSTATES.CONSTANTE_NUEVO){
       const pfC: PersonalInfo = {
         id: (FRM.form.id.value) ? FRM.form.id.value : this.stringServiceService.randomString(10),
+        profile_image: FRM.form.profile_image.value,
         name: FRM.form.name.value,
         apellidos: FRM.form.apellidos.value,
+        description: FRM.form.description.value,
         frase: FRM.form.frase.value,
         correo: FRM.form.correo.value,
         telefono: FRM.form.telefono.value,
@@ -102,8 +104,10 @@ export class PersonalInfoComponent implements OnInit {
     }else if ($event.action === CONSTATES.CONSTANTE_EDIT){
       const pfC: PersonalInfoObj = {
         id: (FRM.form.id.value) ? FRM.form.id.value : this.stringServiceService.randomString(10),
+        profile_image: FRM.form.profile_image.value,
         name: FRM.form.name.value,
         apellidos: FRM.form.apellidos.value,
+        description: FRM.form.description.value,
         frase: FRM.form.frase.value,
         correo: FRM.form.correo.value,
         telefono: FRM.form.telefono.value,

@@ -101,6 +101,16 @@ const personalInfo = {
       maxLength: 50
     }
   },
+  description: {
+    label: 'Descripción',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
   frase: {
     label: 'Frase',
     value: '',
@@ -191,6 +201,35 @@ const languajes = {
     }
   }
 };
+
+const skills = {
+  id: {
+    label: 'id',
+    value: '',
+    type: 'label',
+  },
+  skill: {
+    label: 'Habilidad',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  porcentaje: {
+    label: 'Porcentaje',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  }
+};
+
 
 const studies = {
   id: {
@@ -307,6 +346,16 @@ const jobs = {
       maxLength: 10
     }
   },
+  position: {
+    label: 'Puesto',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 5,
+      maxLength: 60
+    }
+  },
   start_date: {
     label: 'Fecha Inicio',
     value: null,
@@ -355,6 +404,7 @@ export {
   studies,
   personalInfo,
   languajes,
-  courses
+  courses,
+  skills
 };
 

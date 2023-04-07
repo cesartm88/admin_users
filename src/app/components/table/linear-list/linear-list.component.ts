@@ -60,6 +60,17 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
         }));
       }
     }
+    this.List.subscribe({
+      next(pruebas){
+          console.dir(pruebas);
+      },
+      error(err){
+        console.log(err);
+      },
+      complete(){
+        console.log("ready!");
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {

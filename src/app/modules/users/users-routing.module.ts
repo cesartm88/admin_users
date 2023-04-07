@@ -8,6 +8,7 @@ import {StudiesComponent} from './ModuleComponents/studies/studies.component';
 import {PersonalInfoComponent} from './ModuleComponents/personal-info/personal-info.component';
 import {LanguajesComponent} from './ModuleComponents/languajes/languajes.component';
 import {CoursesComponent} from './ModuleComponents/courses/courses.component';
+import {SkillsComponent} from './ModuleComponents/skills/skills.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,14 @@ const routes: Routes = [
     component: StudiesComponent,
     data: {
       element: 'studies'
+    },
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'skills',
+    component: SkillsComponent,
+    data: {
+      element: 'skills'
     },
     canActivate: [AuthGuardService]
   },

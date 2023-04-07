@@ -8,6 +8,8 @@ const selectpersonalInfo = (state: State) => state[key].personalInfo;
 
 const selectLanguajes = (state: State) => state[key].languajes;
 
+const selectSkills = (state: State) => state[key].skills;
+
 const selectCourses = (state: State) => state[key].courses;
 
 const selectUsers = (state: State) => state[key].users;
@@ -24,5 +26,6 @@ export {
   selectStudies,
   selectpersonalInfo,
   selectLanguajes,
-  selectCourses
+  selectCourses,
+  selectSkills
 };

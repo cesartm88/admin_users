@@ -16,6 +16,7 @@ import {studiesReducer} from './studies.reducer';
 import {personalInfoReducer} from './personalInfo.reducer';
 import {coursesReducer} from './courses.reducer';
 import {LanguajesReducer} from './languajes.reducer';
+import {skillsReducer} from './skills.reducer';
 
 const key = 's1jdD3LHsZ=';
 
@@ -29,7 +30,8 @@ export const reducers: ActionReducerMap< State > = {
      studies: studiesReducer,
      personalInfo: personalInfoReducer,
      courses: coursesReducer,
-     languajes: LanguajesReducer
+     languajes: LanguajesReducer,
+     skills: skillsReducer
   })
 };
 

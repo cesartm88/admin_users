@@ -60,6 +60,10 @@ const personaInfo_list = {
     show: 1,
     alias: 'Apellidos'
   },
+  description:{
+    show: 1,
+    alias: 'Descripción'
+  },
   frase: {
     show: 1,
     alias: 'Frase'
@@ -121,6 +125,31 @@ const languajes_list = {
   }
 };
 
+const skills_list = {
+  id: {
+    show: 0,
+    alias: 'Identificador'
+  },
+  skill: {
+    show: 1,
+    alias: 'Habilidad'
+  },
+  porcentaje: {
+    show: 1,
+    alias: 'Porcentaje'
+  },
+  button_edit: {
+    button: 1,
+    alias: 'Editar',
+    color: 'default'
+  },
+  button_delete: {
+    button: 1,
+    alias: 'Eliminar',
+    color: 'red'
+  }
+};
+
 const courses_list = {
   id: {
     show: 0,
@@ -162,6 +191,10 @@ const jobs_list = {
   company: {
     show: 1,
     alias: 'Nombre compania'
+  },
+  position:{
+    show: 1,
+    alias: 'Puesto'
   },
   start_date: {
     show: 1,
@@ -226,5 +259,6 @@ export {
   studies_list,
   personaInfo_list,
   languajes_list,
-  courses_list
+  courses_list,
+  skills_list
 }

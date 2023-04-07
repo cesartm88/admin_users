@@ -79,10 +79,13 @@ export class JobsComponent implements OnInit {
 
   getFormResult($event: any){
     const FRM = $event.data.data;
+    console.dir(FRM);
+
     if ( $event.action === CONSTATES.CONSTANTE_NUEVO){
       const jobC: JobObj = {
         id: (FRM.form.id.value) ? FRM.form.id.value : this.stringServiceService.randomString(10),
         company: FRM.form.company.value,
+        position: FRM.form.position.value,
         start_date: FRM.form.start_date.value,
         finish_date: FRM.form.finish_date.value
       };
@@ -95,6 +98,7 @@ export class JobsComponent implements OnInit {
       const jobC: JobObj = {
         id: (FRM.form.id.value) ? FRM.form.id.value : this.stringServiceService.randomString(10),
         company: FRM.form.company.value,
+        position: FRM.form.position.value,
         start_date: FRM.form.start_date.value,
         finish_date: FRM.form.finish_date.value
       };
@@ -105,7 +109,7 @@ export class JobsComponent implements OnInit {
   }
 
   guardar(){
-    if ( this.jobs$.length > 0){
+    if ( this.jobs$.length >= 0){
       console.log("pruebas");
       this.store.select(fromStore.selectJobs).subscribe(
         allJobs => {

@@ -1,0 +1,27 @@
+@import '../../../../../palette.scss';
+
+:host {
+  display: flex;
+  flex:1;
+}
+.header__container{
+  display:flex;
+  flex:2;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+//table container
+.container_list{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex:1;
+}
+.float-button-container{
+  position:fixed;
+  right:30px;
+  bottom:30px;
+  margin:0px;
+  padding:0px;
+}
