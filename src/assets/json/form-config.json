@@ -1,0 +1,78 @@
+{
+  "fields": [
+    {
+      "type": "text",
+      "name": "name",
+      "label": "Name",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 50
+    },
+    {
+      "type": "number",
+      "name": "age",
+      "label": "Age",
+      "required": true,
+      "min": 18,
+      "max": 100
+    },
+    {
+      "type": "select",
+      "name": "gender",
+      "label": "Gender",
+      "required": true,
+      "options": [
+        {
+          "label": "Male",
+          "value": "male"
+        },
+        {
+          "label": "Female",
+          "value": "female"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "address",
+      "label": "Address",
+      "required": false
+    },
+    {
+      "type": "select",
+      "name": "country",
+      "label": "Country",
+      "required": true,
+      "options": [
+        { "label": "USA", "value": "usa" },
+        { "label": "Canada", "value": "canada" },
+        { "label": "Mexico", "value": "mexico" }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "state",
+      "label": "State",
+      "required": true,
+      "options": [
+        { "label": "Edo Mex", "value": "Edo Mex" },
+        { "label": "CDMX", "value": "CDMX" }
+      ],
+      "customValidators": [
+        {
+          "fn": "show-hide",
+          "name": "city",
+          "option": "CDMX",
+          "keyError": "customError",
+          "messageError": "custom Message error"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "city",
+      "label": "City",
+      "required": true
+    }
+  ]
+}

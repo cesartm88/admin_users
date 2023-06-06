@@ -1,0 +1,51 @@
+<div *ngIf="formGroup | async as frm" >
+  <form [formGroup]="frm.frm" >
+    <div class="form-container">
+      <div *ngFor="let field of frm.fields | keyvalue; let i = index"  class="form-field">
+        <div [ngSwitch]="getControlType(frm.fields[i].type)">
+          <ng-container *ngSwitchCase="'input'">
+            <mat-form-field  class="example-full-width" *ngIf="showHide(frm.fields[i].name)" >
+              <mat-label>{{frm.fields[i].label}}</mat-label>
+              <input matInput placeholder="{{frm.fields[i].label}}" value="" [formControlName]="frm.fields[i].name">
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container  *ngSwitchCase="'email'">
+            <mat-form-field  class="example-full-width" *ngIf="showHide(frm.fields[i].name)">
+              <mat-label>{{frm.fields[i].label}}</mat-label>
+              <input matInput placeholder="{{frm.fields[i].label}}" type="email" value="" [formControlName]="frm.fields[i].name">
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container  *ngSwitchCase="'number'">
+            <mat-form-field *ngIf="showHide(frm.fields[i].name)"  class="example-full-width">
+              <mat-label>{{frm.fields[i].label}}</mat-label>
+              <input matInput placeholder="{{frm.fields[i].label}}" type="number" value="" [formControlName]="frm.fields[i].name">
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container  *ngSwitchCase="'select'">
+            <mat-form-field *ngIf="showHide(frm.fields[i].name)" required class="example-full-width">
+              <mat-label>{{frm.fields[i].label}}</mat-label>
+              <mat-select matNativeControl [formControlName]="frm.fields[i].name">
+                <mat-option *ngFor="let option of frm.fields[i].options" [value]="option.value">
+                  {{ option.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <div *ngIf="frm.frm.controls[frm.fields[i].name].invalid && frm.frm.controls[frm.fields[i].name].touched" class="error-message">
+            <div *ngIf="frm.frm.controls[frm.fields[i].name].errors">
+              <div *ngIf="frm.frm.controls[frm.fields[i].name]?.errors?.['required']" class="error">Este campo es requerido.</div>
+              <div *ngIf="frm.frm.controls[frm.fields[i].name]?.errors?.['email']" class="error">Ingresa una dirección de correo electrónico válida.</div>
+              <div *ngIf="frm.frm.controls[frm.fields[i].name]?.errors?.['minlength']" class="error">El valor debe tener al menos {{ frm.frm.controls[frm.fields[i].name].errors?.['minlength']?.requiredLength }} caracteres.</div>
+              <div *ngIf="frm.frm.controls[frm.fields[i].name]?.errors?.['maxlength']" class="error">El valor debe tener como máximo {{ frm.frm.controls[frm.fields[i].name].errors?.['minlength']?.requiredLength }} caracteres.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="pruebas" (click)="submitForm(frm)" mat-raised-button color="primary">guardar</button>
+  </form>
+</div>

@@ -8,7 +8,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {MatButtonModule} from '@angular/material/button';
 
 import {
   NgxMatDatetimePickerModule,
@@ -18,12 +18,14 @@ import {
 
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 import { DateComponent } from './components/date/date.component';
+import { FormGeneratorComponent } from './form-generator/form-generator.component';
 
 
 @NgModule({
   declarations: [
     FormComponent,
-    DateComponent
+    DateComponent,
+    FormGeneratorComponent
   ],
   imports: [
     CommonModule,
@@ -37,10 +39,12 @@ import { DateComponent } from './components/date/date.component';
     NgxMatTimepickerModule,
     NgxMatMomentModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatButtonModule
   ],
   exports: [
-    FormComponent
+    FormComponent,
+    FormGeneratorComponent
   ]
 })
 export class FormsOwnModule { }
