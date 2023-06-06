@@ -10,7 +10,9 @@ import {
   SelectCustomComponent,
   DialogCustomComponent,
   DialogDeleteComponent,
-  DialogCreateComponent
+  DialogCreateComponent,
+  BaseImageComponent,
+  ImageProfileComponent
 } from '../../components/index';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DialogModule } from '../dialog/dialog.module';
@@ -36,6 +38,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 /*directives*/
 import { AdDirective } from '../../directives/add/add.directive';
@@ -62,6 +65,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     NotfoundComponent,
     DialogDeleteComponent,
     DialogCreateComponent,
+    BaseImageComponent,
+    ImageProfileComponent,
 
     /*directive*/
     AdDirective,
@@ -89,7 +94,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     NgxMatMomentModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressBarModule
   ],
   exports: [
     /*modules*/
@@ -110,6 +116,7 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     NgxMatTimepickerModule,
     NgxMatMomentModule,
     MatRadioModule,
+    MatProgressBarModule,
 
     /*components*/
     TableComponent,
@@ -123,6 +130,8 @@ import { IsurlPipe } from '../../pipes/isUrl/isurl.pipe';
     NotfoundComponent,
     DialogDeleteComponent,
     DialogCreateComponent,
+    BaseImageComponent,
+    ImageProfileComponent,
 
     /*directives*/
     AdDirective,

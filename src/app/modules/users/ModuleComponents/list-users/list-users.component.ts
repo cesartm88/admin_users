@@ -86,4 +86,8 @@ export class ListUsersComponent implements OnInit {
       }
     );
   }
+
+  guardar(){
+    console.log('pruebas!!');
+  }
 }

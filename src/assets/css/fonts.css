@@ -9,6 +9,12 @@
 }
 
 @font-face {
+  font-family: 'WorksSansLight';
+  src: URL('/assets/fonts/WorkSans-Light.ttf') format('truetype');
+}
+
+
+@font-face {
     font-family: 'WorksSansRegular';
     src: URL('/assets/fonts/WorkSans-Regular.ttf') format('truetype');
 }

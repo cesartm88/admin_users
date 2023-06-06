@@ -9,11 +9,16 @@ import { SharedModule } from '../shared/shared.module';
 import { JobsComponent } from './ModuleComponents/jobs/jobs.component';
 import { HeaderComponent } from './components/index';
 import { LoginComponent } from './ModuleComponents/login/login.component';
+import { StudiesComponent } from './ModuleComponents/studies/studies.component';
+import { PersonalInfoComponent } from './ModuleComponents/personal-info/personal-info.component';
+import { LanguajesComponent } from './ModuleComponents/languajes/languajes.component';
+import { CoursesComponent } from './ModuleComponents/courses/courses.component';
+import { SkillsComponent } from './ModuleComponents/skills/skills.component';
 
 
 
 @NgModule({
-  declarations: [ ListUsersComponent, AdminThemeComponent, JobsComponent, HeaderComponent, LoginComponent],
+  declarations: [ ListUsersComponent, AdminThemeComponent, JobsComponent, HeaderComponent, LoginComponent, StudiesComponent, PersonalInfoComponent, LanguajesComponent, CoursesComponent, SkillsComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

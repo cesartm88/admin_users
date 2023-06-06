@@ -2,9 +2,12 @@
   <span *ngFor="let icon of customIcons | keys ">
     <mat-icon *ngIf="dIcon !== '' && icon === dIcon" class="icon-display" [svgIcon]="icon"></mat-icon>
   </span>
-  <mat-icon *ngIf="focusItem !== ''" class="icon-cross" [svgIcon]="iconCross" (click)="unFocus()" ></mat-icon>
-    <span class="btn_user--username">
+  <mat-icon *ngIf="focusItem !== '' && isChangeTitle"  class="icon-cross" [svgIcon]="iconCross" (click)="unFocus()" ></mat-icon>
+  <span class="btn_user--username" *ngIf="isChangeTitle">
     {{(focusItem)?focusItem:title}}
+  </span>
+  <span class="btn_user--username" *ngIf="!isChangeTitle">
+    {{title}}
   </span>
   <mat-icon class="btn_user--icon_row" [svgIcon]="iconArrow" ></mat-icon>
 </div>

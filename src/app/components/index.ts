@@ -8,6 +8,8 @@ import { SelectCustomComponent } from './select-custom/select-custom.component';
 import { DialogCustomComponent } from './table/dialog-custom/dialog-custom.component';
 import { DialogDeleteComponent } from './table/dialog-delete/dialog-delete.component';
 import { DialogCreateComponent } from './table/dialog-create/dialog-create.component';
+import { BaseImageComponent } from './table/imagesComponets/base-image/base-image.component';
+import { ImageProfileComponent } from './table/imagesComponets/image-profile/image-profile.component';
 
 
 export {
@@ -20,5 +22,7 @@ export {
     SelectCustomComponent,
     DialogCustomComponent,
     DialogDeleteComponent,
-    DialogCreateComponent
+    DialogCreateComponent,
+    BaseImageComponent,
+    ImageProfileComponent
 };

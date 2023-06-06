@@ -7,10 +7,12 @@ const formUser = {
   picture: {
     label: 'Imagen',
     value: '',
-    type: 'file',
+    type: 'text',
     validation: {
-      required: true
-    },
+      required: true,
+      minLength: 5,
+      maxLength: 100000
+    }
   },
   name: {
     label: 'Name',
@@ -63,6 +65,271 @@ const formUser = {
   },
 };
 
+const personalInfo = {
+  id: {
+    label: 'id',
+    value: '',
+    type: 'label',
+  },
+  profile_image: {
+    label: 'Imagen',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 5,
+      maxLength: 100000
+    }
+  },
+  name: {
+    label: 'Nombre',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  apellidos: {
+    label: 'Apellidos',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  description: {
+    label: 'Descripción',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  frase: {
+    label: 'Frase',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  telefono: {
+    label: 'Telefono',
+    value: '',
+    type: 'number',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  correo: {
+    label: 'Correo Electrónico',
+    value: '',
+    type: 'email',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  competencias: {
+    label: 'Competencias',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  lenguajes_programacion: {
+    label: 'Lenguajes de programación',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  frameworks: {
+    label: 'Frameworks',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+};
+
+
+const languajes = {
+  id: {
+    label: 'id',
+    value: '',
+    type: 'label',
+  },
+  languaje: {
+    label: 'Idioma',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  level: {
+    label: 'Nivel',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  }
+};
+
+const skills = {
+  id: {
+    label: 'id',
+    value: '',
+    type: 'label',
+  },
+  skill: {
+    label: 'Habilidad',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  porcentaje: {
+    label: 'Porcentaje',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  }
+};
+
+
+const studies = {
+  id: {
+    label: 'id',
+    value: '',
+    type: 'label',
+  },
+  school: {
+    label: 'Nombre de la institución',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  level: {
+    label: 'Grado Académico',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  program_name: {
+    label: 'Nombre del programa',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  start_date: {
+    label: 'Fecha Inicio',
+    value: null,
+    type: 'date',
+    validation: {
+      required: true,
+    }
+  },
+  finish_date: {
+    label: 'Fecha Fin',
+    value: null,
+    type: 'date',
+    validation: {
+      required: true,
+    }
+  },
+};
+
+const courses = {
+  id: {
+    label: 'id',
+    value: '',
+    type: 'label',
+  },
+  school: {
+    label: 'Nombre de la institución',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  program_name: {
+    label: 'Nombre del programa',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 50
+    }
+  },
+  start_date: {
+    label: 'Fecha Inicio',
+    value: null,
+    type: 'date',
+    validation: {
+      required: true,
+    }
+  },
+  finish_date: {
+    label: 'Fecha Fin',
+    value: null,
+    type: 'date',
+    validation: {
+      required: true,
+    }
+  },
+};
+
+
 const jobs = {
   id: {
     label: 'id',
@@ -77,6 +344,16 @@ const jobs = {
       required: true,
       minLength: 5,
       maxLength: 10
+    }
+  },
+  position: {
+    label: 'Puesto',
+    value: '',
+    type: 'text',
+    validation: {
+      required: true,
+      minLength: 5,
+      maxLength: 60
     }
   },
   start_date: {
@@ -123,6 +400,11 @@ const login = {
 export {
   formUser,
   jobs,
-  login
+  login,
+  studies,
+  personalInfo,
+  languajes,
+  courses,
+  skills
 };
 

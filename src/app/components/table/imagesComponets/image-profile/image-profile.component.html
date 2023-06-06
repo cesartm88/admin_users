@@ -1,0 +1,6 @@
+<div class="profile-photo" *ngIf="!(url | isurl)">
+  <span class="profile-photo__iniciales">JM</span>
+</div>
+<div class="profile-photo" *ngIf="(url | isurl)"  [style.width.px]="width" [style.height.px]="height" >
+  <img src="{{this.url}}">
+</div>

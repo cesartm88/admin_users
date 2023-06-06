@@ -33,13 +33,17 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
   @Input() config: TableObj;
   @Output() getForm: EventEmitter<ActionObj> = new EventEmitter();
   list = [];
+  @Input() orderFieldsConfig: string[] = [];
 
   constructor(private dialog: DialogService) {
 
   }
 
   ngOnInit(): void {
+    this.orderFieldsConfig = (this.orderFieldsConfig.length > 0) ? this.orderFieldsConfig : Object.keys(this.showToFields);
+    console.dir(this.orderFieldsConfig);
     this.runList();
+    console.dir(this.List);
   }
 
   runList(){
@@ -56,10 +60,21 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
         }));
       }
     }
+    this.List.subscribe({
+      next(pruebas){
+          console.dir(pruebas);
+      },
+      error(err){
+        console.log(err);
+      },
+      complete(){
+        console.log("ready!");
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes){
+    if (changes.items$){
       this.items$ = changes.items$.currentValue;
       this.runList();
     }
@@ -95,6 +110,7 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
 
   beforePage = () => {
     this.FocusPage = (this.FocusPage > 1) ? this.FocusPage - 1 : this.FocusPage;
+    console.log(this.FocusPage);
     this.List = of(this.listItems.paginate(this.FocusPage));
   }
 
@@ -173,5 +189,4 @@ export class LinearListComponent<T> implements OnInit, OnChanges {
     });
     return data;
   }
-
 }

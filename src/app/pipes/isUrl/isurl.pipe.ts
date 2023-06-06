@@ -11,9 +11,9 @@ export class IsurlPipe implements PipeTransform {
     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  
+
   transform(value: string, ...args: unknown[]): boolean {
-    return !!this.pattern.test(value);
+    return (this.pattern.test(value)) ? true : false;
   }
 
 }

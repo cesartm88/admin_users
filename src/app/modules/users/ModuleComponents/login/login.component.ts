@@ -10,6 +10,8 @@ import {State} from '../../../../interfaces/state.obj';
 import {updateInfo} from '../../../../actions/userInfo.actions';
 import {UserInfo} from '../../../../models/UserInfo';
 import {Router} from '@angular/router';
+import {QueriesServiceService} from '../../../../services/queries-service.service';
+import {updateSystemInfo} from '../../../../actions/systemconfig.actions';
 
 @Component({
   selector: 'app-login',
@@ -29,10 +31,11 @@ export class LoginComponent implements OnInit {
 
   @ViewChild(FormComponent) form: FormComponent;
 
-  constructor(private store: Store<State>, private router: Router, private requestService: RequestService){}
+  constructor(private store: Store<State>, private router: Router, private requestService: RequestService, private queries: QueriesServiceService){}
 
   ngOnInit(): void {
     this.json = login;
+    this.store.dispatch(updateSystemInfo({systemConfig: {loader: false}}));
   }
 
   components(fg: FormObj) {
@@ -41,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   aceptar(){
+    this.store.dispatch(updateSystemInfo({systemConfig: {loader: true}}));
     const keyForm = 'form';
     this.eventsSubject.next();
     this.login.email = this.formResult[keyForm].email?.value;
@@ -65,6 +69,7 @@ export class LoginComponent implements OnInit {
       complete(){
         console.log('ready');
         these.router.navigate(['/users/list']);
+        these.store.dispatch(updateSystemInfo({systemConfig: {loader: false}}));
       }
     });
   }

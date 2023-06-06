@@ -5,5 +5,10 @@
     </div>
     <div body class="container_list">
         <app-table [showToFields]="titles" [items$]="users$" [formConfig]="form" (formResult)="getFormResult($event)" [config]="ID" #tableUsers></app-table>
+        <div class="float-button-container">
+          <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
     </div>
 </admin-theme>

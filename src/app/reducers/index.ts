@@ -11,6 +11,12 @@ import {localStorageSync} from 'ngrx-store-localstorage';
 import { State } from '../interfaces/state.obj';
 import {userReducer} from './user.reducer';
 import {userInfoReducer} from './userInfo.reducer';
+import {systemConfigReducer} from './systemconfig.reducer';
+import {studiesReducer} from './studies.reducer';
+import {personalInfoReducer} from './personalInfo.reducer';
+import {coursesReducer} from './courses.reducer';
+import {LanguajesReducer} from './languajes.reducer';
+import {skillsReducer} from './skills.reducer';
 
 const key = 's1jdD3LHsZ=';
 
@@ -19,7 +25,13 @@ export const reducers: ActionReducerMap< State > = {
   [key]: combineReducers({
      jobs: jobReducer,
      users: userReducer,
-     userInfo: userInfoReducer
+     userInfo: userInfoReducer,
+     systemConfig: systemConfigReducer,
+     studies: studiesReducer,
+     personalInfo: personalInfoReducer,
+     courses: coursesReducer,
+     languajes: LanguajesReducer,
+     skills: skillsReducer
   })
 };
 
